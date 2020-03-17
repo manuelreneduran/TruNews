@@ -3,9 +3,9 @@ const app = express();
 const logger = require('morgan');
 const path = require('path');
 
-var personsRouter = require('./routes/persons.js');
+var postsRouter = require('./routes/post.js');
 
-app.use('/persons', personsRouter);
+app.use('/posts', postsRouter);
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, '../public')))
 
