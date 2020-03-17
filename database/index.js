@@ -14,7 +14,14 @@ const sequelize = new Sequelize
       }
   });
 
+const Post = sequelize.define('Post', {
+  title: {
+      type: Sequelize.STRING,
+      allowNull: false
+  }
+});
 
 module.exports = {
     sequelize: sequelize,
+    Post
 };
