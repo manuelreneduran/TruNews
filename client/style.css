@@ -1,0 +1,30 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  border: 1px black solid;
+}
+
+.navbar {
+  border: 1px black solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.login {
+  border: 1px black solid;
+}
+
+.feed {
+  border: 1px black solid;
+}
+
+.post {
+  border: 1px blue solid;
+}
+
+.footer {
+  border: 1px black solid;
+}
+
+

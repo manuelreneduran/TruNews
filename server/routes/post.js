@@ -24,8 +24,7 @@ router.get("/:id", function(req, res) {
 
 router.put("/", function(req, res) {
     db.Post.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
+        title: req.body.title,
         id: req.body.id
         })
         .then( post => {
