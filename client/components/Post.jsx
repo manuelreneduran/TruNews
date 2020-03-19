@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Post({ title, id }) {
+export default function Post(data) {
+  const {id, title} = data.data;
   return (
     <div className="post">
-      <p>{id}</p>
-      <p>{title}</p>
+      <p>this is the id:{id}, this is the title: {title}</p>
     </div>
   )
 }
