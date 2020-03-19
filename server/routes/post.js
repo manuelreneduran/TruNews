@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../../database');
 
-router.get("/all", function(req, res) {
+router.get("/all", (req, res) => {
     db.Post.findAll()
         .then( posts => {
             res.status(200).send(JSON.stringify(posts));
@@ -12,7 +12,7 @@ router.get("/all", function(req, res) {
         });
 });
 
-router.get("/:id", function(req, res) {
+router.get("/:id", (req, res) => {
     db.Post.findByPk(req.params.id)
         .then( post => {
             res.status(200).send(JSON.stringify(post));
@@ -22,10 +22,10 @@ router.get("/:id", function(req, res) {
         });
 });
 
-router.put("/", function(req, res) {
+router.post("/", (req, res) => {
+    console.log(req);
     db.Post.create({
         title: req.body.title,
-        id: req.body.id
         })
         .then( post => {
             res.status(200).send(JSON.stringify(post));
@@ -35,7 +35,7 @@ router.put("/", function(req, res) {
         });
 });
 
-router.delete("/:id", function(req, res) {
+router.delete("/:id", (req, res) => {
     db.Post.destroy({
         where: {
             id: req.params.id
