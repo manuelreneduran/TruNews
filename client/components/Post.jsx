@@ -1,9 +1,11 @@
 import React from 'react';
+import Vote from './Vote.jsx'
 import PropTypes from 'prop-types';
 
 export default function Post({ id, title }) {
   return (
     <div className="post">
+      <Vote/>
       <p>this is the id:{id}, this is the title: {title}</p>
     </div>
   )
