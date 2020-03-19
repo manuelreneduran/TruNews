@@ -1,6 +1,6 @@
 module.exports = {
   verbose: true,
-  setupFilesAfterEnv: ['<rootDir>jest.setup.js', '<rootDir>node_modules/regenerator-runtime/runtime'],
+  setupFilesAfterEnv: ['jest-extended', '<rootDir>jest.setup.js', '<rootDir>node_modules/regenerator-runtime/runtime'],
   moduleFileExtensions: ["js", "jsx"],
   moduleDirectories: ["node_modules", "bower_components", "shared"],
   moduleNameMapper: {
