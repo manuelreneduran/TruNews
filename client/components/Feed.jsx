@@ -17,7 +17,6 @@ export default function Feed() {
     <div className="feed">
       <ul>
         {posts.map((post) => {
-          console.log(post);
           return <li key={post.id}><Post id={post.id} title={post.title}/></li>
         })}
       </ul>
