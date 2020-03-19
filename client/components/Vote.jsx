@@ -5,9 +5,7 @@ export default function Vote() {
 
   function voteHandler(vote) {
     const updateVote = async (vote) => {
-      if (counter >= 0) {
-        await setCounter(counter + vote);
-      }
+      await setCounter(counter + vote);
     }
     updateVote(vote)
   }

@@ -8,8 +8,8 @@ app.use(logger('dev'));
 app.use(parser.urlencoded());
 
 
-const postsRouter = require('./routes/post.js');
-app.use('/post', postsRouter);
+const postRouter = require('./routes/post.js');
+app.use('/post', postRouter);
 
 app.use(express.static(path.join(__dirname, '../public')))
 

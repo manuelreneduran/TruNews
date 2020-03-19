@@ -23,9 +23,9 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    console.log(req);
     db.Post.create({
         title: req.body.title,
+        vote: 0
         })
         .then( post => {
             res.status(200).send(JSON.stringify(post));
@@ -34,6 +34,18 @@ router.post("/", (req, res) => {
             res.status(500).send(JSON.stringify(err));
         });
 });
+
+router.delete("/all", (req, res) => {
+    db.Post.destroy({
+        truncate: true
+    })
+    .then( () => {
+        res.status(200).send();
+    })
+    .catch( err => {
+        res.status(500).send(JSON.stringify(err))
+    })
+})
 
 router.delete("/:id", (req, res) => {
     db.Post.destroy({

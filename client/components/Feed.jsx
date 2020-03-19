@@ -3,7 +3,7 @@ import Post from './Post.jsx';
 import axios from 'axios';
 
 export default function Feed() {
-  const [posts, setPosts] = useState([{title: 'place', id: 0}]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -16,9 +16,12 @@ export default function Feed() {
   return (
     <div className="feed">
       <ul>
-        {posts.map((post) => {
+        {posts.length > 0 ?
+        posts.map((post) => {
           return <li key={post.id}><Post id={post.id} title={post.title}/></li>
-        })}
+        })
+        : false}
+
       </ul>
   </div>
   )

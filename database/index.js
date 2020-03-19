@@ -18,7 +18,10 @@ const Post = sequelize.define('Post', {
   title: {
       type: Sequelize.STRING,
       allowNull: false
-  }
+  },
+  // vote: {
+  //     type: Sequelize.NUMBER
+  // }
 });
 
 module.exports = {
