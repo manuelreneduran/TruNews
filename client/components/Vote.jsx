@@ -12,9 +12,9 @@ export default function Vote() {
 
   return (
     <div>
-      <button onClick={e => voteHandler(1)}>upvote</button>
-      <p>{counter}</p>
-      <button onClick={e => voteHandler(-1)}>downvote</button>
+      <button id="count-up" onClick={e => voteHandler(1)}>upvote</button>
+      <label>{counter}</label>
+      <button id="count-down" onClick={e => voteHandler(-1)}>downvote</button>
     </div>
   )
 }
