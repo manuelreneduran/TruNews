@@ -14,15 +14,20 @@ const sequelize = new Sequelize
       }
   });
 
-const Post = sequelize.define('Post', {
+const Post = sequelize.define('posts', {
   title: {
       type: Sequelize.STRING,
       allowNull: false
   },
-  // vote: {
-  //     type: Sequelize.NUMBER
-  // }
+  rank: {
+      type: Sequelize.INTEGER
+  },
+  displayRank: {
+    type: Sequelize.INTEGER
+  }
 });
+
+sequelize.sync();
 
 module.exports = {
     sequelize: sequelize,

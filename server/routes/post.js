@@ -25,7 +25,9 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
     db.Post.create({
         title: req.body.title,
-        vote: 0
+        vote: 0,
+        rank: 0,
+        displayRank: 0
         })
         .then( post => {
             res.status(200).send(JSON.stringify(post));
