@@ -1,10 +1,10 @@
 import React from 'react';
 import Axios from 'axios';
 
-export default function Submit() {
+const Submit = () => {
   return (
     <div>this is a submit</div>
   )
 }
 
-
+export default Submit;

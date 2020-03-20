@@ -11,7 +11,7 @@ import {
   Link
 } from "react-router-dom";
 
-export default function App() {
+const App = () => {
   return (
     <Router>
       <div className="app">
@@ -63,3 +63,5 @@ function getSubmitText() {
     </div>
   )
 }
+
+export default App;

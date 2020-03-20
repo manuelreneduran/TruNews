@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Post from './Post.jsx';
 import axios from 'axios';
 
-export default function Feed() {
+const Feed = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -12,6 +12,22 @@ export default function Feed() {
     }
     fetchPosts();
   }, []);
+
+  //for testing only
+  function addTestPost() {
+    let testPost = {
+      title: "this is a set post",
+      id: 100000
+    }
+    let newPosts = posts.concat(testPost)
+    setPosts(newPosts)
+  }
+
+  //for testing only
+  function removeTestPost() {
+    let newPosts = posts
+
+  }
 
   return (
     <div className="feed">
@@ -27,3 +43,5 @@ export default function Feed() {
   )
 //
 }
+
+export default Feed;

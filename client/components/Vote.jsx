@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Vote() {
+const Vote = () => {
   const [counter, setCounter] = useState(0);
 
   function voteHandler(vote) {
@@ -18,3 +18,5 @@ export default function Vote() {
     </div>
   )
 }
+
+export default Vote;

@@ -2,7 +2,7 @@ import React from 'react';
 import Vote from './Vote.jsx'
 import PropTypes from 'prop-types';
 
-export default function Post({ id, title }) {
+const Post = ({ id, title }) => {
   return (
     <div className="post">
       <Vote/>
@@ -20,4 +20,5 @@ Post.defaultProps = {
   id: 0,
   title: ""
 }
-//
+
+export default Post;
