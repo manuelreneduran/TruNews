@@ -2,23 +2,23 @@ import React from 'react';
 import Vote from './Vote.jsx'
 import PropTypes from 'prop-types';
 
-const Post = ({ rank, title }) => {
+const Post = ({ id, title }) => {
   return (
     <div className="post">
       <Vote/>
-      <p>this is the rank:{rank}, this is the title: {title}</p>
+      <p>this is the id:{id}, this is the title: {title}</p>
     </div>
   )
 }
 
 Post.propTypes = {
   title: PropTypes.string,
-  rank: PropTypes.number,
+  id: PropTypes.number,
 }
 
 Post.defaultProps = {
-  rank: 0,
+  id: 0,
   title: ""
 }
 
-export default Post
+export default Post;

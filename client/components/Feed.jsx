@@ -17,9 +17,7 @@ const Feed = () => {
   const addTestPost = () => {
     let testPost = {
       title: "this is a set post",
-      id: 100000,
-      rank: 0,
-      displayRank: 0
+      id: 100000
     }
     let newPosts = posts.concat(testPost)
     setPosts(newPosts)
@@ -33,7 +31,7 @@ const Feed = () => {
       <ul>
         {posts.length > 0 ?
         posts.map((post) => {
-          return <li key={post.id}><Post rank={post.disp} title={post.title}/></li>
+          return <li key={post.id}><Post id={post.id} title={post.title}/></li>
         })
         : false}
 
