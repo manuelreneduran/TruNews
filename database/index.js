@@ -19,10 +19,17 @@ const Post = sequelize.define('Post', {
       type: Sequelize.STRING,
       allowNull: false
   },
-  // vote: {
-  //     type: Sequelize.NUMBER
-  // }
+  rank: {
+      type: Sequelize.INTEGER
+  },
+  displayRank: {
+    type: Sequelize.INTEGER
+  }
 });
+
+sequelize.sync({
+  force: true
+})
 
 module.exports = {
     sequelize: sequelize,
