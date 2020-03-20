@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-const { seedDb } = require('./seed.js');
 
 const sequelize = new Sequelize
 (
@@ -15,37 +14,24 @@ const sequelize = new Sequelize
       }
   });
 
-  sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
-
-
-const Posts = sequelize.define('posts', {
+const Post = sequelize.define('Post', {
   title: {
       type: Sequelize.STRING,
       allowNull: false
   },
   rank: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
   },
   displayRank: {
-    type: Sequelize.STRING
+    type: Sequelize.INTEGER
   }
 });
+
 sequelize.sync({
   force: true
 })
-  .catch(err => {
-    console.log("db error: " + err)
-  })
-
 
 module.exports = {
     sequelize: sequelize,
-    Posts: Posts
+    Post
 };

@@ -1,7 +1,7 @@
-var { blah } = require('../../database/index.js');
+var { Posts } = require('../../database/index.js');
 
 const createPost = (title, cb) => {
-  blah.create({
+  Posts.create({
     title,
     rank: 0,
     displayRank: 0
