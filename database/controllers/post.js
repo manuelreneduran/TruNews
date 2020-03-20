@@ -1,7 +1,7 @@
-var db = require('../../database');
+var { blah } = require('../../database/index.js');
 
 const createPost = (title, cb) => {
-  db.Post.create({
+  blah.create({
     title,
     rank: 0,
     displayRank: 0
@@ -14,8 +14,9 @@ const createPost = (title, cb) => {
   })
 }
 
-const getAllPosts = (title, cb) => {
-  db.Post.findAll()
+const getAllPosts = (cb) => {
+  console.log("function " + db)
+  Posts.findAll()
     .then( posts => {
         cb(null, posts);
     })
@@ -25,7 +26,7 @@ const getAllPosts = (title, cb) => {
 }
 
 const getPost = (id, cb) => {
-  db.Post.findByPk(id)
+  Posts.findByPk(id)
     .then( post => {
         cb(null, post);
     })
@@ -35,7 +36,7 @@ const getPost = (id, cb) => {
 }
 
 const deletePost = (id, cb) => {
-  db.Post.destroy({
+  Posts.destroy({
     where: {
         id
     }
@@ -49,7 +50,7 @@ const deletePost = (id, cb) => {
 }
 
 const deleteAllPosts = (cb) => {
-  db.Post.destroy({
+  Posts.destroy({
     truncate: true
     })
     .then( () => {
