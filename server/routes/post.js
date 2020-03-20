@@ -1,65 +1,56 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../../database');
+var postContr = require('../../database/controllers/post.js');
 
 router.get("/all", (req, res) => {
-    db.Post.findAll()
-        .then( posts => {
-            res.status(200).send(JSON.stringify(posts));
-        })
-        .catch( err => {
+    postContr.getAllPosts((err, data) => {
+        if (err) {
             res.status(500).send(JSON.stringify(err));
-        });
+        } else {
+            res.status(200).send(JSON.stringify(data));
+        }
+    })
 });
 
 router.get("/:id", (req, res) => {
-    db.Post.findByPk(req.params.id)
-        .then( post => {
-            res.status(200).send(JSON.stringify(post));
-        })
-        .catch( err => {
+    postContr.getPost(req.params.id, (err, data) => {
+        if (err) {
             res.status(500).send(JSON.stringify(err));
-        });
+        } else {
+            res.status(200).send(JSON.stringify(data));
+        }
+    })
 });
 
 router.post("/", (req, res) => {
-    db.Post.create({
-        title: req.body.title,
-        rank: 0,
-        displayRank: 0
-        })
-        .then( post => {
-            res.status(200).send(JSON.stringify(post));
-        })
-        .catch( err => {
+    postContr.createPost(req.body.title, (err, data) => {
+        if (err) {
             res.status(500).send(JSON.stringify(err));
-    });
+        } else {
+            res.status(200).send(JSON.stringify(data));
+        }
+    })
 });
 
 router.delete("/all", (req, res) => {
-    db.Post.destroy({
-        truncate: true
-        })
-        .then( () => {
+    postContr.deleteAllPosts((err) => {
+        if (err) {
+            res.status(500).send(JSON.stringify(err));
+        } else {
             res.status(200).send();
-        })
-        .catch( err => {
-        res.status(500).send(JSON.stringify(err))
+        }
     })
 })
 
 router.delete("/:id", (req, res) => {
-    db.Post.destroy({
-        where: {
-            id: req.params.id
-        }
-        })
-        .then( () => {
-            res.status(200).send();
-        })
-        .catch( err => {
+    postContr.deletePost(req.params.id, (err, data) => {
+        if (err) {
             res.status(500).send(JSON.stringify(err));
-        });
+        } else {
+            res.status(200).send();
+        }
+    })
 });
 
 module.exports = router;
