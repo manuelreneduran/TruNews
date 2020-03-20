@@ -14,7 +14,7 @@ const Feed = () => {
   }, []);
 
   //for testing only
-  function addTestPost() {
+  const addTestPost = () => {
     let testPost = {
       title: "this is a set post",
       id: 100000
@@ -24,10 +24,7 @@ const Feed = () => {
   }
 
   //for testing only
-  function removeTestPost() {
-    let newPosts = posts
-
-  }
+  const removeTestPost = id => posts.filter(ele => ele.id !== 100000);
 
   return (
     <div className="feed">
@@ -39,9 +36,13 @@ const Feed = () => {
         : false}
 
       </ul>
+
+      {/* for testing only */}
+      <button id="add-test-post" style={{display: 'none'}} onClick={() => addTestPost()} ></button>
+      <button id="remove-test-post" style={{display: 'none'}} onClick={() => removeTestPost()} ></button>
+
   </div>
   )
-//
 }
 
 export default Feed;
