@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
+  const [sort, setSort] = useState('top');
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -31,7 +32,7 @@ const Feed = () => {
       <ul>
         {posts.length > 0 ?
         posts.map((post) => {
-          return <li key={post.id}><Post id={post.id} title={post.title}/></li>
+          return <li key={post.id}><Post id={post.id} title={post.title} rank={post.rank}/></li>
         })
         : false}
 

@@ -13,7 +13,8 @@ router.get("/all", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-    db.Post.findByPk(req.params.id)
+    id = req.params.id.slice(1);
+    db.Post.findByPk(id)
         .then( post => {
             res.status(200).send(JSON.stringify(post));
         })
@@ -21,6 +22,22 @@ router.get("/:id", (req, res) => {
             res.status(500).send(JSON.stringify(err));
         });
 });
+
+router.put('/:id', (req, res) => {
+    id = req.params.id.slice(1);
+    db.Post.update({
+        rank: req.body.rank
+    }, {
+        where: {
+            id
+        }
+    })
+    .then((data) => {
+        res.status(200).send(data);
+    }).catch(err => {
+        res.status(500).send(err);
+    })
+})
 
 router.post("/", (req, res) => {
     db.Post.create({

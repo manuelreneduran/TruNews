@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
+import Axios from 'axios';
 
-const Vote = () => {
-  const [counter, setCounter] = useState(0);
+const Vote = ( {id, rank } ) => {
+  const [counter, setCounter] = useState(rank || 0);
 
+
+  //need to fix this ASYNC MESS
   function voteHandler(vote) {
-    const updateVote = async (vote) => {
-      await setCounter(counter + vote);
+    const updateVote = (vote) => {
+      let totalRank = counter + vote;
+      setCounter(totalRank);
+      Axios.put(`/post/:${id}`, { rank: totalRank })
+        .then(data => {
+          console.log(data)
+          // rank = totalRank;
+        })
+        .catch((err) => {
+          console.log(`Error putting vote: ${err}`)
+        })
     }
     updateVote(vote)
   }
@@ -20,3 +32,7 @@ const Vote = () => {
 }
 
 export default Vote;
+
+/*
+CHECK ROUTE  TO SEE WHY THE DATABASE IS NOT UPDATING
+*/
