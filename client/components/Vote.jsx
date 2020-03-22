@@ -14,10 +14,14 @@ const Vote = ( {id, rank } ) => {
   }
 
   return (
-    <div>
-      <button id="count-up" onClick={e => voteHandler(1)}>upvote</button>
+    <div className="vote-container flex-column-center-center">
+      <button id="count-up" onClick={e => voteHandler(1)}>
+        <i className="fas fa-angle-up"></i>
+      </button>
       <label>{counter}</label>
-      <button id="count-down" onClick={e => voteHandler(-1)}>downvote</button>
+      <button id="count-down" onClick={e => voteHandler(-1)}>
+        <i className="fas fa-angle-down"></i>
+      </button>
     </div>
   )
 }

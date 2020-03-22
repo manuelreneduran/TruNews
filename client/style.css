@@ -3,6 +3,10 @@ ul {
   list-style-type: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 .app {
   display: flex;
   flex-direction: column;
@@ -11,9 +15,18 @@ ul {
 
 .navbar {
   border: 1px black solid;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+}
+
+.logo-container {
+  width: 85px;
+}
+
+.logo-text {
+  color: black;
+}
+
+.fa-earlybirds {
+  color: blueviolet
 }
 
 .login {
@@ -24,37 +37,49 @@ ul {
   border: 1px black solid;
 }
 
-.post {
+.post-container {
   border: 1px blue solid;
+  width: 700px;
+  margin: 10px 0px 10px 0px;
 }
+
+.post {
+
+}
+
+.vote-container {}
 
 .submit {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.submit-form {
-
+  padding: 20px 0px 20px 0px;
 }
 
 #submit-textarea {
   resize: none;
 }
 
-.submit-button-container {
-
-}
-
-#submit-button {
-
-}
-
 .footer {
   border: 1px black solid;
   display: flex;
   flex-direction: column;
+}
+
+/*
+NAMING
+-flex-flexdirection-alignitems-justifycontent
+*/
+
+.flex-row-center-between {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-row-center-start {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
 }
 
 .flex-row-flex-end {

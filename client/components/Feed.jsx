@@ -32,12 +32,12 @@ const Feed = () => {
   const removeTestPost = id => posts.filter(ele => ele.id !== 100000);
 
   return (
-    <div className="feed">
+    <div className="feed flex-column-center-center">
       {showSpinner ? <Spinner/> :
       <ul>
         {posts.length > 0 ?
         posts.map((post) => {
-          return <li key={post.id}><Post id={post.id} title={post.title} rank={post.rank}/></li>
+          return <li className="post-container" key={post.id}><Post id={post.id} title={post.title} rank={post.rank}/></li>
         })
         : false}
 

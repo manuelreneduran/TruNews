@@ -16,7 +16,7 @@ const App = () => {
     <Router>
       <div className="app">
 
-        <nav className="navbar">
+        <nav className="navbar flex-row-center-between">
             <div className="container-logo">
               <Link to="/">{getHomeText()}</Link>
             </div>
@@ -50,8 +50,9 @@ const App = () => {
 
 function getHomeText() {
   return (
-    <div className="logo">
-      <h2>SEENT</h2>
+    <div className="logo-container flex-row-center-between">
+      <i className="fab fa-earlybirds fa-2x"></i>
+      <p className="logo-text">SEENT</p>
     </div>
   );
 }
