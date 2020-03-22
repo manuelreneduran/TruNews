@@ -12,7 +12,12 @@ app.use(parser.urlencoded({extended: false}));
 const postRouter = require('./routes/post.js');
 app.use('/post', postRouter);
 
+
+
 app.use(express.static(path.join(__dirname, '../public')))
 
+app.get('/*', function(req, res) {
+  res.redirect('/');
+})
 
 module.exports = app;
