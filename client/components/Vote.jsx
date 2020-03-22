@@ -4,15 +4,11 @@ import Axios from 'axios';
 const Vote = ( {id, rank } ) => {
   const [counter, setCounter] = useState(rank || 0);
 
-
-  //need to fix this ASYNC MESS
   function voteHandler(vote) {
     const updateVote = vote => {
       let totalRank = counter + vote;
+      setCounter(totalRank);
       Axios.put(`/post/:${id}`, { rank: totalRank })
-      .then(() => {
-        setCounter(totalRank);
-      })
     }
     updateVote(vote)
   }
