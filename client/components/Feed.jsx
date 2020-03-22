@@ -25,6 +25,7 @@ const Feed = () => {
       id: 100000
     }
     let newPosts = posts.concat(testPost)
+    setSpinner(false);
     setPosts(newPosts)
   }
 
@@ -39,7 +40,7 @@ const Feed = () => {
         posts.map((post) => {
           return <li className="post-container" key={post.id}><Post id={post.id} title={post.title} rank={post.rank}/></li>
         })
-        : false}
+        : null}
 
       </ul>}
 

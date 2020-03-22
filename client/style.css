@@ -42,6 +42,7 @@ a {
   width: 700px;
   margin: 10px 0px 10px 0px;
   background-color: white;
+  border: 1px solid lightgray;
   border-radius: 5px;
 }
 
@@ -64,6 +65,7 @@ a {
 
 .submit {
   padding: 20px 0px 20px 0px;
+  background-color: rgb(218,224,230);
 }
 
 #submit-textarea {
