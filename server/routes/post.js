@@ -24,12 +24,11 @@ router.get("/:id", (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    id = req.params.id.slice(1);
     db.Post.update({
         rank: req.body.rank
     }, {
         where: {
-            id
+            id: req.params.id
         }
     })
     .then((data) => {
@@ -72,8 +71,8 @@ router.delete("/:id", (req, res) => {
             id: req.params.id
         }
         })
-        .then( () => {
-            res.status(200).send();
+        .then( (data) => {
+            res.status(200).send(data);
         })
         .catch( err => {
             res.status(500).send(JSON.stringify(err));
