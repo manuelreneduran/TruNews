@@ -7,17 +7,12 @@ const Vote = ( {id, rank } ) => {
 
   //need to fix this ASYNC MESS
   function voteHandler(vote) {
-    const updateVote = (vote) => {
+    const updateVote = vote => {
       let totalRank = counter + vote;
-      setCounter(totalRank);
       Axios.put(`/post/:${id}`, { rank: totalRank })
-        .then(data => {
-          console.log(data)
-          // rank = totalRank;
-        })
-        .catch((err) => {
-          console.log(`Error putting vote: ${err}`)
-        })
+      .then(() => {
+        setCounter(totalRank);
+      })
     }
     updateVote(vote)
   }
@@ -32,7 +27,3 @@ const Vote = ( {id, rank } ) => {
 }
 
 export default Vote;
-
-/*
-CHECK ROUTE  TO SEE WHY THE DATABASE IS NOT UPDATING
-*/
