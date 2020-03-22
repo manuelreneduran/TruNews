@@ -28,8 +28,49 @@ ul {
   border: 1px blue solid;
 }
 
-.footer {
-  border: 1px black solid;
+.submit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+.submit-form {
 
+}
+
+#submit-textarea {
+  resize: none;
+}
+
+.submit-button-container {
+
+}
+
+#submit-button {
+
+}
+
+.footer {
+  border: 1px black solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row-flex-end {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-column-center-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

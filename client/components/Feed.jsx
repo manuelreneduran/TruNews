@@ -2,15 +2,18 @@ import React, { useState, useEffect } from 'react'
 import Post from './Post.jsx';
 import axios from 'axios';
 import { sortBy } from '../helpers/index.js'
+import Spinner from './Spinner.jsx';
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [sort, setSort] = useState('top');
+  const [showSpinner, setSpinner] = useState(true);
 
   useEffect(() => {
     const fetchPosts = async () => {
       const posts = await axios.get('/post/all');
       setPosts(sortBy(posts.data, sort))
+      setSpinner(false);
     }
     fetchPosts();
   }, []);
@@ -30,6 +33,7 @@ const Feed = () => {
 
   return (
     <div className="feed">
+      {showSpinner ? <Spinner/> :
       <ul>
         {posts.length > 0 ?
         posts.map((post) => {
@@ -37,7 +41,8 @@ const Feed = () => {
         })
         : false}
 
-      </ul>
+      </ul>}
+
 
       {/* for testing only */}
       <button id="add-test-post" style={{display: 'none'}} onClick={() => addTestPost()} ></button>

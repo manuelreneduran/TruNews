@@ -3,7 +3,8 @@ import React from 'react';
 const Footer = () => {
   return (
     <div className="footer">
-      <p>this is a footer</p>
+      <a href="#">Contact Us</a>
+      <a href="#">About</a>
     </div>
   )
 }
