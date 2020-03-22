@@ -8,7 +8,7 @@ const Vote = ( {id, rank } ) => {
     const updateVote = vote => {
       let totalRank = counter + vote;
       setCounter(totalRank);
-      Axios.put(`/post/:${id}`, { rank: totalRank })
+      Axios.put(`/post/${id}`, { rank: totalRank })
     }
     updateVote(vote)
   }

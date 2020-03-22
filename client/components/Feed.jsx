@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Post from './Post.jsx';
 import axios from 'axios';
+import { sortBy } from '../helpers/index.js'
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
@@ -9,7 +10,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const posts = await axios.get('/post/all');
-      setPosts(posts.data)
+      setPosts(sortBy(posts.data, sort))
     }
     fetchPosts();
   }, []);
