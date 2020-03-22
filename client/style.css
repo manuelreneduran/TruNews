@@ -26,7 +26,7 @@ a {
 }
 
 .fa-earlybirds {
-  color: blueviolet
+  color: coral
 }
 
 .login {
@@ -35,19 +35,32 @@ a {
 
 .feed {
   border: 1px black solid;
+  background-color: rgb(218,224,230);
 }
 
 .post-container {
-  border: 1px blue solid;
   width: 700px;
   margin: 10px 0px 10px 0px;
+  background-color: white;
+  border-radius: 5px;
 }
 
 .post {
-
+  padding: 7px 0px 7px 0px;
 }
 
-.vote-container {}
+.count {
+  border: none;
+  cursor: pointer;
+}
+
+.fa-angle-up:hover {
+  color: red;
+}
+
+.fa-angle-down:hover {
+  color: blue;
+}
 
 .submit {
   padding: 20px 0px 20px 0px;

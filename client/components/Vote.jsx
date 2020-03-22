@@ -15,12 +15,12 @@ const Vote = ( {id, rank } ) => {
 
   return (
     <div className="vote-container flex-column-center-center">
-      <button id="count-up" onClick={e => voteHandler(1)}>
-        <i className="fas fa-angle-up"></i>
+      <button id="count-up" className="count" onClick={e => voteHandler(1)}>
+        <i className="fas angle fa-angle-up fa-2x"></i>
       </button>
       <label>{counter}</label>
-      <button id="count-down" onClick={e => voteHandler(-1)}>
-        <i className="fas fa-angle-down"></i>
+      <button id="count-down" className="count" onClick={e => voteHandler(-1)}>
+        <i className="fas fa-angle-down fa-2x"></i>
       </button>
     </div>
   )
