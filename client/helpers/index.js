@@ -1,5 +1,5 @@
 export const sortBy = (posts, method) => {
-  //[{}, {}, ...]
+  if (posts)
   switch (method) {
     case 'top':
       posts = posts.sort((a, b) => {

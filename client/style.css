@@ -17,8 +17,9 @@ a {
   border: 1px black solid;
 }
 
-.logo-container {
+.logo {
   width: 85px;
+  padding-left: 20px;
 }
 
 .logo-text {
@@ -36,6 +37,7 @@ a {
 .feed {
   border: 1px black solid;
   background-color: rgb(218,224,230);
+  opacity: 0.4
 }
 
 .post-container {

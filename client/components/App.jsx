@@ -14,43 +14,32 @@ import {
 const App = () => {
   return (
     <Router>
-      <div className="app">
-
-        <nav className="navbar flex-row-center-between">
-            <div className="container-logo">
-              <Link to="/">{getHomeText()}</Link>
-            </div>
-            <div className="container-submit">
-              <Link to="/submit">{getSubmitText()}</Link>
-            </div>
-            <div className="container-login">
-              <Login/>
-            </div>
+      <div className="app" data-test="container-app">
+        <nav
+          className="navbar flex-row-center-between"
+          data-test="container-navbar">
+          <Link to="/">{getHomeText()}</Link>
+          <Link to="/submit">{getSubmitText()}</Link>
+          <Login />
         </nav>
-
         <Switch>
           <Route exact path="/">
-            <Feed/>
+            <Feed />
           </Route>
           <Route path="/submit">
-            <Submit/>
+            <Submit />
           </Route>
         </Switch>
-
-        <div className="container-footer">
-          <Footer/>
-        </div>
+        <Footer />
       </div>
     </Router>
-
-
-  )
+  );
 
 }
 
 function getHomeText() {
   return (
-    <div className="logo-container flex-row-center-between">
+    <div className="logo flex-row-center-between">
       <i className="fab fa-earlybirds fa-2x"></i>
       <p className="logo-text">SEENT</p>
     </div>
