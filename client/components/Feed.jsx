@@ -30,7 +30,7 @@ const Feed = () => {
       <ul>
         {posts.length > 0 ?
         posts.map((post) => {
-          return <li className="post-container" key={post.id}><Post id={post.id} title={post.title} rank={post.rank}/></li>
+          return <li key={post.id}><Post id={post.id} title={post.title} rank={post.rank}/></li>
         })
         : null}
 

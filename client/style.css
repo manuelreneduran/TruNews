@@ -40,16 +40,13 @@ a {
   opacity: 0.4
 }
 
-.post-container {
+.post {
+  padding: 7px 0px 7px 0px;
   width: 700px;
   margin: 10px 0px 10px 0px;
   background-color: white;
   border: 1px solid lightgray;
   border-radius: 5px;
-}
-
-.post {
-  padding: 7px 0px 7px 0px;
 }
 
 .count {
