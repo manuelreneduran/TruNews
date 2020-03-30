@@ -14,14 +14,23 @@ import {
 const App = () => {
   return (
     <Router>
-      <div className="app" data-test="container-app">
-        <nav
-          className="navbar flex-row-center-between"
+      <div className="app container" data-test="container-app">
+        <div
+          className=" container"
           data-test="container-navbar">
-          <Link to="/">{getHomeText()}</Link>
-          <Link to="/submit">{getSubmitText()}</Link>
-          <Login />
-        </nav>
+          <div className="row justify-content-space-between">
+            <div className="col-lg">
+              <Link to="/">{getHomeText()}</Link>
+            </div>
+            <div className="col-lg">
+              <Link to="/submit">{getSubmitText()}</Link>
+            </div>
+            <div className="col-g">
+              <Login />
+            </div>
+          </div>
+
+        </div>
         <Switch>
           <Route exact path="/">
             <Feed data-test="feed"/>
@@ -39,9 +48,12 @@ const App = () => {
 
 function getHomeText() {
   return (
-    <div className="logo flex-row-center-between">
-      <i className="fab fa-earlybirds fa-2x"></i>
-      <p className="logo-text">SEENT</p>
+    <div className="logo">
+      <div className="row">
+        <i className="fab fa-earlybirds fa-2x col"></i>
+        <p className="logo-text col">SEENT</p>
+      </div>
+
     </div>
   );
 }
