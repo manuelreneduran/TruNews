@@ -3,23 +3,18 @@ import Post from './Post.jsx';
 import axios from 'axios';
 import { sortBy } from '../helpers/index.js'
 import Spinner from './Spinner.jsx';
+import { getPosts } from '../actions/hookactions';
 
 const Feed = () => {
   const [posts, setPosts] = React.useState(null);
   const [sort, setSort] = React.useState('top');
 
-  React.useEffect(() => {
-    const fetchPosts = () => {
-      axios.get('/post/all')
-      .then((res) => {
-        setPosts(sortBy(res.data, sort))
-      })
-      .catch(err => {
-        throw new Error(`error fetching posts: ${err}`)
-      })
-    }
-    fetchPosts();
-  }, []);
+  const fetchPosts = async () => {
+    const data = await getPosts()
+    setPosts(sortBy(data, sort));
+  }
+
+  React.useEffect(() => { fetchPosts() }, []);
 
 
   return (

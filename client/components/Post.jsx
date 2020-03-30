@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Post = ({ id, title, rank }) => {
   return (
     <div className="post flex-row-center-start" data-test="component-post">
-      <Vote id={id} rank={rank} />
+      <Vote data-test="vote" id={id} rank={rank} />
       <p>this is the id:{id}, this is the title: {title}</p>
     </div>
   )
