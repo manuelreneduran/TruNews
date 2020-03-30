@@ -1,7 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Axios from 'axios';
 
-const TextArea = ({ changeHandler, postHandler }) => {
+const TextArea = () => {
+
+  const [value, setValue] = React.useState('');
+
+  const postHandler = (e) => {
+    Axios.post('/post', {title: value})
+  }
+
+  const changeHandler = (value) => {
+    setValue(value);
+  }
+
   return (
     <div data-test="component-textarea">
       <form className="submit-form flex-column" data-test="form">
@@ -17,9 +28,5 @@ const TextArea = ({ changeHandler, postHandler }) => {
   )
 }
 
-TextArea.propTypes = {
-  changeHandler: PropTypes.func,
-  postHandler: PropTypes.func
-}
 
 export default TextArea;

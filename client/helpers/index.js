@@ -9,4 +9,5 @@ export const sortBy = (posts, method) => {
     default:
       return posts;
   }
+  return posts;
 }
