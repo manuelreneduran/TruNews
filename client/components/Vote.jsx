@@ -16,11 +16,11 @@ const Vote = ( {id, rank } ) => {
 
   return (
     <div className="vote-container flex-column-center-center" data-test="component-vote">
-      <button id="count-up" className="count" onClick={e => voteHandler(1)}>
+      <button id="count-up" className="count" data-test="increment-button" onClick={e => voteHandler(1)}>
         <i className="fas fa-angle-up fa-2x"></i>
       </button>
-      <label>{counter}</label>
-      <button id="count-down" className="count" onClick={e => voteHandler(-1)}>
+      <label data-test="counter">{counter}</label>
+      <button id="count-down" className="count" data-test="decrement-button" onClick={e => voteHandler(-1)}>
         <i className="fas fa-angle-down fa-2x"></i>
       </button>
     </div>
