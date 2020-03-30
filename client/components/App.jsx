@@ -24,13 +24,13 @@ const App = () => {
         </nav>
         <Switch>
           <Route exact path="/">
-            <Feed />
+            <Feed data-test="feed"/>
           </Route>
           <Route path="/submit">
-            <Submit />
+            <Submit data-test="submit"/>
           </Route>
         </Switch>
-        <Footer />
+        <Footer data-test="footer"/>
       </div>
     </Router>
   );
