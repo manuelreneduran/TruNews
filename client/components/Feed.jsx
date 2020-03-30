@@ -1,17 +1,15 @@
 import React from 'react'
 import Post from './Post.jsx';
 import axios from 'axios';
-import { sortBy } from '../helpers/index.js'
 import Spinner from './Spinner.jsx';
-import { getPosts } from '../actions/hookactions';
+import hookactions from '../actions/hookactions';
 
 const Feed = () => {
   const [posts, setPosts] = React.useState(null);
   const [sort, setSort] = React.useState('top');
 
-  const fetchPosts = async () => {
-    const data = await getPosts()
-    setPosts(sortBy(data, sort));
+  const fetchPosts = () => {
+    hookactions.getPosts(setPosts, sort)
   }
 
   React.useEffect(() => { fetchPosts() }, []);

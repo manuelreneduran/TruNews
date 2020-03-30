@@ -6,5 +6,7 @@ export const sortBy = (posts, method) => {
         return b.rank - a.rank;
       })
       return posts;
+    default:
+      return posts;
   }
 }
