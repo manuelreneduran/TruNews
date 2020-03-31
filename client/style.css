@@ -11,9 +11,11 @@ a {
   border: 1px solid black
 }
 .app {
-  /* display: flex;
-  flex-direction: column; */
-  /* border: 1px black solid; */
+
+}
+
+.no-padding {
+  padding: 0px;
 }
 
 .navbar {
