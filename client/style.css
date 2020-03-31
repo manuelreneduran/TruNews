@@ -20,10 +20,10 @@ a {
   border: 1px black solid;
 }
 
-.logo {
+/* .logo {
   width: 85px;
   padding-left: 20px;
-}
+} */
 
 .logo-text {
   color: black;
@@ -70,8 +70,14 @@ a {
   background-color: rgb(218,224,230);
 }
 
-#submit-textarea {
+#submit-form {
   resize: none;
+}
+
+.submit-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .footer {

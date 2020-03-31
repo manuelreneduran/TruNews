@@ -15,22 +15,18 @@ const App = () => {
   return (
     <Router>
       <div className="app container" data-test="container-app">
-        <div
-          className=" container"
+        <nav className="navbar   sticky-top navbar-light bg-light"
           data-test="container-navbar">
-          <div className="row justify-content-space-between">
-            <div className="col-lg">
+            <div >
               <Link to="/">{getHomeText()}</Link>
             </div>
-            <div className="col-lg">
+            <div >
               <Link to="/submit">{getSubmitText()}</Link>
             </div>
-            <div className="col-g">
+            <div >
               <Login />
             </div>
-          </div>
-
-        </div>
+        </nav>
         <Switch>
           <Route exact path="/">
             <Feed data-test="feed"/>
@@ -48,7 +44,7 @@ const App = () => {
 
 function getHomeText() {
   return (
-    <div className="logo">
+    <div className="navbar-brand">
       <div className="row">
         <i className="fab fa-earlybirds fa-2x col"></i>
         <p className="logo-text col">SEENT</p>

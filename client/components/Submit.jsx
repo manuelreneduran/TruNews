@@ -4,7 +4,7 @@ import TextArea from '../forms/TextArea.jsx';
 
 const Submit = () => {
   return (
-    <div className="submit flex-column-center-center" data-test="component-submit">
+    <div className="submit form-group" data-test="component-submit">
       <TextArea />
     </div>
   )
