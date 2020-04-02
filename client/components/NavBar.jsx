@@ -2,14 +2,14 @@ import React from "react";
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 const NavBar = ({ toggleLoginModal }) => {
   return (
-    <Navbar bg="dark" fixed="top" variant="dark" expand="lg">
+    <Navbar bg="white" fixed="top" variant="light" expand="lg">
       <Navbar.Brand href="#home">Seent</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <Nav.Link href="#home" onClick={toggleLoginModal}>Login</Nav.Link>
           <Nav.Link href="#link">Register</Nav.Link>
-          <NavDropdown drop="down" alignRight="false" title="User" id="basic-nav-dropdown">
+          <NavDropdown drop="down" alignRight={true} title="User" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">
               Another action

@@ -3,8 +3,6 @@ import Feed from "./Feed.jsx";
 import NavBar from './NavBar';
 import Footer from "./Footer.jsx";
 import LoginModal from './LoginModal';
-import "../style.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () => {
