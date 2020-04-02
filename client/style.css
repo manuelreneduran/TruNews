@@ -1,58 +1,11 @@
 
-ul {
-  list-style-type: none;
-}
 
-a {
-  text-decoration: none;
-}
 
-.row {
-  border: 1px solid black
-}
-.app {
 
-}
 
-.no-padding {
-  padding: 0px;
-}
 
-.navbar {
-  border: 1px black solid;
-}
 
-/* .logo {
-  width: 85px;
-  padding-left: 20px;
-} */
 
-.logo-text {
-  color: black;
-}
-
-.fa-earlybirds {
-  color: coral
-}
-
-.login {
-  border: 1px black solid;
-}
-
-.feed {
-  border: 1px black solid;
-  background-color: rgb(218,224,230);
-  opacity: 0.4
-}
-
-.post {
-  padding: 7px 0px 7px 0px;
-  width: 700px;
-  margin: 10px 0px 10px 0px;
-  background-color: white;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-}
 
 .count {
   border: none;
@@ -67,60 +20,3 @@ a {
   color: blue;
 }
 
-.submit {
-  padding: 20px 0px 20px 0px;
-  background-color: rgb(218,224,230);
-}
-
-#submit-form {
-  resize: none;
-}
-
-.submit-button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.footer {
-  border: 1px black solid;
-  display: flex;
-  flex-direction: column;
-}
-
-/*
-NAMING
--flex-flexdirection-alignitems-justifycontent
-*/
-
-.flex-row-center-between {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.flex-row-center-start {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: start;
-}
-
-.flex-row-flex-end {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.flex-column-center-center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
