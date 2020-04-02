@@ -1,5 +1,4 @@
 import React from "react";
-import Vote from "./Vote.jsx";
 import PropTypes from "prop-types";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -32,11 +31,6 @@ const Post = ({ id, title, rank }) => {
         </Col>
         <Col sm={12} md={9} className="d-none d-sm-block">
           <p className="lead">This is the {id}</p>
-        </Col>
-      </Row>
-      <Row className="mt-3">
-        <Col>
-          <Vote data-test="vote" rank={rank}/>
         </Col>
       </Row>
     </Container>

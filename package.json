@@ -50,13 +50,15 @@
     "bootstrap": "^4.4.1",
     "check-prop-types": "^1.1.2",
     "express": "^4.17.1",
+    "img-loader": "^3.0.1",
     "pg": "^7.18.2",
     "prop-types": "^15.7.2",
     "react": "^16.10.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.10.1",
     "react-router-dom": "^5.1.2",
-    "sequelize": "^5.21.5"
+    "sequelize": "^5.21.5",
+    "url-loader": "^4.0.0"
   },
   "bugs": {
     "url": "https://github.com/manuelreneduran/seent/issues"
