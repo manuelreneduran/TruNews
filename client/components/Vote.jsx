@@ -17,28 +17,6 @@ const Vote = ({ id, rank }) => {
     updateVote(vote);
   }
 
-  // return (
-  //   <div className="vote-container" data-test="component-vote">
-  //     <button
-  //       id="count-up"
-  //       className="count bg-transparent"
-  //       data-test="increment-button"
-  //       onClick={e => voteHandler(1)}
-  //     >
-  //       <i className="fas fa-angle-up fa-2x"></i>
-  //     </button>
-  //     <label data-test="counter">{counter}</label>
-  //     <button
-  //       id="count-down"
-  //       className="count bg-transparent"
-  //       data-test="decrement-button"
-  //       onClick={e => voteHandler(-1)}
-  //     >
-  //       <i className="fas fa-angle-down fa-2x"></i>
-  //     </button>
-  //   </div>
-  // );
-
   return (
     <Container fluid className="px-0" data-test="component-vote">
       <Row className="no-gutters">

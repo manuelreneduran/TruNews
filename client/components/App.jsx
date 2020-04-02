@@ -14,11 +14,11 @@ const App = () => {
   }
 
   return (
-    <div id="app">
-      <NavBar toggleLoginModal={toggleLoginModal}/>
+    <div data-test="container-app" id="app">
+      <NavBar data-test="navbar" toggleLoginModal={toggleLoginModal}/>
       {showLoginModal ? <LoginModal showLoginModal={showLoginModal} toggleLoginModal={toggleLoginModal} /> : null}
-      <Feed/>
-      <Footer/>
+      <Feed data-test="feed"/>
+      <Footer data-test="footer"/>
     </div>
 
   );

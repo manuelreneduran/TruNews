@@ -8,7 +8,7 @@ import Image from "react-bootstrap/image";
 
 const Post = ({ id, title, rank }) => {
   return (
-    <Container className="component-post border border-dark bg-light p-3 my-3">
+    <Container className="border border-dark bg-light p-3 my-3" data-test="component-post">
       <Row>
         <Col lg={12}>
           <h4>{title}</h4>
@@ -36,7 +36,7 @@ const Post = ({ id, title, rank }) => {
       </Row>
       <Row className="mt-3">
         <Col>
-          <Vote rank={rank}/>
+          <Vote data-test="vote" rank={rank}/>
         </Col>
       </Row>
     </Container>
