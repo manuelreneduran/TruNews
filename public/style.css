@@ -10,13 +10,11 @@ body {
 
 
 
-
-
-
 .count {
   border: none;
   cursor: pointer;
 }
+
 
 .fa-angle-up:hover {
   color: red;

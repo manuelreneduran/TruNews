@@ -11,17 +11,13 @@ const Post = ({ id, title, rank }) => {
     <Container className="component-post border border-dark bg-light p-3 my-3">
       <Row>
         <Col lg={12}>
-        <h4>{title}</h4>
+          <h4>{title}</h4>
         </Col>
-      </Row>
-      <Row>
         <Col sm={3}>
           <p>By So and So</p>
         </Col>
         <Col sm={3}>
-          <p className="text-muted">
-            X time ago
-          </p>
+          <p className="text-muted">X time ago</p>
         </Col>
       </Row>
       <Row>
@@ -29,12 +25,18 @@ const Post = ({ id, title, rank }) => {
           <Image
             rounded
             fluid
-            src="https://source.unsplash.com/random/"
+            id="post-image"
+            src="https://storage.googleapis.com/afs-prod/media/8d2f2f456bc44114b6c16ebf5a21069c/400.jpeg"
             alt="Generic placeholder"
           />
         </Col>
         <Col sm={12} md={9} className="d-none d-sm-block">
           <p className="lead">This is the {id}</p>
+        </Col>
+      </Row>
+      <Row className="mt-3">
+        <Col>
+          <Vote rank={rank}/>
         </Col>
       </Row>
     </Container>
