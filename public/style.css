@@ -1,23 +1,16 @@
 body {
-  background-color: #DAE0E6;
-  color: #030303
+  background-color: #fff;
+}
+
+#brand {
+  border-bottom: 5px solid blue;
+}
+
+#card-title {
+  color: #fff;
+  font-size: 1.5rem;
 }
 
 .feed-inner {
   padding-top: 80px
 }
-
-.count {
-  border: none;
-  cursor: pointer;
-}
-
-
-.fa-angle-up:hover {
-  color: red;
-}
-
-.fa-angle-down:hover {
-  color: blue;
-}
-

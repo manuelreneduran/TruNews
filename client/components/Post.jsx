@@ -1,39 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/image";
+import Card from "react-bootstrap/card";
 
 const Post = ({ id, title, rank }) => {
   return (
-    <Container className="border border-dark bg-light p-3 my-3" data-test="component-post">
-      <Row>
-        <Col lg={12}>
-          <h4>{title}</h4>
-        </Col>
-        <Col sm={3}>
-          <p>By So and So</p>
-        </Col>
-        <Col sm={3}>
-          <p className="text-muted">X time ago</p>
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={12} md={3}>
-          <Image
-            rounded
-            fluid
-            id="post-image"
-            src="https://storage.googleapis.com/afs-prod/media/8d2f2f456bc44114b6c16ebf5a21069c/400.jpeg"
-            alt="Generic placeholder"
-          />
-        </Col>
-        <Col sm={12} md={9} className="d-none d-sm-block">
-          <p className="lead">This is the {id}</p>
-        </Col>
-      </Row>
-    </Container>
+    <Card style={{ width: "24rem" }} data-test="component-post">
+      <Card.Img
+        variant="top"
+        src="https://s3.reutersmedia.net/resources/r/?m=02&d=20200402&t=2&i=1511603605&w=530&fh=&fw=&ll=&pl=&sq=&r=LYNXMPEG3126Q"
+      />
+      <Card.ImgOverlay className="d-flex align-items-center">
+        <Card.Title id="card-title" className="pt-5 mb-0 mt-2"><strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, enim!</strong></Card.Title>
+      </Card.ImgOverlay>
+      <Card.Body>
+        <Card.Text>
+          New York, New York City - This is an example news text...
+        </Card.Text>
+      </Card.Body>
+    </Card>
   );
 };
 

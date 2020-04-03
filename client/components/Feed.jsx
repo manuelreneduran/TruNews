@@ -18,7 +18,7 @@ const Feed = () => {
   }, []);
 
   return (
-    <Container className="container feed-inner">
+    <Container className="container-fluid mx-1 feed-inner">
       <Row className="row">
         <Col className="col">
           <div className="feed" data-test="component-feed">

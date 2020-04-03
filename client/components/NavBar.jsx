@@ -1,19 +1,12 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Image } from 'react-bootstrap';
-import logo from '../../public/images/icon-corona.jpg';
 
 const NavBar = ({ toggleLoginModal }) => {
   return (
-    <Navbar bg="white" fixed="top" variant="light" expand="lg" data-test="component-navabr">
-      <Navbar.Brand href="#home">
-      <img
-        src={logo}
-        width="30"
-        height="30"
-        className="d-inline-block align-top"
-        alt="Corona virus icon"
-      />
-        CoronaNews</Navbar.Brand>
+    <Navbar bg="light" fixed="top" variant="light" expand="lg" data-test="component-navabr">
+      <Navbar.Brand id="brand" href="#home">
+
+        TrueNews</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
