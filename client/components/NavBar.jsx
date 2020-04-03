@@ -10,7 +10,7 @@ const NavBar = ({ toggleLoginModal }) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link href="#home" className="login-button1" onClick={toggleLoginModal}>Login</Nav.Link>
+          <Nav.Link href="#home" className="login-button1" onClick={e => toggleLoginModal('setLogin')}>Login</Nav.Link>
           <Nav.Link href="#link">Register</Nav.Link>
           <NavDropdown drop="down" alignRight={true} title="User" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
