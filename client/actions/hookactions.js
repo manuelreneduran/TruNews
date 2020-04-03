@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { sortBy } from '../helpers/index';
 
-export let getPosts  = async (setPosts, sort) => {
-  const response = await axios.get('/post/all')
-  setPosts(sortBy(response.data, sort));
+export let getPosts  = async (setPosts) => {
+  const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWS_API_KEY}`);
+  setPosts(response.data.articles);
 }
 
 // export default for easy mocking

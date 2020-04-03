@@ -1,30 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Card from "react-bootstrap/card";
+import { Media, Badge } from "react-bootstrap";
 
-const Post = ({ id, title, rank }) => {
+const Post = ({ title, desc, imageUrl, url, source }) => {
   return (
-    <Card className="mb-5" data-test="component-post">
-      <Card.Img
-        variant="top"
-        src="https://s3.reutersmedia.net/resources/r/?m=02&d=20200402&t=2&i=1511603605&w=530&fh=&fw=&ll=&pl=&sq=&r=LYNXMPEG3126Q"
-      />
-      <Card.ImgOverlay id="img-overlay" className="d-flex align-items-end">
-        <Card.Title id="card-title" className=""><strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, enim!</strong></Card.Title>
-      </Card.ImgOverlay>
-      <Card.Body>
-        <Card.Text>
-          New York, New York City - This is an example news text...
-        </Card.Text>
-      </Card.Body>
-    </Card>
+    <Media data-test="post" className="mb-4" id="media-article" as="li">
+      <a style={{ textDecoration: "none" }} href={url}>
+        <img src={imageUrl} width={200} height={124} className="mr-3"></img>
+      </a>
+      <Media.Body>
+        <a style={{ textDecoration: "none" }} href={url}>
+          <h5>{title}</h5>
+        </a>
+        <p>{`${desc.split(" ").slice(0, 25).join(" ")}...`}</p>
+      </Media.Body>
+    </Media>
   );
 };
 
 Post.propTypes = {
   title: PropTypes.string,
   id: PropTypes.number,
-  rank: PropTypes.number
+  rank: PropTypes.number,
 };
 
 export default Post;

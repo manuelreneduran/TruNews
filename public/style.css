@@ -1,3 +1,11 @@
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: orange;
+}
+
 body {
   background-color: #fff;
 }
@@ -6,16 +14,14 @@ body {
   border-bottom: 5px solid blue;
 }
 
-#img-overlay {
-  padding-top: 0em;
-  padding-bottom: 5em;
-}
-
-#card-title {
-  color: #fff;
-  font-size: 1.5em;
-}
-
 .feed-inner {
   padding-top: 80px
+}
+
+#media-article {
+  border-bottom: 1px solid lightgray;
+}
+
+#top-posts {
+  top: 80px
 }

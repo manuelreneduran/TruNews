@@ -3,6 +3,8 @@ const app = express();
 const logger = require('morgan');
 const parser = require('body-parser');
 const path = require('path');
+require('dotenv').config()
+
 
 app.use(logger('dev'));
 app.use(parser.json());

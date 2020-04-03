@@ -1,6 +1,8 @@
 const path = require('path');
 const SRC_DIR = path.join(__dirname, '/client');
 const DIST_DIR = path.join(__dirname, '/public');
+const dotenv = require('dotenv')
+const webpack = require('webpack')
 
 module.exports = {
   mode: 'none',
@@ -40,5 +42,16 @@ module.exports = {
   },
   resolve: {
     extensions: ['*', '.js', '.jsx']
-  }
+  },
+  plugins:[
+    new webpack.DefinePlugin({
+      NEWS_API_KEY: JSON.stringify(process.env.NEWS_API_KEY),
+      'typeof window': JSON.stringify('object'),
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      },
+    })
+  ],
+
+
 }
