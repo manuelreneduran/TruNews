@@ -6,7 +6,7 @@ const NavBar = ({ toggleLoginModal }) => {
     <Navbar bg="light" fixed="top" variant="light" expand="lg" data-test="component-navabr">
       <Navbar.Brand id="brand" href="#home">
 
-        TrueNews</Navbar.Brand>
+        TruNews</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">

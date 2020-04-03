@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, ListGroup } from "react-bootstrap";
 
-const TopPosts = () => {
+const SavedArticles = () => {
   return (
-    <Card className="sticky-top" id="top-posts">
+    <Card className="sticky-top" id="saved-articles">
       <Card.Header style={{borderBottom: '5px solid blue'}}>Top Posts</Card.Header>
       <Card.Body>
         <ListGroup variant="flush">
@@ -25,4 +25,4 @@ const TopPosts = () => {
   );
 };
 
-export default TopPosts;
+export default SavedArticles;

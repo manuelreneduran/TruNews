@@ -1,8 +1,8 @@
 import React from "react";
-import Feed from "./Feed.jsx";
 import NavBar from './NavBar';
 import Footer from "./Footer.jsx";
 import LoginModal from './LoginModal';
+import MoreTopNews from './MoreTopNews';
 
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
     <div data-test="container-app" id="app">
       <NavBar data-test="navbar" toggleLoginModal={toggleLoginModal}/>
       {showLoginModal ? <LoginModal showLoginModal={showLoginModal} toggleLoginModal={toggleLoginModal} /> : null}
-      <Feed data-test="feed"/>
+      <MoreTopNews data-test="more-top-news"/>
       <Footer data-test="footer"/>
     </div>
 

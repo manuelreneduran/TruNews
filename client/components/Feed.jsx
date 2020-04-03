@@ -1,19 +1,19 @@
 import React from "react";
-import Post from "./Post.jsx";
+import Article from "./Article.jsx";
 import Spinner from "./Spinner.jsx";
 import hookactions from "../actions/hookactions";
-import { Container, Row, Col, CardDeck } from "react-bootstrap";
-import TopPosts from "./TopPosts";
+import { Container, Row, Col } from "react-bootstrap";
+import SavedArticles from "./SavedArticles";
 
 const Feed = () => {
-  const [posts, setPosts] = React.useState(null);
+  const [articles, setArticles] = React.useState(null);
 
-  const fetchPosts = () => {
-    hookactions.getPosts(setPosts);
+  const fetchArticles = () => {
+    hookactions.getArticles(setArticles);
   };
 
   React.useEffect(() => {
-    fetchPosts();
+    fetchArticles();
   }, []);
 
   return (
@@ -21,38 +21,36 @@ const Feed = () => {
       <Row className="row">
         <Col className="col" lg={8}>
           <div className="feed" data-test="component-feed">
-            {!posts ? (
+            {!articles ? (
               <div data-test="spinner">
                 <Spinner />
               </div>
             ) : (
-              <ul className="list-unstyled" data-test="posts">
-                {/* <Row> */}
-                {posts.map((post, ind) => {
-                  if (post.urlToImage) {
+              <ul className="list-unstyled" data-test="Articles">
+                {articles.map((article, ind) => {
+                  if (article.urlToImage) {
                     return (
-                      // <Col md={6} sm={12} key={ind}>
-                      <Post
-                        data-test="post"
-                        title={post.title}
-                        desc={post.description}
-                        imageUrl={post.urlToImage}
-                        url={post.url}
-                        source={post.source.name}
-                      />
+                      <div key={ind}>
+                        <Article
+                          data-test="Article"
+                          title={article.title}
+                          desc={article.description}
+                          imageUrl={article.urlToImage}
+                          url={article.url}
+                          source={article.source.name}
+                        />
+                      </div>
                     );
                     {
-                      /* </Col> */
                     }
                   }
                 })}
-                {/* </Row> */}
               </ul>
             )}
           </div>
         </Col>
         <Col lg={4} className="d-none d-md-block">
-          <TopPosts />
+          <SavedArticles />
         </Col>
       </Row>
     </Container>

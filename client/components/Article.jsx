@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Media, Badge } from "react-bootstrap";
+import { Media } from "react-bootstrap";
 
-const Post = ({ title, desc, imageUrl, url, source }) => {
+const Article = ({ title, desc, imageUrl, url, source }) => {
   return (
-    <Media data-test="post" className="mb-4" id="media-article" as="li">
+    <Media data-test="Article" className="mb-4" id="media-article" as="li">
       <a style={{ textDecoration: "none" }} href={url}>
         <img src={imageUrl} width={200} height={124} className="mr-3"></img>
       </a>
@@ -12,16 +12,16 @@ const Post = ({ title, desc, imageUrl, url, source }) => {
         <a style={{ textDecoration: "none" }} href={url}>
           <h5>{title}</h5>
         </a>
-        <p>{`${desc.split(" ").slice(0, 25).join(" ")}...`}</p>
+        <p className="text-muted">{`${desc.split(" ").slice(0, 25).join(" ")}...`}</p>
       </Media.Body>
     </Media>
   );
 };
 
-Post.propTypes = {
+Article.propTypes = {
   title: PropTypes.string,
   id: PropTypes.number,
   rank: PropTypes.number,
 };
 
-export default Post;
+export default Article;
