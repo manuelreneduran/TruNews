@@ -3,7 +3,7 @@ import Post from "./Post.jsx";
 import axios from "axios";
 import Spinner from "./Spinner.jsx";
 import hookactions from "../actions/hookactions";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, CardDeck } from "react-bootstrap";
 
 const Feed = () => {
   const [posts, setPosts] = React.useState(null);
@@ -18,26 +18,37 @@ const Feed = () => {
   }, []);
 
   return (
-    <Container className="container-fluid mx-1 feed-inner">
+    <Container className="container feed-inner">
       <Row className="row">
-        <Col className="col">
+        <Col className="col" lg={8}>
           <div className="feed" data-test="component-feed">
             {!posts ? (
               <div data-test="spinner">
                 <Spinner />
               </div>
             ) : (
-              <ul className="list-unstyled" data-test="posts">
-                {posts.map(post => {
-                  return (
-                    <li data-test="post" key={post.id}>
-                      <Post id={post.id} title={post.title} rank={post.rank} />
-                    </li>
-                  );
-                })}
-              </ul>
+              <CardDeck data-test="posts">
+                <Row>
+                  {posts.map((post, ind) => {
+                    return (
+                      <Col md={6} sm={12}>
+                        <Post
+                          data-test="post"
+                          key={ind}
+                          id={post.id}
+                          title={post.title}
+                          rank={post.rank}
+                        />
+                      </Col>
+                    );
+                  })}
+                </Row>
+              </CardDeck>
             )}
           </div>
+        </Col>
+        <Col lg={4} className="d-none d-md-block">
+          <Post/>
         </Col>
       </Row>
     </Container>
