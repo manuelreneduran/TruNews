@@ -21,7 +21,7 @@ const TopNews = ({ topArticles }) => {
             title={topArticles[0].title}
           />
         </Col>
-        <Col lg={6} className="d-none d-md-block">
+        <Col lg={6} className="d-none d-lg-block">
           <TopNewsMiniArticles topNewsMiniArticles={topNewsMiniArticles}/>
         </Col>
       </Row>

@@ -1,18 +1,37 @@
 import React from "react";
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Image } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
-const NavBar = ({ toggleLoginModal }) => {
+const NavBar = ({ toggleRegisterModal, toggleLoginModal }) => {
   return (
-    <Navbar bg="light" fixed="top" variant="light" expand="lg" data-test="component-navabr">
+    <Navbar
+      bg="light"
+      fixed="top"
+      variant="light"
+      expand="lg"
+      data-test="component-navabr"
+    >
       <Navbar.Brand id="brand" href="#home">
-
-        TruNews</Navbar.Brand>
+        TruNews
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link href="#home" className="login-button1" onClick={e => toggleLoginModal('setLogin')}>Login</Nav.Link>
-          <Nav.Link href="#link">Register</Nav.Link>
-          <NavDropdown drop="down" alignRight={true} title="User" id="basic-nav-dropdown">
+          <Nav.Link
+            href="#home"
+            className="login-button1"
+            onClick={(e) => toggleLoginModal()}
+          >
+            Login
+          </Nav.Link>
+          <Nav.Link href="#link" onClick={(e) => toggleRegisterModal()}>
+            Register
+          </Nav.Link>
+          <NavDropdown
+            drop="down"
+            alignRight={true}
+            title="User"
+            id="basic-nav-dropdown"
+          >
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">
               Another action

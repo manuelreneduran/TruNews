@@ -1,10 +1,10 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 
-const LoginModal = ({ showLoginModal, toggleLoginModal }) => {
+const RegisterModal = ({ showRegisterModal, toggleRegisterModal }) => {
   return (
     <>
-      <Modal show={showLoginModal} onHide={toggleLoginModal}>
+      <Modal show={showRegisterModal} onHide={toggleRegisterModal}>
         <Modal.Header>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
@@ -17,12 +17,16 @@ const LoginModal = ({ showLoginModal, toggleLoginModal }) => {
           <InputGroup className="mb-2">
             <FormControl type="text"></FormControl>
           </InputGroup>
+          <label>Re-type Password</label>
+          <InputGroup className="mb-2">
+            <FormControl></FormControl>
+          </InputGroup>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={toggleLoginModal}>
+          <Button variant="secondary" onClick={toggleRegisterModal}>
             Close
           </Button>
-          <Button variant="primary" onClick={toggleLoginModal}>
+          <Button variant="primary" onClick={toggleRegisterModal}>
             Login
           </Button>
         </Modal.Footer>
@@ -31,4 +35,4 @@ const LoginModal = ({ showLoginModal, toggleLoginModal }) => {
   );
 };
 
-export default LoginModal;
+export default RegisterModal;

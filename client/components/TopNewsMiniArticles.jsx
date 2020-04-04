@@ -21,6 +21,7 @@ const TopNewsMiniArticles = ({ topNewsMiniArticles }) => {
       }
     });
   };
+
   return (
     <Container fluid>
       <Row>

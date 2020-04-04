@@ -20,7 +20,7 @@ const TopArticleMini = ({ title, url, content, urlToImage, author }) => {
         <Col lg={8}>
           <p style={{ fontSize: ".75em" }}>By {author}</p>
 
-          <p>{content.split(" ").slice(0, 20).join(" ") + " ..."}</p>
+          <p style={{ fontSize: "1em" }}>{content.split(" ").slice(0, 20).join(" ") + " ..."}</p>
         </Col>
       </Row>
     </Container>
