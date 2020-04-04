@@ -7,7 +7,7 @@ const MoreTopNews = ({ articles }) => {
 
 
   return (
-    <Container className="container MoreTopNews-inner">
+    <Container fluid className="bg-light mt-5">
       <Row>
         <Col>
         <h5 className="mb-3" style={{borderBottom: '1px blue solid'}}>MORE TOP NEWS</h5>
@@ -26,7 +26,6 @@ const MoreTopNews = ({ articles }) => {
                           data-test="Article"
                           content={article.content}
                           title={article.title}
-                          desc={article.description}
                           urlToImage={article.urlToImage}
                           url={article.url}
                           source={article.source.name}

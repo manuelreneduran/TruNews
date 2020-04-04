@@ -1,10 +1,12 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import TopArticleJumbo from "./TopArticleJumbo";
+import TopNewsMiniArticles from './TopNewsMiniArticles';
 
 const TopNews = ({ topArticles }) => {
+  const topNewsMiniArticles = topArticles.slice(1);
   return (
-    <Container fluid style={{ marginTop: "5em" }}>
+    <Container className="mb-3" fluid style={{ marginTop: "5em" }}>
       <Row>
         <Col className="mx-3">
           <h5>TOP NEWS</h5>
@@ -19,8 +21,9 @@ const TopNews = ({ topArticles }) => {
             title={topArticles[0].title}
           />
         </Col>
-        <Col lg={3} className="d-none d-md-block"></Col>
-        <Col lg={3} className="d-none d-md-block"></Col>
+        <Col lg={6} className="d-none d-md-block">
+          <TopNewsMiniArticles topNewsMiniArticles={topNewsMiniArticles}/>
+        </Col>
       </Row>
     </Container>
   );

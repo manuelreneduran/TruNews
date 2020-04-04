@@ -48,8 +48,8 @@ const App = () => {
       ) : null}
       {articles ? (
         <>
-          <TopNews topArticles={articles.slice(0, 6)} />
-          <MoreTopNews articles={articles.slice(6)} data-test="more-top-news" />
+          <TopNews topArticles={articles.slice(0, 9)} />
+          <MoreTopNews articles={articles.slice(9)} data-test="more-top-news" />
         </>
       ) : null }
       <Footer toggleContactModal={toggleContactModal} data-test="footer" />

@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Media, Image } from "react-bootstrap";
+import { Media } from "react-bootstrap";
 
-const Article = ({ title, desc, urlToImage, url, content }) => {
+const Article = ({ title, urlToImage, url, content }) => {
 
   return (
     <Media data-test="Article" className="mb-4" id="media-article" as="li">
