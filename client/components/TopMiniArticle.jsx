@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import Moment from "moment";
 
-const TopArticleMini = ({
+const TopMiniArticle = ({
   title,
   url,
   content,
@@ -53,4 +53,4 @@ const TopArticleMini = ({
   );
 };
 
-export default TopArticleMini;
+export default TopMiniArticle;

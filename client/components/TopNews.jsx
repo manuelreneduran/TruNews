@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import TopArticleJumbo from "./TopArticleJumbo";
-import TopNewsMiniArticles from './TopNewsMiniArticles';
+import TopMiniArticles from './TopMiniArticles';
 
 const TopNews = ({ topArticles }) => {
-  const topNewsMiniArticles = topArticles.slice(1);
+  const topMiniArticles = topArticles.slice(1);
   return (
     <Container className="mb-3" fluid>
       <Row>
@@ -23,7 +23,7 @@ const TopNews = ({ topArticles }) => {
           />
         </Col>
         <Col lg={6} className="d-none d-lg-block">
-          <TopNewsMiniArticles topNewsMiniArticles={topNewsMiniArticles}/>
+          <TopMiniArticles topMiniArticles={topMiniArticles}/>
         </Col>
       </Row>
     </Container>

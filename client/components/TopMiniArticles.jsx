@@ -1,15 +1,15 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import TopArticleMini from "./TopArticleMini";
+import TopMiniArticle from "./TopMiniArticle";
 
-const TopNewsMiniArticles = ({ topNewsMiniArticles }) => {
+const TopMiniArticles = ({ topMiniArticles }) => {
 
   const mapMiniArticles = (articles) => {
     return articles.map((ele, ind) => {
       if (ele.urlToImage && ele.content) {
         return (
           <div key={ind}>
-            <TopArticleMini
+            <TopMiniArticle
               urlToImage={ele.urlToImage}
               url={ele.url}
               content={ele.content}
@@ -29,7 +29,7 @@ const TopNewsMiniArticles = ({ topNewsMiniArticles }) => {
       <Row>
         <Col >
           <ul className="list-unstyled">
-            {mapMiniArticles(topNewsMiniArticles)}
+            {mapMiniArticles(topMiniArticles)}
           </ul>
         </Col>
       </Row>
@@ -37,4 +37,4 @@ const TopNewsMiniArticles = ({ topNewsMiniArticles }) => {
   );
 };
 
-export default TopNewsMiniArticles;
+export default TopMiniArticles;
