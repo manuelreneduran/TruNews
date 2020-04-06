@@ -19,11 +19,12 @@ export const registerUser = async (username, password, setUser, setUserExists, s
 }
 
 
-export const getUserByToken = async (setUser) => {
+export const getUserByToken = async (setUser, setLoggedIn) => {
   const token = localStorage.getItem('token');
   const response = await axios.post('/signin/token', { token })
   if (response.data.token) {
     setUser(response.data.username)
+    setLoggedIn(true);
   }
   console.log(response);
 }

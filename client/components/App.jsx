@@ -27,7 +27,7 @@ const App = () => {
   }, []);
 
   React.useEffect(() => {
-    hookactions.getUserByToken(setUser);
+    hookactions.getUserByToken(setUser, setLoggedIn);
   }, []);
 
   function toggleLoginModal() {
@@ -67,6 +67,23 @@ const App = () => {
     }
   }
 
+  function handleLogin() {
+    //receives username and password
+    //queries server with username and password
+    //if login succesfull
+      //sets loggedIn to true
+      //sets the user
+      //saves session to local storage
+    //if not
+      //sends 'unsuccesful' message to loginModal
+  }
+
+  function handleLogout() {
+    setUser(null);
+    setLoggedIn(false);
+    localStorage.removeItem('token');
+  }
+
   return (
     <div data-test="container-app" id="app">
       <NavBar
@@ -75,6 +92,7 @@ const App = () => {
         toggleLoginModal={toggleLoginModal}
         user={user}
         loggedIn={loggedIn}
+        handleLogout={handleLogout}
       />
       {showLoginModal ? (
         <LoginModal
