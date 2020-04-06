@@ -12,3 +12,7 @@ export const removeSources = articles => {
   }
   return articles;
 }
+
+export const setToLocalStorage = (token) => {
+  localStorage.setItem('token', token)
+}

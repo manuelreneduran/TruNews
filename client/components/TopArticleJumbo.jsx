@@ -14,12 +14,12 @@ const TopArticleJumbo = ({
   return (
     <>
       <Col xs={12}>
-        <a style={{ textDecoration: "none" }} href={url}>
+        <a target="_blank" style={{ textDecoration: "none" }} href={url}>
           <h2>{title}</h2>
         </a>
       </Col>
       <Col xs={12}>
-        <a style={{ textDecoration: "none" }} href={url}>
+        <a target="_blank" style={{ textDecoration: "none" }} href={url}>
           <Image fluid src={urlToImage} />
         </a>
       </Col>

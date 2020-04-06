@@ -41,10 +41,24 @@ const signin = (request, response) => {
     .catch((err) => console.error(err))
 }
 
+const signinByToken = (request, response) => {
+  const userReq = request.body;
+  findUserByToken(userReq)
+    .then(res => {
+      response.status(200).json(res)
+    })
+}
+
 const findUser = (userReq) => {
   return database.raw("SELECT * FROM users WHERE username = ?", [userReq.username])
     .then((data) => data.rows[0])
 }
+
+const findUserByToken = (userReq) => {
+  return database.raw("SELECT * FROM users WHERE token = ?", [userReq.token])
+    .then((data) => data.rows[0])
+}
+
 
 const checkPassword = (reqPassword, foundUser) => {
   return new Promise((resolve, reject) =>
@@ -112,5 +126,5 @@ const findByToken = (token) => {
 }
 
 module.exports = {
-  signup, signin, authenticate
+  signup, signin, authenticate, signinByToken
 }

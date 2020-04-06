@@ -14,11 +14,11 @@ const Article = ({
 }) => {
   return (
     <Media data-test="Article" className="mb-4" id="media-article" as="li">
-      <a style={{ textDecoration: "none" }} href={url}>
+      <a target="_blank" style={{ textDecoration: "none" }} href={url}>
         <img src={urlToImage} width={200} height={124} className="mr-3"></img>
       </a>
       <Media.Body>
-        <a style={{ textDecoration: "none" }} href={url}>
+        <a target="_blank" style={{ textDecoration: "none" }} href={url}>
           <h5>{title}</h5>
         </a>
         {source ? (

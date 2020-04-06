@@ -15,14 +15,14 @@ const TopMiniArticle = ({
     <Container fluid>
       <Row>
         <Col>
-          <a style={{ textDecoration: "none" }} href={url}>
+          <a target="_blank" style={{ textDecoration: "none" }} href={url}>
             <h5>{title}</h5>
           </a>
         </Col>
       </Row>
       <Row>
         <Col lg={4}>
-          <a style={{ textDecoration: "none" }} href={url}>
+          <a target="_blank" style={{ textDecoration: "none" }} href={url}>
             <Image fluid src={urlToImage} />
           </a>
         </Col>

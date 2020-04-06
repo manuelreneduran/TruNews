@@ -22,12 +22,12 @@ const App = () => {
   const [passwordMatch, setPasswordMatch] = React.useState(true);
   const [loggedIn, setLoggedIn] = React.useState(false);
 
-  const fetchArticles = () => {
+  React.useEffect(() => {
     hookactions.getArticles(setArticles);
-  };
+  }, []);
 
   React.useEffect(() => {
-    fetchArticles();
+    hookactions.getUserByToken(setUser);
   }, []);
 
   function toggleLoginModal() {
@@ -45,8 +45,8 @@ const App = () => {
   function showSuccessfulReg() {
     setLoggedIn(true);
     setTimeout(() => {
-      toggleRegisterModal()
-    }, 1500)
+      toggleRegisterModal();
+    }, 1500);
   }
 
   function handleRegisterSubmit() {
@@ -54,7 +54,13 @@ const App = () => {
       setPasswordMatch(false);
     } else {
       setPasswordMatch(true);
-      hookactions.registerUser(userName, password, setUser, setUserExists, showSuccessfulReg);
+      hookactions.registerUser(
+        userName,
+        password,
+        setUser,
+        setUserExists,
+        showSuccessfulReg
+      );
       setUsername(null);
       setPassword(null);
       setPasswordConf(null);

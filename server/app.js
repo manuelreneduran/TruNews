@@ -15,6 +15,7 @@ app.use(parser.urlencoded({extended: false}));
 
 app.post('/signup', User.signup)
 app.post('/signin', User.signin)
+app.post('/signin/token', User.signinByToken)
 
 
 app.use(express.static(path.join(__dirname, '../public')))
