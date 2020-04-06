@@ -7,6 +7,7 @@ const crypto          = require('crypto')                         // built-in en
 
 const signup = (request, response) => {
   const user = request.body
+  console.log(request.body);
   hashPassword(user.password)
     .then((hashedPassword) => {
       delete user.password
@@ -67,6 +68,7 @@ const updateUserToken = (token, user) => {
 
 // check out bcrypt's docs for more info on their hashing function
 const hashPassword = (password) => {
+  console.log("here is password " + password)
   return new Promise((resolve, reject) =>
     bcrypt.hash(password, 10, (err, hash) => {
       err ? reject(err) : resolve(hash)

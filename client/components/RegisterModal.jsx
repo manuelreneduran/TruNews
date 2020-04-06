@@ -1,7 +1,16 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 
-const RegisterModal = ({ showRegisterModal, toggleRegisterModal, setUsername, setPassword, setPasswordConf, passwordMatch, handleRegisterSubmit }) => {
+const RegisterModal = ({
+  showRegisterModal,
+  toggleRegisterModal,
+  setUsername,
+  setPassword,
+  setPasswordConf,
+  passwordMatch,
+  handleRegisterSubmit,
+  userExists,
+}) => {
   return (
     <>
       <Modal show={showRegisterModal} onHide={toggleRegisterModal}>
@@ -10,18 +19,32 @@ const RegisterModal = ({ showRegisterModal, toggleRegisterModal, setUsername, se
         </Modal.Header>
         <Modal.Body>
           <label>Username</label>
-          <InputGroup  className="mb-2">
-            <FormControl onChange={e => setUsername(e.target.value)} type="text"></FormControl>
+          <InputGroup className="mb-2">
+            <FormControl
+              onChange={(e) => setUsername(e.target.value)}
+              type="text"
+            ></FormControl>
           </InputGroup>
+          {userExists ? (
+            <p className="text-danger">Username is taken. Please select another.</p>
+          ) : null}
           <label>Password</label>
           <InputGroup className="mb-2">
-            <FormControl onChange={e => setPassword(e.target.value)} type="password"></FormControl>
+            <FormControl
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+            ></FormControl>
           </InputGroup>
           <label>Re-type Password</label>
           <InputGroup className="mb-2">
-            <FormControl onChange={e => setPasswordConf(e.target.value)} type="password"></FormControl>
+            <FormControl
+              onChange={(e) => setPasswordConf(e.target.value)}
+              type="password"
+            ></FormControl>
           </InputGroup>
-          {!passwordMatch ? <p className="text-danger">Your password does not match</p> : null}
+          {!passwordMatch ? (
+            <p className="text-danger">Your password does not match</p>
+          ) : null}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={toggleRegisterModal}>

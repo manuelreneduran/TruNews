@@ -7,13 +7,15 @@ import LoginModal from "./LoginModal";
 import TopNews from "./TopNews";
 import MoreTopNews from "./MoreTopNews";
 import Spinner from './Spinner';
-import hookactions from "../actions/hookactions";
+import hookactions, { registerUser } from "../actions/hookactions";
 
 const App = () => {
   const [showLoginModal, setShowLoginModal] = React.useState(false);
   const [showContactModal, setContactModal] = React.useState(false);
   const [showRegisterModal, setRegisterModal] = React.useState(false);
   const [articles, setArticles] = React.useState(null);
+  const [user, setUser] = React.useState(null)
+  const [userExists, setUserExists] = React.useState(null);
   const [userName, setUsername] = React.useState(null);
   const [password, setPassword] = React.useState(null);
   const [passwordConf, setPasswordConf] = React.useState(null);
@@ -45,6 +47,10 @@ const App = () => {
     } else {
       setPasswordMatch(true);
       toggleRegisterModal();
+      hookactions.registerUser(userName, password, setUser, setUserExists);
+      setUsername(null);
+      setPassword(null);
+      setPasswordConf(null);
     }
   }
 
@@ -72,6 +78,7 @@ const App = () => {
           setPasswordConf={setPasswordConf}
           passwordMatch={passwordMatch}
           handleRegisterSubmit={handleRegisterSubmit}
+          userExists={userExists}
         />
       ) : null}
       )}

@@ -7,13 +7,13 @@ export let getArticles  = async (setArticles) => {
   setArticles(removeSources(response.data.articles));
 }
 
-export let registerUser = async (username, password, setUser) => {
-  const response = await axios.post('/signup')
-
+export let registerUser = async (username, password, setUser, setUserExists) => {
+  const response = await axios.post('/signup', { password, username } )
+  console.log(response);
   setUser(response);
 }
 
 
 export default {
-  getArticles
+  getArticles, registerUser
 }
