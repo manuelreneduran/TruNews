@@ -7,7 +7,12 @@ export let getArticles  = async (setArticles) => {
   setArticles(removeSources(response.data.articles));
 }
 
-// export default for easy mocking
+export let registerUser = async (username, password, setUser) => {
+  const response = await axios.post('/signup')
+
+  setUser(response);
+}
+
 
 export default {
   getArticles

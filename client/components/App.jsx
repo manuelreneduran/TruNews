@@ -14,6 +14,10 @@ const App = () => {
   const [showContactModal, setContactModal] = React.useState(false);
   const [showRegisterModal, setRegisterModal] = React.useState(false);
   const [articles, setArticles] = React.useState(null);
+  const [userName, setUsername] = React.useState(null);
+  const [password, setPassword] = React.useState(null);
+  const [passwordConf, setPasswordConf] = React.useState(null);
+  const [passwordMatch, setPasswordMatch] = React.useState(true);
 
   const fetchArticles = () => {
     hookactions.getArticles(setArticles);
@@ -35,6 +39,15 @@ const App = () => {
     setRegisterModal(!showRegisterModal);
   }
 
+  function handleRegisterSubmit() {
+    if (password !== passwordConf) {
+      setPasswordMatch(false);
+    } else {
+      setPasswordMatch(true);
+      toggleRegisterModal();
+    }
+  }
+
   return (
     <div data-test="container-app" id="app">
       <NavBar data-test="navbar" toggleRegisterModal={toggleRegisterModal} toggleLoginModal={toggleLoginModal} />
@@ -54,6 +67,11 @@ const App = () => {
         <RegisterModal
           showRegisterModal={showRegisterModal}
           toggleRegisterModal={toggleRegisterModal}
+          setUsername={setUsername}
+          setPassword={setPassword}
+          setPasswordConf={setPasswordConf}
+          passwordMatch={passwordMatch}
+          handleRegisterSubmit={handleRegisterSubmit}
         />
       ) : null}
       )}
