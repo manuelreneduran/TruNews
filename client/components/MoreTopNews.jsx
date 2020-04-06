@@ -30,6 +30,7 @@ const MoreTopNews = ({ articles }) => {
                           url={article.url}
                           source={article.source.name}
                           author={article.author}
+                          publishedAt={article.publishedAt}
                         />
                       </div>
                     );

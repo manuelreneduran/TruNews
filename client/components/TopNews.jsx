@@ -19,6 +19,7 @@ const TopNews = ({ topArticles }) => {
             title={topArticles[0].title}
             source={topArticles[0].source.name}
             author={topArticles[0].author}
+            publishedAt={topArticles[0].publishedAt}
           />
         </Col>
         <Col lg={6} className="d-none d-lg-block">
