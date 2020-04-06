@@ -80,6 +80,9 @@ const createUser = (user) => {
     [user.username, user.password_digest, user.token, new Date()]
   )
   .then((data) => data.rows[0])
+  .catch((err) => {
+    return err;
+  })
 }
 
 const createToken = () => {
