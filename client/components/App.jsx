@@ -6,6 +6,7 @@ import ContactModal from "./ContactModal";
 import LoginModal from "./LoginModal";
 import TopNews from "./TopNews";
 import MoreTopNews from "./MoreTopNews";
+import Spinner from './Spinner';
 import hookactions from "../actions/hookactions";
 
 const App = () => {
@@ -58,11 +59,13 @@ const App = () => {
       )}
       {articles ? (
         <>
+            <h5 style={{marginTop: '5em', margin:'70px 30px 0px 30px'}}>TOP NEWS</h5>
+
           <TopNews topArticles={articles.slice(0, 5)} />
           <MoreTopNews articles={articles.slice(5)} data-test="more-top-news" />
+          <Footer toggleContactModal={toggleContactModal} data-test="footer" />
         </>
-      ) : null}
-      <Footer toggleContactModal={toggleContactModal} data-test="footer" />
+      ) : <Spinner/>}
     </div>
   );
 };

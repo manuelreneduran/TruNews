@@ -14,22 +14,22 @@ const sequelize = new Sequelize
       }
   });
 
-const Post = sequelize.define('posts', {
-  title: {
-      type: Sequelize.STRING,
-      allowNull: false
-  },
-  rank: {
-      type: Sequelize.INTEGER
-  },
-  displayRank: {
-    type: Sequelize.INTEGER
-  }
-});
+// const Post = sequelize.define('posts', {
+//   title: {
+//       type: Sequelize.STRING,
+//       allowNull: false
+//   },
+//   rank: {
+//       type: Sequelize.INTEGER
+//   },
+//   displayRank: {
+//     type: Sequelize.INTEGER
+//   }
+// });
 
-sequelize.sync({
-  // force: true
-});
+// sequelize.sync({
+//   // force: true
+// });
 
 module.exports = {
     sequelize: sequelize,

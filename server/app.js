@@ -3,7 +3,9 @@ const app = express();
 const logger = require('morgan');
 const parser = require('body-parser');
 const path = require('path');
-require('dotenv').config()
+const knex = require('../knex/knex.js');
+const User = require('../models/user.js')
+
 
 
 app.use(logger('dev'));
@@ -11,8 +13,9 @@ app.use(parser.json());
 app.use(parser.urlencoded({extended: false}));
 
 
-const postRouter = require('./routes/post.js');
-app.use('/post', postRouter);
+app.post('/signup', User.signup)
+app.post('/signin', User.signin)
+
 
 app.use(express.static(path.join(__dirname, '../public')))
 

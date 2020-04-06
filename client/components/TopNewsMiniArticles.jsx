@@ -15,6 +15,7 @@ const TopNewsMiniArticles = ({ topNewsMiniArticles }) => {
               content={ele.content}
               title={ele.title}
               author={ele.author}
+              source={ele.source.name}
             />
           </div>
         );

@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 
-const TopArticleMini = ({ title, url, content, urlToImage, author }) => {
+const TopArticleMini = ({ title, url, content, urlToImage, author, source }) => {
   return (
     <Container fluid>
       <Row>
@@ -18,9 +18,9 @@ const TopArticleMini = ({ title, url, content, urlToImage, author }) => {
           </a>
         </Col>
         <Col lg={8}>
-          <p style={{ fontSize: ".75em" }}>By {author}</p>
-
-          <p style={{ fontSize: "1em" }}>{content.split(" ").slice(0, 20).join(" ") + " ..."}</p>
+        {source ? <p className="mb-1"  style={{ fontSize: ".75em" }}><strong>{source}</strong></p> : null }
+          {author ? <p className="mb-1"  style={{ fontSize: ".75em" }}>By {author}</p> : null}
+          {content ? <p style={{ fontSize: "1em" }}>{content.split(" ").slice(0, 20).join(" ") + "..."}</p> : null}
         </Col>
       </Row>
     </Container>

@@ -29,6 +29,7 @@ const MoreTopNews = ({ articles }) => {
                           urlToImage={article.urlToImage}
                           url={article.url}
                           source={article.source.name}
+                          author={article.author}
                         />
                       </div>
                     );
