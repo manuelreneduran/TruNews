@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
-const NavBar = ({ toggleRegisterModal, toggleLoginModal }) => {
+const NavBar = ({ toggleRegisterModal, toggleLoginModal, user, loggedIn }) => {
   return (
     <Navbar
       bg="light"
@@ -16,20 +16,24 @@ const NavBar = ({ toggleRegisterModal, toggleLoginModal }) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link
-            href="#home"
-            className="login-button1"
-            onClick={(e) => toggleLoginModal()}
-          >
-            Login
-          </Nav.Link>
-          <Nav.Link href="#link" onClick={(e) => toggleRegisterModal()}>
-            Register
-          </Nav.Link>
+          {loggedIn ? null : (
+            <>
+              <Nav.Link
+                href="#home"
+                className="login-button1"
+                onClick={(e) => toggleLoginModal()}
+              >
+                Login
+              </Nav.Link>
+              <Nav.Link href="#link" onClick={(e) => toggleRegisterModal()}>
+                Register
+              </Nav.Link>
+            </>
+          )}
           <NavDropdown
             drop="down"
             alignRight={true}
-            title="User"
+            title={user || "user"}
             id="basic-nav-dropdown"
           >
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

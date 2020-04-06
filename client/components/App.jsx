@@ -6,7 +6,7 @@ import ContactModal from "./ContactModal";
 import LoginModal from "./LoginModal";
 import TopNews from "./TopNews";
 import MoreTopNews from "./MoreTopNews";
-import Spinner from './Spinner';
+import Spinner from "./Spinner";
 import hookactions, { registerUser } from "../actions/hookactions";
 
 const App = () => {
@@ -14,12 +14,13 @@ const App = () => {
   const [showContactModal, setContactModal] = React.useState(false);
   const [showRegisterModal, setRegisterModal] = React.useState(false);
   const [articles, setArticles] = React.useState(null);
-  const [user, setUser] = React.useState(null)
+  const [user, setUser] = React.useState(null);
   const [userExists, setUserExists] = React.useState(null);
   const [userName, setUsername] = React.useState(null);
   const [password, setPassword] = React.useState(null);
   const [passwordConf, setPasswordConf] = React.useState(null);
   const [passwordMatch, setPasswordMatch] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
   const fetchArticles = () => {
     hookactions.getArticles(setArticles);
@@ -41,13 +42,19 @@ const App = () => {
     setRegisterModal(!showRegisterModal);
   }
 
+  function showSuccessfulReg() {
+    setLoggedIn(true);
+    setTimeout(() => {
+      toggleRegisterModal()
+    }, 1500)
+  }
+
   function handleRegisterSubmit() {
     if (password !== passwordConf) {
       setPasswordMatch(false);
     } else {
       setPasswordMatch(true);
-      toggleRegisterModal();
-      hookactions.registerUser(userName, password, setUser, setUserExists);
+      hookactions.registerUser(userName, password, setUser, setUserExists, showSuccessfulReg);
       setUsername(null);
       setPassword(null);
       setPasswordConf(null);
@@ -56,7 +63,13 @@ const App = () => {
 
   return (
     <div data-test="container-app" id="app">
-      <NavBar data-test="navbar" toggleRegisterModal={toggleRegisterModal} toggleLoginModal={toggleLoginModal} />
+      <NavBar
+        data-test="navbar"
+        toggleRegisterModal={toggleRegisterModal}
+        toggleLoginModal={toggleLoginModal}
+        user={user}
+        loggedIn={loggedIn}
+      />
       {showLoginModal ? (
         <LoginModal
           showLoginModal={showLoginModal}
@@ -79,18 +92,23 @@ const App = () => {
           passwordMatch={passwordMatch}
           handleRegisterSubmit={handleRegisterSubmit}
           userExists={userExists}
+          loggedIn={loggedIn}
         />
       ) : null}
       )}
       {articles ? (
         <>
-            <h5 style={{marginTop: '5em', margin:'70px 30px 0px 30px'}}>TOP NEWS</h5>
+          <h5 style={{ marginTop: "5em", margin: "70px 30px 0px 30px" }}>
+            TOP NEWS
+          </h5>
 
           <TopNews topArticles={articles.slice(0, 5)} />
           <MoreTopNews articles={articles.slice(5)} data-test="more-top-news" />
           <Footer toggleContactModal={toggleContactModal} data-test="footer" />
         </>
-      ) : <Spinner/>}
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 };

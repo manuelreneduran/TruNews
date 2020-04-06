@@ -10,12 +10,16 @@ const RegisterModal = ({
   passwordMatch,
   handleRegisterSubmit,
   userExists,
+  loggedIn
 }) => {
   return (
     <>
-      <Modal show={showRegisterModal} onHide={toggleRegisterModal}>
+      <Modal
+        show={showRegisterModal}
+        onHide={(toggleRegisterModal)}
+      >
         <Modal.Header>
-          <Modal.Title>Login</Modal.Title>
+          <Modal.Title>Register</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <label>Username</label>
@@ -26,7 +30,9 @@ const RegisterModal = ({
             ></FormControl>
           </InputGroup>
           {userExists ? (
-            <p className="text-danger">Username is taken. Please select another.</p>
+            <p className="text-danger">
+              Username is taken. Please select another.
+            </p>
           ) : null}
           <label>Password</label>
           <InputGroup className="mb-2">
@@ -47,12 +53,18 @@ const RegisterModal = ({
           ) : null}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={toggleRegisterModal}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleRegisterSubmit}>
-            Login
-          </Button>
+          {loggedIn ? (
+            <p className="text-success">Registration successful! Please wait...</p>
+          ) : (
+            <>
+              <Button variant="secondary" onClick={toggleRegisterModal}>
+                Close
+              </Button>
+              <Button variant="primary" onClick={handleRegisterSubmit}>
+                Register
+              </Button>{" "}
+            </>
+          )}
         </Modal.Footer>
       </Modal>
     </>

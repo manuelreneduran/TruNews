@@ -7,10 +7,14 @@ export let getArticles  = async (setArticles) => {
   setArticles(removeSources(response.data.articles));
 }
 
-export let registerUser = async (username, password, setUser, setUserExists) => {
+export let registerUser = async (username, password, setUser, setUserExists, showSuccesfulReg) => {
   const response = await axios.post('/signup', { password, username } )
-  console.log(response);
-  setUser(response);
+  if (response.data.user.code) {
+    setUserExists(true);
+  } else {
+    setUser(response.data.user.username);
+    showSuccesfulReg();
+  }
 }
 
 
