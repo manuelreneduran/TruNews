@@ -14,7 +14,6 @@ export const registerUser = async (username, password, setUser, setUserExists) =
 
 export const getUser = async (username, password) => {
   const response = await axios.post('/signin', {username, password})
-  console.log(response);
   return response;
 }
 

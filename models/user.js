@@ -18,7 +18,7 @@ const signup = (request, response) => {
     .then(() => createUser(user))
     .then(user => {
       delete user.password_digest
-      response.status(201).json({ user })
+      response.status(201).json({ token: user.token, username: user.username })
     })
     .catch((err) => console.error(err))
 }
@@ -34,9 +34,9 @@ const signin = (request, response) => {
     })
     .then((res) => createToken())
     .then(token => updateUserToken(token, user))
-    .then(() => {
+    .then((data) => {
       delete user.password_digest
-      response.status(200).json(user)
+      response.status(200).json(data)
     })
     .catch((err) => console.error(err))
 }
@@ -83,7 +83,6 @@ const updateUserToken = (token, user) => {
 
 // check out bcrypt's docs for more info on their hashing function
 const hashPassword = (password) => {
-  console.log("here is password " + password)
   return new Promise((resolve, reject) =>
     bcrypt.hash(password, 10, (err, hash) => {
       err ? reject(err) : resolve(hash)

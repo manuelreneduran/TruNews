@@ -8,7 +8,7 @@ import TopNews from "./TopNews";
 import MoreTopNews from "./MoreTopNews";
 import Spinner from "./Spinner";
 import hookactions from "../actions/hookactions";
-import { setToLocalStorage } from '../utls/index';
+import { setToLocalStorage } from "../utls/index";
 
 const App = () => {
   const [showLoginModal, setShowLoginModal] = React.useState(false);
@@ -60,50 +60,37 @@ const App = () => {
         setUser,
         setUserAlreadyExists
       );
-      if (response.data.user.code) {
+      if (response.data.code) {
         setUserAlreadyExists(true);
       } else {
-        setUser(response.data.user.username);
-        setToLocalStorage(response.data.user.token)
-        setPasswordMatch(true);
-        setUserAlreadyExists(false);
-        setUsername(null);
-        setPassword(null);
-        setPasswordConf(null);
-        showSuccessfulReg(toggleRegisterModal);
+        login(response, toggleRegisterModal);
       }
-
     }
-  }
+  };
 
   const handleLogin = async () => {
-    //receives username and password
-    //queries server with username and password
-    const response = await hookactions.getUser(userName, password)
+    const response = await hookactions.getUser(userName, password);
     if (response.data.error === "Wrong password") {
-
     } else {
-      setUser(response.data.username);
-      setToLocalStorage(response.data.token)
-      setPasswordMatch(true);
-      setUserAlreadyExists(false);
-      setUsername(null);
-      setPassword(null);
-      setPasswordConf(null);
-      showSuccessfulReg(toggleLoginModal);
+      login(response, toggleLoginModal);
     }
-    //if login succesfull
-      //sets the user
-      //saves token to local storage
-      //close modal - showSuccesfullReg
-    //if not
-      //sends 'unsuccesful' message to loginModal
-  }
+  };
 
   function handleLogout() {
     setUser(null);
     setLoggedIn(false);
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
+  }
+
+  function login(response, toggleModal) {
+    setUser(response.data.username);
+    setToLocalStorage(response.data.token);
+    setPasswordMatch(true);
+    setUserAlreadyExists(false);
+    setUsername(null);
+    setPassword(null);
+    setPasswordConf(null);
+    showSuccessfulReg(toggleModal);
   }
 
   return (
