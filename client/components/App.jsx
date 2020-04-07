@@ -17,6 +17,7 @@ const App = () => {
   const [articles, setArticles] = React.useState(null);
   const [user, setUser] = React.useState(null);
   const [userAlreadyExists, setUserAlreadyExists] = React.useState(null);
+  const [loginError, setLoginError] = React.useState(false);
   const [userName, setUsername] = React.useState(null);
   const [password, setPassword] = React.useState(null);
   const [passwordConf, setPasswordConf] = React.useState(null);
@@ -51,28 +52,37 @@ const App = () => {
   }
 
   const handleRegisterSubmit = async () => {
-    if (password !== passwordConf) {
-      setPasswordMatch(false);
-    } else {
-      const response = await hookactions.registerUser(
-        userName,
-        password,
-        setUser,
-        setUserAlreadyExists
-      );
-      if (response.data.code) {
-        setUserAlreadyExists(true);
+    if (userName || (userName && userName.length > 0)) {
+      if (password !== passwordConf) {
+        setPasswordMatch(false);
       } else {
-        login(response, toggleRegisterModal);
+        const response = await hookactions.registerUser(
+          userName,
+          password,
+          setUser,
+          setUserAlreadyExists
+        );
+        if (response.data.code) {
+          setUserAlreadyExists(true);
+        } else {
+          login(response, toggleRegisterModal);
+        }
       }
+    } else {
+      setLoginError(true);
     }
   };
 
   const handleLogin = async () => {
-    const response = await hookactions.getUser(userName, password);
-    if (response.data.error === "Wrong password") {
+    if (userName && password) {
+      const response = await hookactions.getUser(userName, password);
+      if (response.data.error === "Wrong password") {
+        setLoginError(true);
+      } else {
+        login(response, toggleLoginModal);
+      }
     } else {
-      login(response, toggleLoginModal);
+      setLoginError(true);
     }
   };
 
@@ -111,6 +121,7 @@ const App = () => {
           setPassword={setPassword}
           handleLogin={handleLogin}
           loggedIn={loggedIn}
+          loginError={loginError}
         />
       ) : null}
       {showContactModal ? (
@@ -130,6 +141,7 @@ const App = () => {
           handleRegisterSubmit={handleRegisterSubmit}
           userAlreadyExists={userAlreadyExists}
           loggedIn={loggedIn}
+          registerError={loginError}
         />
       ) : null}
       )}

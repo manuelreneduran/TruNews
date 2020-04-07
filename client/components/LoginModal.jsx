@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 
+
 const LoginModal = ({
   showLoginModal,
   toggleLoginModal,
@@ -8,7 +9,9 @@ const LoginModal = ({
   setPassword,
   handleLogin,
   loggedIn,
+  loginError
 }) => {
+
   return (
     <>
       <Modal show={showLoginModal} onHide={toggleLoginModal}>
@@ -19,6 +22,7 @@ const LoginModal = ({
           <label>Username</label>
           <InputGroup className="mb-2">
             <FormControl
+            required
               onChange={(e) => setUsername(e.target.value)}
               type="text"
             ></FormControl>
@@ -26,14 +30,15 @@ const LoginModal = ({
           <label>Password</label>
           <InputGroup className="mb-2">
             <FormControl
+            required
               onChange={(e) => setPassword(e.target.value)}
-              type="text"
+              type="password"
             ></FormControl>
           </InputGroup>
         </Modal.Body>
         <Modal.Footer>
           {loggedIn ? (
-            <p className="text-success">Success! Loggin in now..</p>
+            <p className="text-success">Success! Logging in now..</p>
           ) : (
             <>
               <Button variant="secondary" onClick={toggleLoginModal}>
@@ -44,6 +49,11 @@ const LoginModal = ({
               </Button>
             </>
           )}
+          {loginError ? (
+            <p className="text-danger">
+              Error logging in. Please check your username or password.
+            </p>
+          ) : null}
         </Modal.Footer>
       </Modal>
     </>
