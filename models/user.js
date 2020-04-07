@@ -70,7 +70,7 @@ const checkPassword = (reqPassword, foundUser, res) => {
         else if (response) {
           resolve(response)
         } else {
-          reject(res.status(200).json('Passwords do not match'))
+          reject(res.status(200).json({ error: 'Wrong password' }))
         }
     })
   )

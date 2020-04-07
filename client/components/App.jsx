@@ -8,6 +8,7 @@ import TopNews from "./TopNews";
 import MoreTopNews from "./MoreTopNews";
 import Spinner from "./Spinner";
 import hookactions from "../actions/hookactions";
+import { setToLocalStorage } from '../utls/index';
 
 const App = () => {
   const [showLoginModal, setShowLoginModal] = React.useState(false);
@@ -15,7 +16,7 @@ const App = () => {
   const [showRegisterModal, setRegisterModal] = React.useState(false);
   const [articles, setArticles] = React.useState(null);
   const [user, setUser] = React.useState(null);
-  const [userExists, setUserExists] = React.useState(null);
+  const [userAlreadyExists, setUserAlreadyExists] = React.useState(null);
   const [userName, setUsername] = React.useState(null);
   const [password, setPassword] = React.useState(null);
   const [passwordConf, setPasswordConf] = React.useState(null);
@@ -49,28 +50,48 @@ const App = () => {
     }, 1500);
   }
 
-  function handleRegisterSubmit() {
+  const handleRegisterSubmit = async () => {
     if (password !== passwordConf) {
       setPasswordMatch(false);
     } else {
-      setPasswordMatch(true);
-      hookactions.registerUser(
+      const response = await hookactions.registerUser(
         userName,
         password,
         setUser,
+        setUserAlreadyExists
       );
-      setUserExists(true);
-      setUsername(null);
-      setPassword(null);
-      setPasswordConf(null);
-      showSuccessfulReg(toggleRegisterModal);
+      if (response.data.user.code) {
+        setUserAlreadyExists(true);
+      } else {
+        setUser(response.data.user.username);
+        setToLocalStorage(response.data.user.token)
+        setPasswordMatch(true);
+        setUserAlreadyExists(false);
+        setUsername(null);
+        setPassword(null);
+        setPasswordConf(null);
+        showSuccessfulReg(toggleRegisterModal);
+      }
+
     }
   }
 
-  function handleLogin() {
+  const handleLogin = async () => {
     //receives username and password
     //queries server with username and password
-    hookactions.getUser(userName, password, setUser, setUserExists, showSuccessfulReg)
+    const response = await hookactions.getUser(userName, password)
+    if (response.data.error === "Wrong password") {
+
+    } else {
+      setUser(response.data.username);
+      setToLocalStorage(response.data.token)
+      setPasswordMatch(true);
+      setUserAlreadyExists(false);
+      setUsername(null);
+      setPassword(null);
+      setPasswordConf(null);
+      showSuccessfulReg(toggleLoginModal);
+    }
     //if login succesfull
       //sets the user
       //saves token to local storage
@@ -102,6 +123,7 @@ const App = () => {
           setUsername={setUsername}
           setPassword={setPassword}
           handleLogin={handleLogin}
+          loggedIn={loggedIn}
         />
       ) : null}
       {showContactModal ? (
@@ -119,7 +141,7 @@ const App = () => {
           setPasswordConf={setPasswordConf}
           passwordMatch={passwordMatch}
           handleRegisterSubmit={handleRegisterSubmit}
-          userExists={userExists}
+          userAlreadyExists={userAlreadyExists}
           loggedIn={loggedIn}
         />
       ) : null}

@@ -9,7 +9,7 @@ const RegisterModal = ({
   setPasswordConf,
   passwordMatch,
   handleRegisterSubmit,
-  userExists,
+  userAlreadyExists,
   loggedIn
 }) => {
   return (
@@ -29,7 +29,7 @@ const RegisterModal = ({
               type="text"
             ></FormControl>
           </InputGroup>
-          {userExists ? (
+          {userAlreadyExists ? (
             <p className="text-danger">
               Username is taken. Please select another.
             </p>

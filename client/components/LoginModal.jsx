@@ -7,6 +7,7 @@ const LoginModal = ({
   setUsername,
   setPassword,
   handleLogin,
+  loggedIn,
 }) => {
   return (
     <>
@@ -18,25 +19,31 @@ const LoginModal = ({
           <label>Username</label>
           <InputGroup className="mb-2">
             <FormControl
-              onChange={e => setUsername(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
               type="text"
             ></FormControl>
           </InputGroup>
           <label>Password</label>
           <InputGroup className="mb-2">
             <FormControl
-              onChange={e => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               type="text"
             ></FormControl>
           </InputGroup>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={toggleLoginModal}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleLogin}>
-            Login
-          </Button>
+          {loggedIn ? (
+            <p className="text-success">Success! Loggin in now..</p>
+          ) : (
+            <>
+              <Button variant="secondary" onClick={toggleLoginModal}>
+                Close
+              </Button>
+              <Button variant="primary" onClick={handleLogin}>
+                Login
+              </Button>
+            </>
+          )}
         </Modal.Footer>
       </Modal>
     </>
