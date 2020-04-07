@@ -7,7 +7,7 @@ import LoginModal from "./LoginModal";
 import TopNews from "./TopNews";
 import MoreTopNews from "./MoreTopNews";
 import Spinner from "./Spinner";
-import hookactions, { registerUser } from "../actions/hookactions";
+import hookactions from "../actions/hookactions";
 
 const App = () => {
   const [showLoginModal, setShowLoginModal] = React.useState(false);
@@ -42,10 +42,10 @@ const App = () => {
     setRegisterModal(!showRegisterModal);
   }
 
-  function showSuccessfulReg() {
+  function showSuccessfulReg(toggleModal) {
     setLoggedIn(true);
     setTimeout(() => {
-      toggleRegisterModal();
+      toggleModal();
     }, 1500);
   }
 
@@ -58,22 +58,23 @@ const App = () => {
         userName,
         password,
         setUser,
-        setUserExists,
-        showSuccessfulReg
       );
+      setUserExists(true);
       setUsername(null);
       setPassword(null);
       setPasswordConf(null);
+      showSuccessfulReg(toggleRegisterModal);
     }
   }
 
   function handleLogin() {
     //receives username and password
     //queries server with username and password
+    hookactions.getUser(userName, password, setUser, setUserExists, showSuccessfulReg)
     //if login succesfull
-      //sets loggedIn to true
       //sets the user
-      //saves session to local storage
+      //saves token to local storage
+      //close modal - showSuccesfullReg
     //if not
       //sends 'unsuccesful' message to loginModal
   }
@@ -98,6 +99,9 @@ const App = () => {
         <LoginModal
           showLoginModal={showLoginModal}
           toggleLoginModal={toggleLoginModal}
+          setUsername={setUsername}
+          setPassword={setPassword}
+          handleLogin={handleLogin}
         />
       ) : null}
       {showContactModal ? (

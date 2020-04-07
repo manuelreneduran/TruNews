@@ -27,10 +27,10 @@ const signin = (request, response) => {
   const userReq = request.body
   let user
 
-  findUser(userReq)
+  findUser(userReq, response)
     .then(foundUser => {
       user = foundUser
-      return checkPassword(userReq.password, foundUser)
+      return checkPassword(userReq.password, foundUser, response)
     })
     .then((res) => createToken())
     .then(token => updateUserToken(token, user))
@@ -49,9 +49,10 @@ const signinByToken = (request, response) => {
     })
 }
 
-const findUser = (userReq) => {
+const findUser = (userReq, res) => {
   return database.raw("SELECT * FROM users WHERE username = ?", [userReq.username])
     .then((data) => data.rows[0])
+    .catch(err => res.json('Username not found'))
 }
 
 const findUserByToken = (userReq) => {
@@ -60,7 +61,7 @@ const findUserByToken = (userReq) => {
 }
 
 
-const checkPassword = (reqPassword, foundUser) => {
+const checkPassword = (reqPassword, foundUser, res) => {
   return new Promise((resolve, reject) =>
     bcrypt.compare(reqPassword, foundUser.password_digest, (err, response) => {
         if (err) {
@@ -69,7 +70,7 @@ const checkPassword = (reqPassword, foundUser) => {
         else if (response) {
           resolve(response)
         } else {
-          reject(new Error('Passwords do not match.'))
+          reject(res.status(200).json('Passwords do not match'))
         }
     })
   )

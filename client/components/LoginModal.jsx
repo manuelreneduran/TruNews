@@ -1,7 +1,13 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 
-const LoginModal = ({ showLoginModal, toggleLoginModal }) => {
+const LoginModal = ({
+  showLoginModal,
+  toggleLoginModal,
+  setUsername,
+  setPassword,
+  handleLogin,
+}) => {
   return (
     <>
       <Modal show={showLoginModal} onHide={toggleLoginModal}>
@@ -10,19 +16,25 @@ const LoginModal = ({ showLoginModal, toggleLoginModal }) => {
         </Modal.Header>
         <Modal.Body>
           <label>Username</label>
-          <InputGroup  className="mb-2">
-            <FormControl type="text"></FormControl>
+          <InputGroup className="mb-2">
+            <FormControl
+              onChange={e => setUsername(e.target.value)}
+              type="text"
+            ></FormControl>
           </InputGroup>
           <label>Password</label>
           <InputGroup className="mb-2">
-            <FormControl type="text"></FormControl>
+            <FormControl
+              onChange={e => setPassword(e.target.value)}
+              type="text"
+            ></FormControl>
           </InputGroup>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={toggleLoginModal}>
             Close
           </Button>
-          <Button variant="primary" onClick={toggleLoginModal}>
+          <Button variant="primary" onClick={handleLogin}>
             Login
           </Button>
         </Modal.Footer>

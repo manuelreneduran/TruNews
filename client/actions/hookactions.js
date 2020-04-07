@@ -7,17 +7,21 @@ export const getArticles  = async (setArticles) => {
   setArticles(removeSources(response.data.articles));
 }
 
-export const registerUser = async (username, password, setUser, setUserExists, showSuccesfulReg) => {
+export const registerUser = async (username, password, setUser, setUserExists) => {
   const response = await axios.post('/signup', { password, username } )
   if (response.data.user.code) {
     setUserExists(true);
   } else {
     setUser(response.data.user.username);
     setToLocalStorage(response.data.user.token)
-    showSuccesfulReg();
   }
 }
 
+export const getUser = async (username, password, setUser) => {
+  const response = await axios.post('/signin', {username, password})
+  console.log(response);
+  setUser(response.data.user.username)
+}
 
 export const getUserByToken = async (setUser, setLoggedIn) => {
   const token = localStorage.getItem('token');
@@ -26,9 +30,8 @@ export const getUserByToken = async (setUser, setLoggedIn) => {
     setUser(response.data.username)
     setLoggedIn(true);
   }
-  console.log(response);
 }
 
 export default {
-  getArticles, registerUser, getUserByToken
+  getArticles, registerUser, getUser, getUserByToken
 }
