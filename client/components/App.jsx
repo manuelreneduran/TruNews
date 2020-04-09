@@ -115,7 +115,6 @@ const ConnectedApp = ({
           setUsername={setUsername}
           setPassword={setPassword}
           handleLoginSubmit={handleLoginSubmit}
-          loggedIn={loggedIn}
           loginError={loginError}
         />
       ) : null}
@@ -128,7 +127,6 @@ const ConnectedApp = ({
           passwordMatch={passwordMatch}
           handleRegisterSubmit={handleRegisterSubmit}
           userAlreadyExists={userAlreadyExists}
-          loggedIn={loggedIn}
           registerError={loginError}
         />
       ) : null}

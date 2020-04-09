@@ -79,7 +79,10 @@ const ConnectedRegisterModal = ({
 };
 
 const mapStateToProps = state => {
-  return { showRegisterModal: state.registerModal.showRegisterModal };
+  return {
+    showRegisterModal: state.registerModal.showRegisterModal,
+    loggedIn: state.login.loggedIn
+  };
 };
 
 function mapDispatchToProps(dispatch) {

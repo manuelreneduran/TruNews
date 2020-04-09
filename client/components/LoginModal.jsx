@@ -62,7 +62,10 @@ const ConnectedLoginModal = ({
 };
 
 const mapStateToProps = state => {
-  return { showLoginModal: state.loginModal.showLoginModal };
+  return {
+    showLoginModal: state.loginModal.showLoginModal,
+    loggedIn: state.login.loggedIn
+  };
 };
 
 function mapDispatchToProps(dispatch) {
