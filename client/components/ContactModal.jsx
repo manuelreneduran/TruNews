@@ -1,10 +1,15 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
+import { connect } from "react-redux";
+import { setShowContactModal } from "../store/actions/index";
 
-const ContactModal = ({ showContactModal, toggleContactModal }) => {
+const ConnectedContactModal = ({ showContactModal, setShowContactModal }) => {
   return (
     <>
-      <Modal show={showContactModal} onHide={toggleContactModal}>
+      <Modal
+        show={showContactModal}
+        onHide={() => setShowContactModal(showContactModal)}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Contact Me</Modal.Title>
         </Modal.Header>
@@ -25,10 +30,16 @@ const ContactModal = ({ showContactModal, toggleContactModal }) => {
           </InputGroup>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={toggleContactModal}>
+          <Button
+            variant="secondary"
+            onClick={() => setShowContactModal(showContactModal)}
+          >
             Close
           </Button>
-          <Button variant="primary" onClick={toggleContactModal}>
+          <Button
+            variant="primary"
+            onClick={() => setShowContactModal(showContactModal)}
+          >
             Send
           </Button>
         </Modal.Footer>
@@ -36,5 +47,20 @@ const ContactModal = ({ showContactModal, toggleContactModal }) => {
     </>
   );
 };
+
+const mapStateToProps = (state) => {
+  return { showContactModal: state.contactModal.showContactModal };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setShowContactModal: (bool) => dispatch(setShowContactModal(bool)),
+  };
+}
+
+const ContactModal = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConnectedContactModal);
 
 export default ContactModal;

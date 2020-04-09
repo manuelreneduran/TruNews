@@ -10,10 +10,15 @@ import Spinner from "./Spinner";
 import hookactions from "../actions/hookactions";
 import { setToLocalStorage } from "../utls/index";
 import { connect } from "react-redux";
-import { setShowLoginModal } from "../store/actions/index";
+import { setShowLoginModal, setShowContactModal } from "../store/actions/index";
 
-const ConnectedApp = ({ showLoginModal, setShowLoginModal }) => {
-  const [showContactModal, setContactModal] = React.useState(false);
+const ConnectedApp = ({
+  showLoginModal,
+  setShowLoginModal,
+  setShowContactModal,
+  showContactModal,
+}) => {
+  // const [showContactModal, setContactModal] = React.useState(false);
   const [showRegisterModal, setRegisterModal] = React.useState(false);
   const [articles, setArticles] = React.useState(null);
   const [user, setUser] = React.useState(null);
@@ -40,12 +45,12 @@ const ConnectedApp = ({ showLoginModal, setShowLoginModal }) => {
       case "register":
         toggleRegisterModal();
       case "contact":
-        toggleContactModal()
+        toggleContactModal();
     }
   }
 
   function toggleContactModal() {
-    setContactModal(!showContactModal);
+    setShowContactModal(showContactModal);
   }
 
   function toggleRegisterModal() {
@@ -73,7 +78,7 @@ const ConnectedApp = ({ showLoginModal, setShowLoginModal }) => {
         if (response.data.code) {
           setUserAlreadyExists(true);
         } else {
-          login(response, toggleModal('register'));
+          login(response, toggleModal("register"));
         }
       }
     } else {
@@ -129,12 +134,7 @@ const ConnectedApp = ({ showLoginModal, setShowLoginModal }) => {
           loginError={loginError}
         />
       ) : null}
-      {showContactModal ? (
-        <ContactModal
-          showContactModal={showContactModal}
-          toggleContactModal={toggleContactModal}
-        />
-      ) : null}
+      {showContactModal ? <ContactModal /> : null}
       {showRegisterModal ? (
         <RegisterModal
           showRegisterModal={showRegisterModal}
@@ -158,7 +158,7 @@ const ConnectedApp = ({ showLoginModal, setShowLoginModal }) => {
 
           <TopNews topArticles={articles.slice(0, 5)} />
           <MoreTopNews articles={articles.slice(5)} data-test="more-top-news" />
-          <Footer toggleContactModal={toggleContactModal} data-test="footer" />
+          <Footer data-test="footer" />
         </>
       ) : (
         <Spinner />
@@ -168,12 +168,16 @@ const ConnectedApp = ({ showLoginModal, setShowLoginModal }) => {
 };
 
 const mapStateToProps = (state) => {
-  return { showLoginModal: state.loginModal.showLoginModal };
+  return {
+    showLoginModal: state.loginModal.showLoginModal,
+    showContactModal: state.contactModal.showContactModal,
+  };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
     setShowLoginModal: (bool) => dispatch(setShowLoginModal(bool)),
+    setShowContactModal: (bool) => dispatch(setShowContactModal(bool)),
   };
 }
 
