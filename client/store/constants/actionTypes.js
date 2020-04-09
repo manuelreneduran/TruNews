@@ -1,1 +1,12 @@
 export const SHOW_LOGIN_MODAL = 'SHOW_LOGIN_MODAL';
+export const SHOW_CONTACT_MODAL = 'SHOW_CONTACT_MODAL';
+export const SHOW_REGISTER_MODAL = 'SHOW_REGISTER_MODAL';
+export const ARTICLES = 'ARTICLE';
+export const USER = 'USER';
+export const USER_ALREADY_EXISTS = 'USER_ALREADY_EXISTS';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const USERNAME = 'USERNAME';
+export const PASSWORD = 'PASSWORD'
+export const PASSWORD_CONF = 'PASSWORD_CONF';
+export const PASSWORD_MATCH = 'PASSWORD_MATCH';
+export const LOGGED_IN = 'LOGGED_IN';
