@@ -16,7 +16,9 @@ import {
   setShowRegisterModal,
   setUser,
   setLoggedIn,
-  setUserAlreadyExists
+  setUserAlreadyExists,
+  setUsername,
+  setLoginError
 } from "../store/actions/index";
 
 const ConnectedApp = ({
@@ -28,11 +30,12 @@ const ConnectedApp = ({
   setUser,
   setLoggedIn,
   setUserAlreadyExists,
+  setUsername,
+  userName,
+  loginError,
+  setLoginError
 }) => {
   const [articles, setArticles] = React.useState(null);
-  // const [userAlreadyExists, setUserAlreadyExists] = React.useState(null);
-  const [loginError, setLoginError] = React.useState(false);
-  const [userName, setUsername] = React.useState(null);
   const [password, setPassword] = React.useState(null);
   const [passwordConf, setPasswordConf] = React.useState(null);
   const [passwordMatch, setPasswordMatch] = React.useState(true);
@@ -110,21 +113,17 @@ const ConnectedApp = ({
       <NavBar data-test="navbar" />
       {showLoginModal ? (
         <LoginModal
-          setUsername={setUsername}
           setPassword={setPassword}
           handleLoginSubmit={handleLoginSubmit}
-          loginError={loginError}
         />
       ) : null}
       {showContactModal ? <ContactModal /> : null}
       {showRegisterModal ? (
         <RegisterModal
-          setUsername={setUsername}
           setPassword={setPassword}
           setPasswordConf={setPasswordConf}
           passwordMatch={passwordMatch}
           handleRegisterSubmit={handleRegisterSubmit}
-          registerError={loginError}
         />
       ) : null}
       )}
@@ -151,17 +150,21 @@ const mapStateToProps = (state) => {
     showContactModal: state.contactModal.showContactModal,
     showRegisterModal: state.registerModal.showRegisterModal,
     loggedIn: state.login.loggedIn,
+    userName: state.user.username,
+    loginError: state.login.loginError
   };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    setShowLoginModal: (bool) => dispatch(setShowLoginModal(bool)),
-    setShowContactModal: (bool) => dispatch(setShowContactModal(bool)),
-    setShowRegisterModal: (bool) => dispatch(setShowRegisterModal(bool)),
-    setUser: (value) => dispatch(setUser(value)),
-    setLoggedIn: (bool) => dispatch(setLoggedIn(bool)),
-    setUserAlreadyExists: (bool) => dispatch(setUserAlreadyExists(bool)),
+    setShowLoginModal: bool => dispatch(setShowLoginModal(bool)),
+    setShowContactModal: bool => dispatch(setShowContactModal(bool)),
+    setShowRegisterModal: bool => dispatch(setShowRegisterModal(bool)),
+    setUser: value => dispatch(setUser(value)),
+    setLoggedIn: bool => dispatch(setLoggedIn(bool)),
+    setUserAlreadyExists: bool => dispatch(setUserAlreadyExists(bool)),
+    setUsername: value => dispatch(setUsername(value)),
+    setLoginError: bool => dispatch(setLoginError(bool))
   };
 }
 

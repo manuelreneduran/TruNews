@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import { connect } from "react-redux";
-import { setShowRegisterModal } from "../store/actions/index";
+import { setShowRegisterModal, setUsername } from "../store/actions/index";
 
 const ConnectedRegisterModal = ({
   showRegisterModal,
@@ -13,7 +13,7 @@ const ConnectedRegisterModal = ({
   handleRegisterSubmit,
   userAlreadyExists,
   loggedIn,
-  registerError,
+  loginError,
 }) => {
   return (
     <>
@@ -73,7 +73,7 @@ const ConnectedRegisterModal = ({
               </Button>{" "}
             </>
           )}
-          {registerError ? (
+          {loginError ? (
             <p className="text-danger">
               Registration error. Please check username and password.
             </p>
@@ -89,12 +89,14 @@ const mapStateToProps = (state) => {
     showRegisterModal: state.registerModal.showRegisterModal,
     loggedIn: state.login.loggedIn,
     userAlreadyExists: state.user.userAlreadyExists,
+    loginError: state.login.loginError
   };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
     setShowRegisterModal: (bool) => dispatch(setShowRegisterModal(bool)),
+    setUsername: value => dispatch(setUsername(value))
   };
 }
 
