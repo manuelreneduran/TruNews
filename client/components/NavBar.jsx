@@ -3,10 +3,11 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import NavDropDown from "./NavDropDown";
 import NavLoginButton from "./NavLoginButton";
 import NavRegisterButton from "./NavRegisterButton";
+import { connect } from "react-redux";
+import { setShowLoginModal } from '../store/actions/index'
 
-const NavBar = ({
+const ConnectedNavbar = ({
   toggleRegisterModal,
-  toggleLoginModal,
   user,
   loggedIn,
   handleLogout,
@@ -27,7 +28,7 @@ const NavBar = ({
         <Nav className="ml-auto">
           {loggedIn ? null : (
             <>
-              <NavLoginButton toggleLoginModal={toggleLoginModal} />
+              <NavLoginButton />
               <NavRegisterButton toggleRegisterModal={toggleRegisterModal} />
             </>
           )}
@@ -40,5 +41,20 @@ const NavBar = ({
     </Navbar>
   );
 };
+
+const mapStateToProps = state => {
+  return { showLoginModal: state.loginModal.showLoginModal };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setShowLoginModal: bool => dispatch(setShowLoginModal(bool))
+  };
+}
+
+const NavBar = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConnectedNavbar);
 
 export default NavBar;

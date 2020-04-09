@@ -1,20 +1,21 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
+import { connect } from "react-redux";
+import { setShowLoginModal } from '../store/actions/index'
 
-
-const LoginModal = ({
+const ConnectedLoginModal = ({
   showLoginModal,
-  toggleLoginModal,
   setUsername,
   setPassword,
-  handleLogin,
+  handleLoginSubmit,
   loggedIn,
-  loginError
+  loginError,
+  setShowLoginModal
 }) => {
 
   return (
     <>
-      <Modal show={showLoginModal} onHide={toggleLoginModal}>
+      <Modal show={showLoginModal} onHide={() => setShowLoginModal(showLoginModal)}>
         <Modal.Header>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
@@ -41,10 +42,10 @@ const LoginModal = ({
             <p className="text-success">Success! Logging in now..</p>
           ) : (
             <>
-              <Button variant="secondary" onClick={toggleLoginModal}>
+              <Button variant="secondary" onClick={() => setShowLoginModal(showLoginModal)}>
                 Close
               </Button>
-              <Button variant="primary" onClick={handleLogin}>
+              <Button variant="primary" onClick={handleLoginSubmit}>
                 Login
               </Button>
             </>
@@ -59,5 +60,20 @@ const LoginModal = ({
     </>
   );
 };
+
+const mapStateToProps = state => {
+  return { showLoginModal: state.loginModal.showLoginModal };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setShowLoginModal: bool => dispatch(setShowLoginModal(bool))
+  };
+}
+
+const LoginModal = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConnectedLoginModal);
 
 export default LoginModal;
