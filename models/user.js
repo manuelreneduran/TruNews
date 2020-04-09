@@ -7,7 +7,6 @@ const crypto          = require('crypto')                         // built-in en
 
 const signup = (request, response) => {
   const user = request.body
-  console.log(request.body);
   hashPassword(user.password)
     .then((hashedPassword) => {
       delete user.password
@@ -15,7 +14,7 @@ const signup = (request, response) => {
     })
     .then(() => createToken())
     .then(token => user.token = token)
-    .then(() => createUser(user))
+    .then(() => createUser(user, response))
     .then(user => {
       delete user.password_digest
       response.status(201).json({ token: user.token, username: user.username })
@@ -90,14 +89,14 @@ const hashPassword = (password) => {
   )
 }
 
-const createUser = (user) => {
+const createUser = (user, res) => {
   return database.raw(
     "INSERT INTO users (username, password_digest, token, created_at) VALUES (?, ?, ?, ?) RETURNING id, username, created_at, token",
     [user.username, user.password_digest, user.token, new Date()]
   )
   .then((data) => data.rows[0])
-  .catch((err) => {
-    return err;
+  .catch(() => {
+    res.status(200).json({ error: 'Username exists' })
   })
 }
 

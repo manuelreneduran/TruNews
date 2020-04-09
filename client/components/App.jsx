@@ -15,7 +15,8 @@ import {
   setShowContactModal,
   setShowRegisterModal,
   setUser,
-  setLoggedIn
+  setLoggedIn,
+  setUserAlreadyExists
 } from "../store/actions/index";
 
 const ConnectedApp = ({
@@ -26,16 +27,15 @@ const ConnectedApp = ({
   setShowRegisterModal,
   setUser,
   setLoggedIn,
-  loggedIn
+  setUserAlreadyExists,
 }) => {
   const [articles, setArticles] = React.useState(null);
-  const [userAlreadyExists, setUserAlreadyExists] = React.useState(null);
+  // const [userAlreadyExists, setUserAlreadyExists] = React.useState(null);
   const [loginError, setLoginError] = React.useState(false);
   const [userName, setUsername] = React.useState(null);
   const [password, setPassword] = React.useState(null);
   const [passwordConf, setPasswordConf] = React.useState(null);
   const [passwordMatch, setPasswordMatch] = React.useState(true);
-  // const [loggedIn, setLoggedIn] = React.useState(false);
 
   React.useEffect(() => {
     hookactions.getArticles(setArticles);
@@ -67,14 +67,12 @@ const ConnectedApp = ({
       } else {
         const response = await hookactions.registerUser(
           userName,
-          password,
-          setUser,
-          setUserAlreadyExists
+          password
         );
-        if (response.data.code) {
+        if (response.data.error) {
           setUserAlreadyExists(true);
         } else {
-          login(response, 'register');
+          login(response, "register");
         }
       }
     } else {
@@ -88,7 +86,7 @@ const ConnectedApp = ({
       if (response.data.error === "Wrong password") {
         setLoginError(true);
       } else {
-        login(response, 'login');
+        login(response, "login");
       }
     } else {
       setLoginError(true);
@@ -126,7 +124,6 @@ const ConnectedApp = ({
           setPasswordConf={setPasswordConf}
           passwordMatch={passwordMatch}
           handleRegisterSubmit={handleRegisterSubmit}
-          userAlreadyExists={userAlreadyExists}
           registerError={loginError}
         />
       ) : null}
@@ -159,11 +156,12 @@ const mapStateToProps = (state) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setShowLoginModal: bool => dispatch(setShowLoginModal(bool)),
-    setShowContactModal: bool => dispatch(setShowContactModal(bool)),
-    setShowRegisterModal: bool => dispatch(setShowRegisterModal(bool)),
-    setUser: value => dispatch(setUser(value)),
-    setLoggedIn: bool => dispatch(setLoggedIn(bool))
+    setShowLoginModal: (bool) => dispatch(setShowLoginModal(bool)),
+    setShowContactModal: (bool) => dispatch(setShowContactModal(bool)),
+    setShowRegisterModal: (bool) => dispatch(setShowRegisterModal(bool)),
+    setUser: (value) => dispatch(setUser(value)),
+    setLoggedIn: (bool) => dispatch(setLoggedIn(bool)),
+    setUserAlreadyExists: (bool) => dispatch(setUserAlreadyExists(bool)),
   };
 }
 
