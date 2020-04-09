@@ -1,9 +1,11 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
+import { connect } from "react-redux";
+import { setShowRegisterModal } from '../store/actions/index'
 
-const RegisterModal = ({
+const ConnectedRegisterModal = ({
   showRegisterModal,
-  toggleRegisterModal,
+  setShowRegisterModal,
   setUsername,
   setPassword,
   setPasswordConf,
@@ -15,7 +17,7 @@ const RegisterModal = ({
 }) => {
   return (
     <>
-      <Modal show={showRegisterModal} onHide={toggleRegisterModal}>
+      <Modal show={showRegisterModal} onHide={() => setShowRegisterModal(showRegisterModal)}>
         <Modal.Header>
           <Modal.Title>Register</Modal.Title>
         </Modal.Header>
@@ -57,7 +59,7 @@ const RegisterModal = ({
             </p>
           ) : (
             <>
-              <Button variant="secondary" onClick={toggleRegisterModal}>
+              <Button variant="secondary" onClick={() => setShowRegisterModal(showRegisterModal)}>
                 Close
               </Button>
               <Button variant="primary" onClick={handleRegisterSubmit}>
@@ -75,5 +77,20 @@ const RegisterModal = ({
     </>
   );
 };
+
+const mapStateToProps = state => {
+  return { showRegisterModal: state.registerModal.showRegisterModal };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setShowRegisterModal: bool => dispatch(setShowRegisterModal(bool))
+  };
+}
+
+const RegisterModal = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConnectedRegisterModal);
 
 export default RegisterModal;

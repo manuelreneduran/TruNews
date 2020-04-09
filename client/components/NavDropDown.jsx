@@ -1,7 +1,16 @@
 import React from 'react';
 import { NavDropdown } from 'react-bootstrap';
+import { connect } from "react-redux";
+import { setLoggedIn, setUser } from '../store/actions/index';
 
-const NavDropDown = ({ user, handleLogout }) => {
+const ConnectedNavDropDown = ({ user, setUser, setLoggedIn }) => {
+
+  function handleLogout() {
+    setUser(null);
+    setLoggedIn(false);
+    localStorage.removeItem("token");
+  }
+
   return (
     <>
     <NavDropdown
@@ -20,5 +29,20 @@ const NavDropDown = ({ user, handleLogout }) => {
   </>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user.user,
+  };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setUser: val => dispatch(setUser(val)),
+    setLoggedIn: bool => dispatch(setLoggedIn(bool))
+  };
+}
+
+const NavDropDown = connect(mapStateToProps, mapDispatchToProps)(ConnectedNavDropDown);
 
 export default NavDropDown

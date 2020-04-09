@@ -10,25 +10,32 @@ import Spinner from "./Spinner";
 import hookactions from "../actions/hookactions";
 import { setToLocalStorage } from "../utls/index";
 import { connect } from "react-redux";
-import { setShowLoginModal, setShowContactModal } from "../store/actions/index";
+import {
+  setShowLoginModal,
+  setShowContactModal,
+  setShowRegisterModal,
+  setUser,
+  setLoggedIn
+} from "../store/actions/index";
 
 const ConnectedApp = ({
   showLoginModal,
   setShowLoginModal,
-  setShowContactModal,
   showContactModal,
+  showRegisterModal,
+  setShowRegisterModal,
+  setUser,
+  setLoggedIn,
+  loggedIn
 }) => {
-  // const [showContactModal, setContactModal] = React.useState(false);
-  const [showRegisterModal, setRegisterModal] = React.useState(false);
   const [articles, setArticles] = React.useState(null);
-  const [user, setUser] = React.useState(null);
   const [userAlreadyExists, setUserAlreadyExists] = React.useState(null);
   const [loginError, setLoginError] = React.useState(false);
   const [userName, setUsername] = React.useState(null);
   const [password, setPassword] = React.useState(null);
   const [passwordConf, setPasswordConf] = React.useState(null);
   const [passwordMatch, setPasswordMatch] = React.useState(true);
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  // const [loggedIn, setLoggedIn] = React.useState(false);
 
   React.useEffect(() => {
     hookactions.getArticles(setArticles);
@@ -41,26 +48,15 @@ const ConnectedApp = ({
   function toggleModal(modal) {
     switch (modal) {
       case "login":
-        setShowLoginModal(showLoginModal);
+        return setShowLoginModal(showLoginModal);
       case "register":
-        toggleRegisterModal();
-      case "contact":
-        toggleContactModal();
+        return setShowRegisterModal(showRegisterModal);
     }
   }
 
-  function toggleContactModal() {
-    setShowContactModal(showContactModal);
-  }
-
-  function toggleRegisterModal() {
-    setRegisterModal(!showRegisterModal);
-  }
-
-  function showSuccessfulReg(toggleModal) {
-    setLoggedIn(true);
+  function showSuccessfulReg(modal) {
     setTimeout(() => {
-      toggleModal();
+      toggleModal(modal);
     }, 1500);
   }
 
@@ -78,7 +74,7 @@ const ConnectedApp = ({
         if (response.data.code) {
           setUserAlreadyExists(true);
         } else {
-          login(response, toggleModal("register"));
+          login(response, 'register');
         }
       }
     } else {
@@ -92,20 +88,14 @@ const ConnectedApp = ({
       if (response.data.error === "Wrong password") {
         setLoginError(true);
       } else {
-        login(response, toggleModal("login"));
+        login(response, 'login');
       }
     } else {
       setLoginError(true);
     }
   };
 
-  function handleLogout() {
-    setUser(null);
-    setLoggedIn(false);
-    localStorage.removeItem("token");
-  }
-
-  function login(response, toggleModal) {
+  function login(response, modal) {
     setUser(response.data.username);
     setToLocalStorage(response.data.token);
     setPasswordMatch(true);
@@ -113,18 +103,13 @@ const ConnectedApp = ({
     setUsername(null);
     setPassword(null);
     setPasswordConf(null);
-    showSuccessfulReg(toggleModal);
+    setLoggedIn(true);
+    showSuccessfulReg(modal);
   }
 
   return (
     <div data-test="container-app" id="app">
-      <NavBar
-        data-test="navbar"
-        toggleRegisterModal={toggleRegisterModal}
-        user={user}
-        loggedIn={loggedIn}
-        handleLogout={handleLogout}
-      />
+      <NavBar data-test="navbar" />
       {showLoginModal ? (
         <LoginModal
           setUsername={setUsername}
@@ -137,8 +122,6 @@ const ConnectedApp = ({
       {showContactModal ? <ContactModal /> : null}
       {showRegisterModal ? (
         <RegisterModal
-          showRegisterModal={showRegisterModal}
-          toggleRegisterModal={toggleRegisterModal}
           setUsername={setUsername}
           setPassword={setPassword}
           setPasswordConf={setPasswordConf}
@@ -171,13 +154,18 @@ const mapStateToProps = (state) => {
   return {
     showLoginModal: state.loginModal.showLoginModal,
     showContactModal: state.contactModal.showContactModal,
+    showRegisterModal: state.registerModal.showRegisterModal,
+    loggedIn: state.login.loggedIn,
   };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    setShowLoginModal: (bool) => dispatch(setShowLoginModal(bool)),
-    setShowContactModal: (bool) => dispatch(setShowContactModal(bool)),
+    setShowLoginModal: bool => dispatch(setShowLoginModal(bool)),
+    setShowContactModal: bool => dispatch(setShowContactModal(bool)),
+    setShowRegisterModal: bool => dispatch(setShowRegisterModal(bool)),
+    setUser: value => dispatch(setUser(value)),
+    setLoggedIn: bool => dispatch(setLoggedIn(bool))
   };
 }
 

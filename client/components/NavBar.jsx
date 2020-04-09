@@ -4,14 +4,9 @@ import NavDropDown from "./NavDropDown";
 import NavLoginButton from "./NavLoginButton";
 import NavRegisterButton from "./NavRegisterButton";
 import { connect } from "react-redux";
-import { setShowLoginModal } from '../store/actions/index'
+import { setLoggedIn } from "../store/actions/index";
 
-const ConnectedNavbar = ({
-  toggleRegisterModal,
-  user,
-  loggedIn,
-  handleLogout,
-}) => {
+const ConnectedNavbar = ({ loggedIn }) => {
   return (
     <Navbar
       bg="light"
@@ -29,12 +24,12 @@ const ConnectedNavbar = ({
           {loggedIn ? null : (
             <>
               <NavLoginButton />
-              <NavRegisterButton toggleRegisterModal={toggleRegisterModal} />
+              <NavRegisterButton />
             </>
           )}
 
           {!loggedIn ? null : (
-            <NavDropDown user={user} handleLogout={handleLogout} />
+            <NavDropDown />
           )}
         </Nav>
       </Navbar.Collapse>
@@ -42,19 +37,18 @@ const ConnectedNavbar = ({
   );
 };
 
-const mapStateToProps = state => {
-  return { showLoginModal: state.loginModal.showLoginModal };
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.login.loggedIn,
+  };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    setShowLoginModal: bool => dispatch(setShowLoginModal(bool))
+    setLoggedIn: bool => dispatch(setLoggedIn(bool))
   };
 }
 
-const NavBar = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ConnectedNavbar);
+const NavBar = connect(mapStateToProps, mapDispatchToProps)(ConnectedNavbar);
 
 export default NavBar;
