@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import { connect } from "react-redux";
-import { setShowLoginModal, setUsername } from '../store/actions/index'
+import { setShowLoginModal, setUsername, setPassword } from '../store/actions/index'
 
 const ConnectedLoginModal = ({
   showLoginModal,
@@ -10,7 +10,7 @@ const ConnectedLoginModal = ({
   handleLoginSubmit,
   loggedIn,
   loginError,
-  setShowLoginModal
+  setShowLoginModal,
 }) => {
 
   return (
@@ -65,15 +65,16 @@ const mapStateToProps = state => {
   return {
     showLoginModal: state.loginModal.showLoginModal,
     loggedIn: state.login.loggedIn,
-    loginError: state.login.loginError
+    loginError: state.login.loginError,
+    password: state.user.password,
   };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
     setShowLoginModal: bool => dispatch(setShowLoginModal(bool)),
-    setUsername: value => dispatch(setUsername(value))
-
+    setUsername: value => dispatch(setUsername(value)),
+    setPassword: value => dispatch(setPassword(value)),
   };
 }
 

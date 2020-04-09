@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import { connect } from "react-redux";
-import { setShowRegisterModal, setUsername } from "../store/actions/index";
+import { setShowRegisterModal, setUsername, setPassword, setPasswordConf } from "../store/actions/index";
 
 const ConnectedRegisterModal = ({
   showRegisterModal,
@@ -89,14 +89,17 @@ const mapStateToProps = (state) => {
     showRegisterModal: state.registerModal.showRegisterModal,
     loggedIn: state.login.loggedIn,
     userAlreadyExists: state.user.userAlreadyExists,
-    loginError: state.login.loginError
+    loginError: state.login.loginError,
+    passwordMatch: state.user.passwordMatch
   };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
     setShowRegisterModal: (bool) => dispatch(setShowRegisterModal(bool)),
-    setUsername: value => dispatch(setUsername(value))
+    setUsername: value => dispatch(setUsername(value)),
+    setPassword: value => dispatch(setPassword(value)),
+    setPasswordConf: value => dispatch(setPasswordConf(value))
   };
 }
 

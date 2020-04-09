@@ -18,7 +18,10 @@ import {
   setLoggedIn,
   setUserAlreadyExists,
   setUsername,
-  setLoginError
+  setLoginError,
+  setPassword,
+  setPasswordConf,
+  setPasswordMatch
 } from "../store/actions/index";
 
 const ConnectedApp = ({
@@ -32,13 +35,15 @@ const ConnectedApp = ({
   setUserAlreadyExists,
   setUsername,
   userName,
-  loginError,
-  setLoginError
+  setLoginError,
+  password,
+  setPassword,
+  setPasswordConf,
+  passwordConf,
+  setPasswordMatch,
 }) => {
   const [articles, setArticles] = React.useState(null);
-  const [password, setPassword] = React.useState(null);
-  const [passwordConf, setPasswordConf] = React.useState(null);
-  const [passwordMatch, setPasswordMatch] = React.useState(true);
+  // const [passwordMatch, setPasswordMatch] = React.useState(true);
 
   React.useEffect(() => {
     hookactions.getArticles(setArticles);
@@ -68,10 +73,7 @@ const ConnectedApp = ({
       if (password !== passwordConf) {
         setPasswordMatch(false);
       } else {
-        const response = await hookactions.registerUser(
-          userName,
-          password
-        );
+        const response = await hookactions.registerUser(userName, password);
         if (response.data.error) {
           setUserAlreadyExists(true);
         } else {
@@ -112,17 +114,11 @@ const ConnectedApp = ({
     <div data-test="container-app" id="app">
       <NavBar data-test="navbar" />
       {showLoginModal ? (
-        <LoginModal
-          setPassword={setPassword}
-          handleLoginSubmit={handleLoginSubmit}
-        />
+        <LoginModal handleLoginSubmit={handleLoginSubmit} />
       ) : null}
       {showContactModal ? <ContactModal /> : null}
       {showRegisterModal ? (
         <RegisterModal
-          setPassword={setPassword}
-          setPasswordConf={setPasswordConf}
-          passwordMatch={passwordMatch}
           handleRegisterSubmit={handleRegisterSubmit}
         />
       ) : null}
@@ -151,20 +147,26 @@ const mapStateToProps = (state) => {
     showRegisterModal: state.registerModal.showRegisterModal,
     loggedIn: state.login.loggedIn,
     userName: state.user.username,
-    loginError: state.login.loginError
+    loginError: state.login.loginError,
+    password: state.user.password,
+    passwordConf: state.user.passwordConf,
+    passwordMatch: state.user.passwordMatch
   };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    setShowLoginModal: bool => dispatch(setShowLoginModal(bool)),
-    setShowContactModal: bool => dispatch(setShowContactModal(bool)),
-    setShowRegisterModal: bool => dispatch(setShowRegisterModal(bool)),
-    setUser: value => dispatch(setUser(value)),
-    setLoggedIn: bool => dispatch(setLoggedIn(bool)),
-    setUserAlreadyExists: bool => dispatch(setUserAlreadyExists(bool)),
-    setUsername: value => dispatch(setUsername(value)),
-    setLoginError: bool => dispatch(setLoginError(bool))
+    setShowLoginModal: (bool) => dispatch(setShowLoginModal(bool)),
+    setShowContactModal: (bool) => dispatch(setShowContactModal(bool)),
+    setShowRegisterModal: (bool) => dispatch(setShowRegisterModal(bool)),
+    setUser: (value) => dispatch(setUser(value)),
+    setLoggedIn: (bool) => dispatch(setLoggedIn(bool)),
+    setUserAlreadyExists: (bool) => dispatch(setUserAlreadyExists(bool)),
+    setUsername: (value) => dispatch(setUsername(value)),
+    setLoginError: (bool) => dispatch(setLoginError(bool)),
+    setPassword: (value) => dispatch(setPassword(value)),
+    setPasswordConf: (value) => dispatch(setPasswordConf(value)),
+    setPasswordMatch: (bool) => dispatch(setPasswordMatch(bool))
   };
 }
 
