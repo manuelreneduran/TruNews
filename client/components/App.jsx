@@ -9,7 +9,7 @@ import MoreTopNews from "./MoreTopNews";
 import Spinner from "./Spinner";
 import hookactions from "../actions/hookactions";
 import { connect } from "react-redux";
-import { setUser, setLoggedIn } from "../store/actions/index";
+import { setUser, setLoggedIn, getData } from "../store/actions/index";
 
 const ConnectedApp = ({
   showLoginModal,
@@ -17,11 +17,13 @@ const ConnectedApp = ({
   showRegisterModal,
   setUser,
   setLoggedIn,
+  articles,
+  getData
 }) => {
-  const [articles, setArticles] = React.useState(null);
+  // const [articles, setArticles] = React.useState(null);
 
   React.useEffect(() => {
-    hookactions.getArticles(setArticles);
+    getData()
   }, []);
 
   React.useEffect(() => {
@@ -35,7 +37,7 @@ const ConnectedApp = ({
       {showContactModal ? <ContactModal /> : null}
       {showRegisterModal ? <RegisterModal /> : null}
       )}
-      {articles ? (
+      {articles.length > 0 ? (
         <>
           <h5 style={{ marginTop: "5em", margin: "70px 30px 0px 30px" }}>
             TOP NEWS
@@ -57,6 +59,7 @@ const mapStateToProps = (state) => {
     showLoginModal: state.loginModal.showLoginModal,
     showContactModal: state.contactModal.showContactModal,
     showRegisterModal: state.registerModal.showRegisterModal,
+    articles: state.articles.articles
   };
 };
 
@@ -64,6 +67,7 @@ function mapDispatchToProps(dispatch) {
   return {
     setUser: (value) => dispatch(setUser(value)),
     setLoggedIn: (bool) => dispatch(setLoggedIn(bool)),
+    getData: () => dispatch(getData())
   };
 }
 

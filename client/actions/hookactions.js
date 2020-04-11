@@ -31,11 +31,9 @@ const actions = {
 };
 
 export const getArticles = async (setArticles) => {
-  const response = await axios.get(
-    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWS_API_KEY}`
-  );
-
-  setArticles(removeSources(response.data.articles));
+  // await getData();
+  // const state = await store.getState();
+  // actions.setArticles(removeSources(state.articles.articles));
 };
 
 export const registerUser = async (username, password) => {
@@ -104,11 +102,13 @@ function login(response) {
   actions.setLoggedIn(true);
 }
 
+
+
 export default {
   getArticles,
   registerUser,
   getUser,
   getUserByToken,
   handleRegisterSubmit,
-  handleLoginSubmit,
+  handleLoginSubmit
 };

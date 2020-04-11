@@ -1,7 +1,7 @@
 export const SHOW_LOGIN_MODAL = 'SHOW_LOGIN_MODAL';
 export const SHOW_CONTACT_MODAL = 'SHOW_CONTACT_MODAL';
 export const SHOW_REGISTER_MODAL = 'SHOW_REGISTER_MODAL';
-export const ARTICLES = 'ARTICLE';
+export const SET_ARTICLES = 'SET_ARTICLES';
 export const USER = 'USER';
 export const USER_ALREADY_EXISTS = 'USER_ALREADY_EXISTS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';

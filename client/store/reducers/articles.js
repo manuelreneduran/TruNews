@@ -6,7 +6,7 @@ const initialState = {
 
 export default function articlesReducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.ARTICLES:
+    case actionTypes.SET_ARTICLES:
       return {
         ...state,
         articles: state.articles.concat(action.payload)
