@@ -1,7 +1,6 @@
 import axios from "axios";
-import { removeSources } from "../utls/index.js";
 import store from "../store/index";
-import { setToLocalStorage } from "../utls/index";
+import { setToLocalStorage, deleteFromLocalStorage, getFromLocalStorage } from "../utls/index";
 import {
   setShowLoginModal,
   setShowRegisterModal,
@@ -30,12 +29,6 @@ const actions = {
   setPasswordMatch: (bool) => dispatch(setPasswordMatch(bool)),
 };
 
-export const getArticles = async (setArticles) => {
-  // await getData();
-  // const state = await store.getState();
-  // actions.setArticles(removeSources(state.articles.articles));
-};
-
 export const registerUser = async (username, password) => {
   const response = await axios.post("/signup", { password, username });
   return response;
@@ -47,7 +40,7 @@ export const getUser = async (username, password) => {
 };
 
 export const getUserByToken = async (setUser, setLoggedIn) => {
-  const token = localStorage.getItem("token");
+  const token = getFromLocalStorage();
   const response = await axios.post("/signin/token", { token });
   if (response.data.token) {
     setUser(response.data.username);
@@ -56,7 +49,7 @@ export const getUserByToken = async (setUser, setLoggedIn) => {
 };
 
 export const handleRegisterSubmit = async () => {
-  const state = await store.getState();
+  const state = store.getState();
   const user = state.user;
   if (user.username || (user.username && user.username.length > 0)) {
     if (user.password !== user.passwordConf) {
@@ -91,7 +84,7 @@ export const handleLoginSubmit = async () => {
   }
 };
 
-function login(response) {
+const login = (response) => {
   actions.setUser(response.data.username);
   setToLocalStorage(response.data.token);
   actions.setPasswordMatch(true);
@@ -100,15 +93,19 @@ function login(response) {
   actions.setPassword(null);
   actions.setPasswordConf(null);
   actions.setLoggedIn(true);
-}
+};
 
-
+export const logout = () => {
+  actions.setUser(null);
+  actions.setLoggedIn(false);
+  deleteFromLocalStorage();
+};
 
 export default {
-  getArticles,
   registerUser,
   getUser,
   getUserByToken,
   handleRegisterSubmit,
-  handleLoginSubmit
+  handleLoginSubmit,
+  logout,
 };

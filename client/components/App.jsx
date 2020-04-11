@@ -20,7 +20,6 @@ const ConnectedApp = ({
   articles,
   getData
 }) => {
-  // const [articles, setArticles] = React.useState(null);
 
   React.useEffect(() => {
     getData()

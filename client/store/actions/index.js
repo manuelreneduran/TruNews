@@ -59,6 +59,5 @@ export function getData() {
         )
         .then((res) => removeSources(res.data.articles))
         .then((res) => dispatch(setArticles(res)));
-
   };
 }

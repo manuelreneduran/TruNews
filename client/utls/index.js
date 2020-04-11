@@ -16,3 +16,11 @@ export const removeSources = articles => {
 export const setToLocalStorage = (token) => {
   localStorage.setItem('token', token)
 }
+
+export const deleteFromLocalStorage = () => {
+  localStorage.removeItem("token");
+}
+
+export const getFromLocalStorage = () => {
+  return localStorage.getItem("token");
+}
