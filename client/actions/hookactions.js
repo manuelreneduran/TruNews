@@ -80,7 +80,6 @@ export const handleRegisterSubmit = async () => {
 export const handleLoginSubmit = async () => {
   const state = await store.getState();
   const user = state.user;
-  console.log("login submit");
   if (user.username && user.password) {
     const response = await getUser(user.username, user.password);
     if (response.data.error === "Wrong password") {
@@ -95,7 +94,6 @@ export const handleLoginSubmit = async () => {
 };
 
 function login(response) {
-  console.log("login");
   actions.setUser(response.data.username);
   setToLocalStorage(response.data.token);
   actions.setPasswordMatch(true);

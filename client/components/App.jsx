@@ -8,36 +8,15 @@ import TopNews from "./TopNews";
 import MoreTopNews from "./MoreTopNews";
 import Spinner from "./Spinner";
 import hookactions from "../actions/hookactions";
-import { setToLocalStorage } from "../utls/index";
 import { connect } from "react-redux";
-import {
-  setShowLoginModal,
-  setShowRegisterModal,
-  setUser,
-  setLoggedIn,
-  setUserAlreadyExists,
-  setUsername,
-  setLoginError,
-  setPassword,
-  setPasswordConf,
-  setPasswordMatch,
-} from "../store/actions/index";
+import { setUser, setLoggedIn } from "../store/actions/index";
 
 const ConnectedApp = ({
   showLoginModal,
-  setShowLoginModal,
   showContactModal,
   showRegisterModal,
   setUser,
   setLoggedIn,
-  setUserAlreadyExists,
-  setUsername,
-  userName,
-  setLoginError,
-  password,
-  setPassword,
-  setPasswordConf,
-  setPasswordMatch,
 }) => {
   const [articles, setArticles] = React.useState(null);
 
@@ -49,44 +28,12 @@ const ConnectedApp = ({
     hookactions.getUserByToken(setUser, setLoggedIn);
   }, []);
 
-
-  const handleLoginSubmit = async () => {
-    console.log('login submit');
-    if (userName && password) {
-      const response = await hookactions.getUser(userName, password);
-      if (response.data.error === "Wrong password") {
-        setLoginError(true);
-      } else {
-        login(response);
-        setShowLoginModal(showLoginModal)
-      }
-    } else {
-      setLoginError(true);
-    }
-  };
-
-  function login(response) {
-    console.log('login');
-    setUser(response.data.username);
-    setToLocalStorage(response.data.token);
-    setPasswordMatch(true);
-    setUserAlreadyExists(false);
-    setUsername(null);
-    setPassword(null);
-    setPasswordConf(null);
-    setLoggedIn(true);
-  }
-
   return (
     <div data-test="container-app" id="app">
       <NavBar data-test="navbar" />
-      {showLoginModal ? (
-        <LoginModal handleLoginSubmit={handleLoginSubmit} />
-      ) : null}
+      {showLoginModal ? <LoginModal /> : null}
       {showContactModal ? <ContactModal /> : null}
-      {showRegisterModal ? (
-        <RegisterModal />
-      ) : null}
+      {showRegisterModal ? <RegisterModal /> : null}
       )}
       {articles ? (
         <>
@@ -110,27 +57,13 @@ const mapStateToProps = (state) => {
     showLoginModal: state.loginModal.showLoginModal,
     showContactModal: state.contactModal.showContactModal,
     showRegisterModal: state.registerModal.showRegisterModal,
-    loggedIn: state.login.loggedIn,
-    userName: state.user.username,
-    loginError: state.login.loginError,
-    password: state.user.password,
-    passwordConf: state.user.passwordConf,
-    passwordMatch: state.user.passwordMatch,
   };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    setShowLoginModal: (bool) => dispatch(setShowLoginModal(bool)),
-    setShowRegisterModal: (bool) => dispatch(setShowRegisterModal(bool)),
     setUser: (value) => dispatch(setUser(value)),
     setLoggedIn: (bool) => dispatch(setLoggedIn(bool)),
-    setUserAlreadyExists: (bool) => dispatch(setUserAlreadyExists(bool)),
-    setUsername: (value) => dispatch(setUsername(value)),
-    setLoginError: (bool) => dispatch(setLoginError(bool)),
-    setPassword: (value) => dispatch(setPassword(value)),
-    setPasswordConf: (value) => dispatch(setPasswordConf(value)),
-    setPasswordMatch: (bool) => dispatch(setPasswordMatch(bool)),
   };
 }
 
