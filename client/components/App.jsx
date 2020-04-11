@@ -28,7 +28,6 @@ const ConnectedApp = ({
   setShowLoginModal,
   showContactModal,
   showRegisterModal,
-  setShowRegisterModal,
   setUser,
   setLoggedIn,
   setUserAlreadyExists,
@@ -38,7 +37,6 @@ const ConnectedApp = ({
   password,
   setPassword,
   setPasswordConf,
-  passwordConf,
   setPasswordMatch,
 }) => {
   const [articles, setArticles] = React.useState(null);
@@ -51,25 +49,6 @@ const ConnectedApp = ({
     hookactions.getUserByToken(setUser, setLoggedIn);
   }, []);
 
-  const handleRegisterSubmit = async () => {
-    console.log('here 1')
-    if (userName || (userName && userName.length > 0)) {
-      if (password !== passwordConf) {
-        setPasswordMatch(false);
-      } else {
-        const response = await hookactions.registerUser(userName, password);
-        if (response.data.error) {
-          setUserAlreadyExists(true);
-        } else {
-          console.log(response)
-          login(response);
-          setShowRegisterModal(showRegisterModal)
-        }
-      }
-    } else {
-      setLoginError(true);
-    }
-  };
 
   const handleLoginSubmit = async () => {
     console.log('login submit');
@@ -106,7 +85,7 @@ const ConnectedApp = ({
       ) : null}
       {showContactModal ? <ContactModal /> : null}
       {showRegisterModal ? (
-        <RegisterModal handleRegisterSubmit={handleRegisterSubmit} />
+        <RegisterModal />
       ) : null}
       )}
       {articles ? (

@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import { connect } from "react-redux";
+import hookactions from "../actions/hookactions";
 import {
   setShowLoginModal,
   setUsername,
@@ -11,7 +12,6 @@ const ConnectedLoginModal = ({
   showLoginModal,
   setUsername,
   setPassword,
-  handleLoginSubmit,
   loginError,
   setShowLoginModal,
 }) => {
@@ -50,7 +50,7 @@ const ConnectedLoginModal = ({
             >
               Close
             </Button>
-            <Button variant="primary" onClick={handleLoginSubmit}>
+            <Button variant="primary" onClick={hookactions.handleLoginSubmit}>
               Login
             </Button>
           </>

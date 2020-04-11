@@ -16,7 +16,6 @@ const ConnectedRegisterModal = ({
   setPassword,
   setPasswordConf,
   passwordMatch,
-  handleRegisterSubmit,
   userAlreadyExists,
   loginError,
 }) => {
