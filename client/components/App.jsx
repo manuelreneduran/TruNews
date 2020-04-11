@@ -21,7 +21,7 @@ import {
   setLoginError,
   setPassword,
   setPasswordConf,
-  setPasswordMatch
+  setPasswordMatch,
 } from "../store/actions/index";
 
 const ConnectedApp = ({
@@ -43,7 +43,6 @@ const ConnectedApp = ({
   setPasswordMatch,
 }) => {
   const [articles, setArticles] = React.useState(null);
-  // const [passwordMatch, setPasswordMatch] = React.useState(true);
 
   React.useEffect(() => {
     hookactions.getArticles(setArticles);
@@ -52,21 +51,6 @@ const ConnectedApp = ({
   React.useEffect(() => {
     hookactions.getUserByToken(setUser, setLoggedIn);
   }, []);
-
-  function toggleModal(modal) {
-    switch (modal) {
-      case "login":
-        return setShowLoginModal(showLoginModal);
-      case "register":
-        return setShowRegisterModal(showRegisterModal);
-    }
-  }
-
-  function showSuccessfulReg(modal) {
-    setTimeout(() => {
-      toggleModal(modal);
-    }, 1500);
-  }
 
   const handleRegisterSubmit = async () => {
     if (userName || (userName && userName.length > 0)) {
@@ -77,7 +61,8 @@ const ConnectedApp = ({
         if (response.data.error) {
           setUserAlreadyExists(true);
         } else {
-          login(response, "register");
+          login(response);
+          setShowRegisterModal(showRegisterModal)
         }
       }
     } else {
@@ -86,19 +71,22 @@ const ConnectedApp = ({
   };
 
   const handleLoginSubmit = async () => {
+    console.log('login submit');
     if (userName && password) {
       const response = await hookactions.getUser(userName, password);
       if (response.data.error === "Wrong password") {
         setLoginError(true);
       } else {
-        login(response, "login");
+        login(response);
+        setShowLoginModal(showLoginModal)
       }
     } else {
       setLoginError(true);
     }
   };
 
-  function login(response, modal) {
+  function login(response) {
+    console.log('login');
     setUser(response.data.username);
     setToLocalStorage(response.data.token);
     setPasswordMatch(true);
@@ -107,7 +95,6 @@ const ConnectedApp = ({
     setPassword(null);
     setPasswordConf(null);
     setLoggedIn(true);
-    showSuccessfulReg(modal);
   }
 
   return (
@@ -118,9 +105,7 @@ const ConnectedApp = ({
       ) : null}
       {showContactModal ? <ContactModal /> : null}
       {showRegisterModal ? (
-        <RegisterModal
-          handleRegisterSubmit={handleRegisterSubmit}
-        />
+        <RegisterModal handleRegisterSubmit={handleRegisterSubmit} />
       ) : null}
       )}
       {articles ? (
@@ -150,7 +135,7 @@ const mapStateToProps = (state) => {
     loginError: state.login.loginError,
     password: state.user.password,
     passwordConf: state.user.passwordConf,
-    passwordMatch: state.user.passwordMatch
+    passwordMatch: state.user.passwordMatch,
   };
 };
 
@@ -166,7 +151,7 @@ function mapDispatchToProps(dispatch) {
     setLoginError: (bool) => dispatch(setLoginError(bool)),
     setPassword: (value) => dispatch(setPassword(value)),
     setPasswordConf: (value) => dispatch(setPasswordConf(value)),
-    setPasswordMatch: (bool) => dispatch(setPasswordMatch(bool))
+    setPasswordMatch: (bool) => dispatch(setPasswordMatch(bool)),
   };
 }
 
