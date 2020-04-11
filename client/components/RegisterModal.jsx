@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import { connect } from "react-redux";
+import hookactions from "../actions/hookactions";
 import {
   setShowRegisterModal,
   setUsername,
@@ -67,7 +68,7 @@ const ConnectedRegisterModal = ({
             >
               Close
             </Button>
-            <Button variant="primary" onClick={handleRegisterSubmit}>
+            <Button variant="primary" onClick={ hookactions.handleRegisterSubmit}>
               Register
             </Button>{" "}
           </>

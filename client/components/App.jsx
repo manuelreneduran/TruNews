@@ -12,7 +12,6 @@ import { setToLocalStorage } from "../utls/index";
 import { connect } from "react-redux";
 import {
   setShowLoginModal,
-  setShowContactModal,
   setShowRegisterModal,
   setUser,
   setLoggedIn,
@@ -53,6 +52,7 @@ const ConnectedApp = ({
   }, []);
 
   const handleRegisterSubmit = async () => {
+    console.log('here 1')
     if (userName || (userName && userName.length > 0)) {
       if (password !== passwordConf) {
         setPasswordMatch(false);
@@ -61,6 +61,7 @@ const ConnectedApp = ({
         if (response.data.error) {
           setUserAlreadyExists(true);
         } else {
+          console.log(response)
           login(response);
           setShowRegisterModal(showRegisterModal)
         }
@@ -142,7 +143,6 @@ const mapStateToProps = (state) => {
 function mapDispatchToProps(dispatch) {
   return {
     setShowLoginModal: (bool) => dispatch(setShowLoginModal(bool)),
-    setShowContactModal: (bool) => dispatch(setShowContactModal(bool)),
     setShowRegisterModal: (bool) => dispatch(setShowRegisterModal(bool)),
     setUser: (value) => dispatch(setUser(value)),
     setLoggedIn: (bool) => dispatch(setLoggedIn(bool)),
