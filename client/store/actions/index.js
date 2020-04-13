@@ -53,9 +53,9 @@ export function setArticles(payload) {
 
 export function getData() {
   return (dispatch) => {
-      axios
+      return axios
         .get(
-          `https://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWS_API_KEY}`
+          `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEWS_API_KEY || NEWS_API_KEY}`
         )
         .then((res) => removeSources(res.data.articles))
         .then((res) => dispatch(setArticles(res)));

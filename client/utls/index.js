@@ -5,10 +5,13 @@ const removeSource = (title) => {
 }
 
 export const removeSources = articles => {
-  for (let article of articles) {
-    if (article.title) {
-      article.title = removeSource(article.title);
+  if (articles) {
+    for (let article of articles) {
+      if (article.title) {
+        article.title = removeSource(article.title);
+      }
     }
+    return articles;
   }
   return articles;
 }
