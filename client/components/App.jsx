@@ -11,7 +11,7 @@ import hookactions from "../actions/hookactions";
 import { connect } from "react-redux";
 import { setUser, setLoggedIn, getData } from "../store/actions/index";
 
-const ConnectedApp = ({
+export const UnconnectedApp = ({
   showLoginModal,
   showContactModal,
   showRegisterModal,
@@ -70,6 +70,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const App = connect(mapStateToProps, mapDispatchToProps)(ConnectedApp);
-
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(UnconnectedApp);
