@@ -18,11 +18,10 @@ export const UnconnectedApp = ({
   setUser,
   setLoggedIn,
   articles,
-  getData
+  getData,
 }) => {
-
   React.useEffect(() => {
-    getData()
+    getData();
   }, []);
 
   React.useEffect(() => {
@@ -32,9 +31,9 @@ export const UnconnectedApp = ({
   return (
     <div data-test="container-app" id="app">
       <NavBar data-test="navbar" />
-      {showLoginModal ? <LoginModal /> : null}
-      {showContactModal ? <ContactModal /> : null}
-      {showRegisterModal ? <RegisterModal /> : null}
+      {showLoginModal ? <LoginModal data-test="login-modal"/> : null}
+      {showContactModal ? <ContactModal data-test="contact-modal"/> : null}
+      {showRegisterModal ? <RegisterModal data-test="register-modal"/> : null}
       )}
       {articles.length > 0 ? (
         <>
@@ -42,13 +41,13 @@ export const UnconnectedApp = ({
             TOP NEWS
           </h5>
 
-          <TopNews topArticles={articles.slice(0, 5)} />
-          <MoreTopNews articles={articles.slice(5)} data-test="more-top-news" />
-          <Footer data-test="footer" />
+          <TopNews data-test="top-news"topArticles={articles.slice(0, 5)} />
+          <MoreTopNews data-test="more-top-news" articles={articles.slice(5)} data-test="more-top-news" />
         </>
       ) : (
-        <Spinner />
+        <Spinner data-test="spinner"/>
       )}
+      <Footer data-test="footer" />
     </div>
   );
 };
@@ -58,7 +57,7 @@ const mapStateToProps = (state) => {
     showLoginModal: state.loginModal.showLoginModal,
     showContactModal: state.contactModal.showContactModal,
     showRegisterModal: state.registerModal.showRegisterModal,
-    articles: state.articles.articles
+    articles: state.articles.articles,
   };
 };
 
@@ -66,7 +65,7 @@ function mapDispatchToProps(dispatch) {
   return {
     setUser: (value) => dispatch(setUser(value)),
     setLoggedIn: (bool) => dispatch(setLoggedIn(bool)),
-    getData: () => dispatch(getData())
+    getData: () => dispatch(getData()),
   };
 }
 
