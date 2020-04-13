@@ -12,7 +12,7 @@ import hookactions from "../actions/hookactions";
 
 import { setUser, setLoggedIn, getData } from "../store/actions/index";
 
-class UnconnectedApp extends React.Component {
+export class UnconnectedApp extends React.Component {
 
   componentDidMount() {
     this.props.getData();
