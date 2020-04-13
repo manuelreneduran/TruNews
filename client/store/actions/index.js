@@ -48,7 +48,7 @@ export function setLoggedIn(payload) {
 }
 
 export function setArticles(payload) {
-  return { type: "SET_ARTICLES", payload }
+  return { type: actionTypes.SET_ARTICLES, payload }
 }
 
 export function getData() {
