@@ -13,26 +13,26 @@ const Article = ({
   publishedAt,
 }) => {
   return (
-    <Media data-test="Article" className="mb-4" id="media-article" as="li">
+    <Media data-test="component-article" className="mb-4" id="media-article" as="li">
       <a target="_blank" style={{ textDecoration: "none" }} href={url}>
         <img src={urlToImage} width={200} height={124} className="mr-3"></img>
       </a>
       <Media.Body>
         <a target="_blank" style={{ textDecoration: "none" }} href={url}>
-          <h5>{title}</h5>
+          <h5 data-test="title">{title}</h5>
         </a>
         {source ? (
-          <p className="mb-1" style={{ fontSize: ".75em" }}>
+          <p data-test="article-source" className="mb-1" style={{ fontSize: ".75em" }}>
             <strong>{source}</strong>
           </p>
         ) : null}
         {author ? (
-          <p className="mb-1" style={{ fontSize: ".75em" }}>
+          <p data-test="article-author" className="mb-1" style={{ fontSize: ".75em" }}>
             By {author}
           </p>
         ) : null}
         {publishedAt ? (
-          <p className="text-muted mb-1" style={{ fontSize: ".75em" }}>
+          <p data-test="article-published-at" className="text-muted mb-1" style={{ fontSize: ".75em" }}>
             {Moment(publishedAt).fromNow()}
           </p>
         ) : null}
