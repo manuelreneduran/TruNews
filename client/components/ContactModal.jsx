@@ -1,12 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import { connect } from "react-redux";
 import { setShowContactModal } from "../store/actions/index";
 
-const ConnectedContactModal = ({ showContactModal, setShowContactModal }) => {
+export const UnconnectedContactModal = ({
+  showContactModal,
+  setShowContactModal,
+}) => {
   return (
     <>
       <Modal
+        data-test="component-contact-modal"
         show={showContactModal}
         onHide={() => setShowContactModal(showContactModal)}
       >
@@ -31,12 +36,14 @@ const ConnectedContactModal = ({ showContactModal, setShowContactModal }) => {
         </Modal.Body>
         <Modal.Footer>
           <Button
+            data-test="button-secondary"
             variant="secondary"
             onClick={() => setShowContactModal(showContactModal)}
           >
             Close
           </Button>
           <Button
+            data-test="button-primary"
             variant="primary"
             onClick={() => setShowContactModal(showContactModal)}
           >
@@ -58,9 +65,12 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const ContactModal = connect(
+UnconnectedContactModal.propTypes = {
+  showContactModal: PropTypes.bool,
+  setShowContactModal: PropTypes.func,
+};
+
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ConnectedContactModal);
-
-export default ContactModal;
+)(UnconnectedContactModal);

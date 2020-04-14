@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Col, Image } from "react-bootstrap";
 import Moment from "moment";
 
@@ -13,7 +14,7 @@ const TopArticleJumbo = ({
 }) => {
   return (
     <>
-      <Col xs={12}>
+      <Col data-test="component-top-article-jumbo" xs={12}>
         <a target="_blank" style={{ textDecoration: "none" }} href={url}>
           <h2>{title}</h2>
         </a>
@@ -25,21 +26,34 @@ const TopArticleJumbo = ({
       </Col>
       <Col xs={12}>
         {source ? (
-          <p className="mb-1" style={{ fontSize: ".75em" }}>
+          <p data-test="article-source" className="mb-1" style={{ fontSize: ".75em" }}>
             <strong>{source}</strong>
           </p>
         ) : null}
         {author ? (
-          <p className="mb-1" style={{ fontSize: ".75em" }}>
+          <p data-test="article-author" className="mb-1" style={{ fontSize: ".75em" }}>
             By {author}
           </p>
         ) : null}
-        {publishedAt ? <p className="text-muted" style={{ fontSize: ".75em" }}>{Moment(publishedAt).fromNow()}</p> : null}
+        {publishedAt ? <p data-test="article-published-at" className="text-muted" style={{ fontSize: ".75em" }}>{Moment(publishedAt).fromNow()}</p> : null}
 
         <p>{`${content.split(" ").slice(0, 30).join(" ")}...`}</p>
       </Col>
     </>
   );
+};
+
+TopArticleJumbo.propTypes = {
+  title: PropTypes.string,
+  urlToImage: PropTypes.string,
+  url: PropTypes.string,
+  content: PropTypes.string,
+  source: PropTypes.string,
+  author: PropTypes.string,
+  publishedAt: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(Date)
+  ])
 };
 
 export default TopArticleJumbo;
