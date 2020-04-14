@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { connect } from "react-redux";
 import { setShowContactModal } from "../store/actions/index";
 
-const ConnectedFooter = ({ setShowContactModal, showContactModal }) => {
+export const UnconnectedFooter = ({ setShowContactModal, showContactModal }) => {
   return (
     <footer className="bg-light" data-test="component-footer">
       <Container>
@@ -12,7 +13,7 @@ const ConnectedFooter = ({ setShowContactModal, showContactModal }) => {
             <h3 style={{display: 'inline-block', borderBottom: '5px blue solid'}}>TruNews</h3>
             <p>Copyright &copy; 2020</p>
             <p>By Manuel Duran</p>
-            <Button onClick={() => setShowContactModal(showContactModal)} variant="primary">Contact Me</Button>
+            <Button data-test="button" onClick={() => setShowContactModal(showContactModal)} variant="primary">Contact Me</Button>
           </Col>
         </Row>
       </Container>
@@ -30,9 +31,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const Footer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ConnectedFooter);
+UnconnectedFooter.propTypes = {
+  showContactModal: PropTypes.bool,
+  setShowContactModal: PropTypes.func
+}
 
-export default Footer;
+export default connect(mapStateToProps, mapDispatchToProps)(UnconnectedFooter);
