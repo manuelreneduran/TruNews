@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import { connect } from "react-redux";
 import hookactions from "../actions/hookactions";
@@ -9,7 +10,7 @@ import {
   setPasswordConf,
 } from "../store/actions/index";
 
-const ConnectedRegisterModal = ({
+export const UnconnectedRegisterModal = ({
   showRegisterModal,
   setShowRegisterModal,
   setUsername,
@@ -22,6 +23,7 @@ const ConnectedRegisterModal = ({
   return (
     <>
       <Modal
+        data-test="component-register-modal"
         show={showRegisterModal}
         onHide={() => setShowRegisterModal(showRegisterModal)}
       >
@@ -32,18 +34,20 @@ const ConnectedRegisterModal = ({
           <label>Username</label>
           <InputGroup className="mb-2">
             <FormControl
+              data-test="input-username"
               onChange={(e) => setUsername(e.target.value)}
               type="text"
             ></FormControl>
           </InputGroup>
           {userAlreadyExists ? (
-            <p className="text-danger">
+            <p data-test="username-warning" className="text-danger">
               Username is taken. Please select another.
             </p>
           ) : null}
           <label>Password</label>
           <InputGroup className="mb-2">
             <FormControl
+              data-test="input-password"
               onChange={(e) => setPassword(e.target.value)}
               type="password"
             ></FormControl>
@@ -51,29 +55,37 @@ const ConnectedRegisterModal = ({
           <label>Re-type Password</label>
           <InputGroup className="mb-2">
             <FormControl
+              data-test="input-password-conf"
               onChange={(e) => setPasswordConf(e.target.value)}
               type="password"
             ></FormControl>
           </InputGroup>
           {!passwordMatch ? (
-            <p className="text-danger">Your password does not match</p>
+            <p data-test="password-match-warning" className="text-danger">
+              Your password does not match
+            </p>
           ) : null}
         </Modal.Body>
         <Modal.Footer>
           <>
             <Button
+              data-test="button-secondary"
               variant="secondary"
               onClick={() => setShowRegisterModal(showRegisterModal)}
             >
               Close
             </Button>
-            <Button variant="primary" onClick={ hookactions.handleRegisterSubmit}>
+            <Button
+              data-test="button-primary"
+              variant="primary"
+              onClick={hookactions.handleRegisterSubmit}
+            >
               Register
             </Button>{" "}
           </>
 
           {loginError ? (
-            <p className="text-danger">
+            <p data-test="login-error-warning" className="text-danger">
               Registration error. Please check username and password.
             </p>
           ) : null}
@@ -101,9 +113,18 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const RegisterModal = connect(
+UnconnectedRegisterModal.propTypes = {
+  showRegisterModal: PropTypes.bool,
+  userAlreadyExists: PropTypes.bool,
+  loginError: PropTypes.bool,
+  passwordMatch: PropTypes.bool,
+  setShowRegisterModal: PropTypes.func,
+  setUsername: PropTypes.func,
+  setPassword: PropTypes.func,
+  setPasswordConf: PropTypes.func,
+};
+
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ConnectedRegisterModal);
-
-export default RegisterModal;
+)(UnconnectedRegisterModal);
