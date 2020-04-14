@@ -48,8 +48,15 @@ const Article = ({
 
 Article.propTypes = {
   title: PropTypes.string,
-  id: PropTypes.number,
-  rank: PropTypes.number,
+  urlToImage: PropTypes.string,
+  url: PropTypes.string,
+  content: PropTypes.string,
+  source: PropTypes.string,
+  author: PropTypes.string,
+  publishedAt: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(Date)
+  ])
 };
 
 export default Article;
