@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Article from "./Article.jsx";
 import { Container, Row, Col } from "react-bootstrap";
 import SavedArticles from "./SavedArticles";
@@ -7,7 +8,7 @@ const MoreTopNews = ({ articles }) => {
 
 
   return (
-    <Container fluid className="bg-light mt-5">
+    <Container data-test="component-more-top-news" fluid className="bg-light mt-5">
       <Row>
         <Col>
         <h5 className="mb-3" style={{borderBottom: '1px blue solid'}}>MORE TOP NEWS</h5>
@@ -23,7 +24,7 @@ const MoreTopNews = ({ articles }) => {
                     return (
                       <div key={ind}>
                         <Article
-                          data-test="Article"
+                          data-test="article"
                           content={article.content}
                           title={article.title}
                           urlToImage={article.urlToImage}
@@ -43,11 +44,15 @@ const MoreTopNews = ({ articles }) => {
           </div>
         </Col>
         <Col lg={4} className="d-none d-md-block">
-          <SavedArticles />
+          <SavedArticles data-test="saved-articles" />
         </Col>
       </Row>
     </Container>
   );
 };
+
+MoreTopNews.propTypes = {
+  articles: PropTypes.array
+}
 
 export default MoreTopNews;
