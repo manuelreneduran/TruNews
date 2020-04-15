@@ -1,19 +1,19 @@
 import React from "react";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import PropTypes from "prop-types";
+import { Navbar, Nav } from "react-bootstrap";
 import NavDropDown from "./NavDropDown";
 import NavLoginButton from "./NavLoginButton";
 import NavRegisterButton from "./NavRegisterButton";
 import { connect } from "react-redux";
-import { setLoggedIn } from "../store/actions/index";
 
-const ConnectedNavbar = ({ loggedIn }) => {
+export const UnconnectedNavBar = ({ loggedIn }) => {
   return (
     <Navbar
       bg="light"
       fixed="top"
       variant="light"
       expand="lg"
-      data-test="component-navabr"
+      data-test="component-navbar"
     >
       <Navbar.Brand id="brand" href="#home">
         TruNews
@@ -21,15 +21,13 @@ const ConnectedNavbar = ({ loggedIn }) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          {loggedIn ? null : (
+          {loggedIn ? (
+            <NavDropDown data-test="nav-drop-down" />
+          ) : (
             <>
-              <NavLoginButton />
-              <NavRegisterButton />
+              <NavLoginButton data-test="nav-login-button" />
+              <NavRegisterButton data-test="nav-register-button" />
             </>
-          )}
-
-          {!loggedIn ? null : (
-            <NavDropDown />
           )}
         </Nav>
       </Navbar.Collapse>
@@ -43,12 +41,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    setLoggedIn: bool => dispatch(setLoggedIn(bool))
-  };
-}
+UnconnectedNavBar.propTypes = {
+  loggedIn: PropTypes.bool,
+};
 
-const NavBar = connect(mapStateToProps, mapDispatchToProps)(ConnectedNavbar);
-
-export default NavBar;
+export default connect(mapStateToProps)(UnconnectedNavBar);
