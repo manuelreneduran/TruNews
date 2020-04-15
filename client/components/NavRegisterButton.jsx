@@ -1,31 +1,42 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Nav } from "react-bootstrap";
 import { connect } from "react-redux";
-import { setShowRegisterModal } from '../store/actions/index'
+import { setShowRegisterModal } from "../store/actions/index";
 
-const ConnectedNavRegisterButton = ({ showRegisterModal, setShowRegisterModal }) => {
+export const UnconnectedNavRegisterButton = ({
+  showRegisterModal,
+  setShowRegisterModal,
+}) => {
   return (
     <>
-      <Nav.Link href="#link" onClick={() => setShowRegisterModal(showRegisterModal)}>
+      <Nav.Link
+        data-test="component-nav-register-button"
+        href="#link"
+        onClick={() => setShowRegisterModal(showRegisterModal)}
+      >
         Register
       </Nav.Link>
     </>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { showRegisterModal: state.registerModal.showRegisterModal };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    setShowRegisterModal: bool => dispatch(setShowRegisterModal(bool))
+    setShowRegisterModal: (bool) => dispatch(setShowRegisterModal(bool)),
   };
 }
 
-const NavRegisterButton = connect(
+UnconnectedNavRegisterButton.propTypes = {
+  showRegisterModal: PropTypes.bool,
+  setShowRegisterModal: PropTypes.func,
+};
+
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ConnectedNavRegisterButton);
-
-export default NavRegisterButton;
+)(UnconnectedNavRegisterButton);

@@ -32,6 +32,11 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
+UnconnectedNavLoginButton.propTypes = {
+  setShowLoginModal: PropTypes.func,
+  showLoginModal: PropTypes.bool
+}
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
