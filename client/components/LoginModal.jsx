@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import hookactions from "../actions/hookactions";
 import {
   setShowLoginModal,
@@ -8,7 +9,7 @@ import {
   setPassword,
 } from "../store/actions/index";
 
-const ConnectedLoginModal = ({
+export const UnconnectedLoginModal = ({
   showLoginModal,
   setUsername,
   setPassword,
@@ -18,6 +19,7 @@ const ConnectedLoginModal = ({
   return (
     <>
       <Modal
+        data-test="component-login-modal"
         show={showLoginModal}
         onHide={() => setShowLoginModal(showLoginModal)}
       >
@@ -28,6 +30,7 @@ const ConnectedLoginModal = ({
           <label>Username</label>
           <InputGroup className="mb-2">
             <FormControl
+              data-test="input-username"
               required
               onChange={(e) => setUsername(e.target.value)}
               type="text"
@@ -36,6 +39,7 @@ const ConnectedLoginModal = ({
           <label>Password</label>
           <InputGroup className="mb-2">
             <FormControl
+              data-test="input-password"
               required
               onChange={(e) => setPassword(e.target.value)}
               type="password"
@@ -45,18 +49,23 @@ const ConnectedLoginModal = ({
         <Modal.Footer>
           <>
             <Button
+              data-test="button-secondary"
               variant="secondary"
               onClick={() => setShowLoginModal(showLoginModal)}
             >
               Close
             </Button>
-            <Button variant="primary" onClick={hookactions.handleLoginSubmit}>
+            <Button
+              data-test="button-primary"
+              variant="primary"
+              onClick={hookactions.handleLoginSubmit}
+            >
               Login
             </Button>
           </>
 
           {loginError ? (
-            <p className="text-danger">
+            <p data-test="login-error-warning" className="text-danger">
               Error logging in. Please check your username or password.
             </p>
           ) : null}
@@ -82,9 +91,15 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const LoginModal = connect(
+UnconnectedLoginModal.propTypes = {
+  showLoginModal: PropTypes.bool,
+  loginError: PropTypes.bool,
+  setShowLoginModal: PropTypes.func,
+  setUsername: PropTypes.func,
+  setPassword: PropTypes.func,
+};
+
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ConnectedLoginModal);
-
-export default LoginModal;
+)(UnconnectedLoginModal);
