@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { NavDropdown } from "react-bootstrap";
 import { connect } from "react-redux";
-import { logout } from "../actions/hookactions";
+import hookactions from "../actions/hookactions";
 
-const ConnectedNavDropDown = ({ user }) => {
+export const UnconnectedNavDropDown = ({ user }) => {
   return (
     <>
       <NavDropdown
@@ -11,11 +12,12 @@ const ConnectedNavDropDown = ({ user }) => {
         alignRight={true}
         title={user || "user"}
         id="basic-nav-dropdown"
+        data-test="component-nav-drop-down"
       >
         <NavDropdown.Item href="#action/3.2">
           My Saved Articles
         </NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2" onClick={logout}>
+        <NavDropdown.Item data-test="logout-item" href="#action/3.2" onClick={hookactions.logout}>
           Logout
         </NavDropdown.Item>
       </NavDropdown>
@@ -29,10 +31,8 @@ const mapStateToProps = (state) => {
   };
 };
 
+UnconnectedNavDropDown.propTypes = {
+  user: PropTypes.string,
+};
 
-
-const NavDropDown = connect(
-  mapStateToProps
-)(ConnectedNavDropDown);
-
-export default NavDropDown;
+export default connect(mapStateToProps)(UnconnectedNavDropDown);
