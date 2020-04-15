@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
 import TopArticleJumbo from "./TopArticleJumbo";
 import TopMiniArticles from "./TopMiniArticles";
@@ -30,5 +31,9 @@ const TopNews = ({ topArticles }) => {
     </Container>
   );
 };
+
+TopNews.propTypes = {
+  topArticles: PropTypes.array
+}
 
 export default TopNews;

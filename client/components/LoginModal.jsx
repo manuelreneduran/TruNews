@@ -1,7 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import hookactions from "../actions/hookactions";
 import {
   setShowLoginModal,
