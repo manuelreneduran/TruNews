@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Container, Row, Col } from "react-bootstrap";
 import TopMiniArticle from "./TopMiniArticle";
 
@@ -10,6 +11,7 @@ const TopMiniArticles = ({ topMiniArticles }) => {
         return (
           <div key={ind}>
             <TopMiniArticle
+              data-test="top-mini-article"
               urlToImage={ele.urlToImage}
               url={ele.url}
               content={ele.content}
@@ -25,7 +27,7 @@ const TopMiniArticles = ({ topMiniArticles }) => {
   };
 
   return (
-    <Container fluid>
+    <Container data-test="component-top-mini-articles" fluid>
       <Row>
         <Col >
           <ul className="list-unstyled">
@@ -36,5 +38,9 @@ const TopMiniArticles = ({ topMiniArticles }) => {
     </Container>
   );
 };
+
+TopMiniArticles.propTypes = {
+  topMiniArticles: PropTypes.array
+}
 
 export default TopMiniArticles;
