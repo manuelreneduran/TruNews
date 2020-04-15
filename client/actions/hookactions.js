@@ -43,8 +43,8 @@ export const getUserByToken = async (setUser, setLoggedIn) => {
   const token = getFromLocalStorage();
   const response = await axios.post("/signin/token", { token });
   if (response.data.token) {
-    setUser(response.data.username);
-    setLoggedIn(true);
+    actions.setUser(response.data.username);
+    actions.setLoggedIn(true);
   }
 };
 
