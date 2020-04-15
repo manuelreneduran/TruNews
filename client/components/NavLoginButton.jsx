@@ -1,12 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Nav } from "react-bootstrap";
 import { connect } from "react-redux";
-import { setShowLoginModal } from '../store/actions/index'
+import { setShowLoginModal } from "../store/actions/index";
 
-const ConnectedNavLoginButton = ({ setShowLoginModal, showLoginModal }) => {
+export const UnconnectedNavLoginButton = ({
+  setShowLoginModal,
+  showLoginModal,
+}) => {
   return (
     <>
       <Nav.Link
+        data-test="component-nav-login-button"
         href="#home"
         className="login-button1"
         onClick={(e) => setShowLoginModal(showLoginModal)}
@@ -17,20 +22,17 @@ const ConnectedNavLoginButton = ({ setShowLoginModal, showLoginModal }) => {
   );
 };
 
-
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { showLoginModal: state.loginModal.showLoginModal };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    setShowLoginModal: bool => dispatch(setShowLoginModal(bool))
+    setShowLoginModal: (bool) => dispatch(setShowLoginModal(bool)),
   };
 }
 
-const NavLoginButton = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ConnectedNavLoginButton);
-
-export default NavLoginButton;
+)(UnconnectedNavLoginButton);
