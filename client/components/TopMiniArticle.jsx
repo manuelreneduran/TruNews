@@ -16,14 +16,14 @@ const TopMiniArticle = ({
     <Container fluid>
       <Row>
         <Col>
-          <a data-test="component-top-mini-article" target="_blank" style={{ textDecoration: "none" }} href={url}>
+          <a data-test="component-top-mini-article" target="_blank" href={url}>
             <h5>{title}</h5>
           </a>
         </Col>
       </Row>
       <Row>
         <Col lg={4}>
-          <a target="_blank" style={{ textDecoration: "none" }} href={url}>
+          <a target="_blank" href={url}>
             <Image fluid src={urlToImage} />
           </a>
         </Col>

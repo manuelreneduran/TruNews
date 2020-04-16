@@ -94,12 +94,12 @@ const hashPassword = (password) => {
 const createUser = (user, res) => {
   return database
     .raw(
-      "INSERT INTO users (username, password_digest, token, created_at, saved_articles) VALUES (?, ?, ?, ?, array['{}']::json[]) RETURNING id, username, created_at, token, saved_articles",
-      [user.username, user.password_digest, user.token, new Date() ]
+      "INSERT INTO users (username, password_digest, token, created_at, saved_articles) VALUES (?, ?, ?, ?, array[]::json[]) RETURNING id, username, created_at, token, saved_articles",
+      [user.username, user.password_digest, user.token, new Date()]
     )
     .then((data) => data.rows[0])
     .catch((err) => {
-      console.log(err)
+      console.log(err);
       res.status(200).json({ error: "Username exists" });
     });
 };
@@ -130,34 +130,14 @@ const findByToken = (token) => {
 
 const saveArticle = (req, res) => {
   const userReq = req.body;
-  getSavedArticles(userReq.username).then((response) => {
-    console.log(response);
-    if (response.saved_articles) {
-      updateSavedArticles(userReq.articles, userReq.username)
-        .then((data) => {
-          console.log('updated data ' + data)
-          return res.status(200).json(data) })
-        .catch((err) => console.log(err));
-    } else {
-      saveFirstArticle(userReq.article, userReq.username)
-        .then((data) => {
-          console.log("saved first article " + JSON.stringify(data));
-          return res.status(200).json(data) })
-        .catch((err) => console.log(err));
-    }
-  })
-  .catch(err => console.log(err))
-};
 
-const saveFirstArticle = (article, username) => {
-  return database
-  .raw(
-    "UPDATE users SET saved_articles = ? WHERE username = ? RETURNING username, saved_articles",
-    [article, username]
-  )
-  .then((data) => data.rows[0])
-  .catch((err) => console.log(err));
-}
+  updateSavedArticles(userReq.article, userReq.username)
+    .then((data) => {
+      console.log("updated data " + data);
+      return res.status(200).json(data);
+    })
+    .catch((err) => console.log(err));
+};
 
 const getSavedArticles = (username) => {
   return database
@@ -167,8 +147,6 @@ const getSavedArticles = (username) => {
 };
 
 const updateSavedArticles = (article, username) => {
-  // article = JSON.stringify(article);
-  // console.log(article);
   return database
     .raw(
       "UPDATE users SET saved_articles = array_append(saved_articles, ?) WHERE username = ? RETURNING username, saved_articles",

@@ -43,7 +43,7 @@ const MoreTopNews = ({ articles }) => {
             )}
           </div>
         </Col>
-        <Col lg={4} className="d-none d-md-block">
+        <Col lg={4}>
           <SavedArticles data-test="saved-articles" />
         </Col>
       </Row>

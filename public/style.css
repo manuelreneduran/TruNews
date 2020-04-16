@@ -4,6 +4,7 @@ a {
 
 a:hover {
   color: orange;
+  text-decoration: none;
 }
 
 body {
@@ -24,6 +25,10 @@ body {
 
 #saved-articles {
   top: 80px
+}
+
+.delete-icon:hover {
+  transform: scale(1.2);
 }
 
 .spinner {
