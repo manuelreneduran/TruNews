@@ -12,6 +12,7 @@ import {
   setPassword,
   setPasswordConf,
   setPasswordMatch,
+  getSavedArticles
 } from "../store/actions/index";
 
 const dispatch = (act) => store.dispatch(act);
@@ -27,6 +28,7 @@ const actions = {
   setPassword: (value) => dispatch(setPassword(value)),
   setPasswordConf: (value) => dispatch(setPasswordConf(value)),
   setPasswordMatch: (bool) => dispatch(setPasswordMatch(bool)),
+  getSavedArticles: (username) => dispatch(getSavedArticles(username))
 };
 
 export const registerUser = async (username, password) => {
@@ -45,6 +47,7 @@ export const getUserByToken = async (setUser, setLoggedIn) => {
   if (response.data.token) {
     actions.setUser(response.data.username);
     actions.setLoggedIn(true);
+    actions.getSavedArticles(response.data.username);
   }
 };
 

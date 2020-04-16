@@ -68,10 +68,26 @@ export function getData() {
   };
 }
 
-export function saveArticle(article) {
+export function saveArticle(article, user) {
   return (dispatch) => {
-    return axios.post("/saved-articles", { article }).then((res) => {
-      console.log(res);
+    return axios.post("/saved-articles", { article, username: user }).then((res) => {
+      dispatch(setSavedArticles(res.data.saved_articles))
+    });
+  };
+}
+
+export function getSavedArticles(user) {
+  return (dispatch) => {
+    return axios.post("/saved-articles/get-all", { username: user }).then((res) => {
+      dispatch(setSavedArticles(res.data.saved_articles))
+    });
+  };
+}
+
+export function deleteArticle(article, user) {
+  return (dispatch) => {
+    return axios.post("/saved-articles/delete", { article, username: user }).then((res) => {
+      dispatch(setSavedArticles(res.data.saved_articles))
     });
   };
 }

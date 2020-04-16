@@ -139,10 +139,10 @@ const saveArticle = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-const getSavedArticles = (username) => {
+const getSavedArticles = (req, res) => {
   return database
-    .raw("SELECT saved_articles FROM users WHERE username = ?", [username])
-    .then((data) => data.rows[0])
+    .raw("SELECT saved_articles FROM users WHERE username = ?", [req.body.username])
+    .then((data) => res.status(200).json(data.rows[0]))
     .catch((err) => console.log(err));
 };
 
@@ -162,4 +162,5 @@ module.exports = {
   authenticate,
   signinByToken,
   saveArticle,
+  getSavedArticles
 };

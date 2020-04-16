@@ -17,6 +17,7 @@ app.post('/signup', User.signup)
 app.post('/signin', User.signin)
 app.post('/signin/token', User.signinByToken)
 app.post('/saved-articles', User.saveArticle);
+app.post('/saved-articles/get-all', User.getSavedArticles)
 
 
 app.use(express.static(path.join(__dirname, '../public')))

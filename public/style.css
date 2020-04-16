@@ -16,7 +16,7 @@ body {
 }
 
 .feed-inner {
-  padding-top: 80px
+  padding-top: 80px;
 }
 
 #media-article {
@@ -24,11 +24,22 @@ body {
 }
 
 #saved-articles {
-  top: 80px
+  top: 80px;
+}
+
+.saved-article-link {
+  font-size: 0.7em;
+}
+
+.saved-article-link:hover {
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .delete-icon:hover {
   transform: scale(1.2);
+  cursor: pointer;
 }
 
 .spinner {
