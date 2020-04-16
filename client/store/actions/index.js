@@ -48,16 +48,30 @@ export function setLoggedIn(payload) {
 }
 
 export function setArticles(payload) {
-  return { type: actionTypes.SET_ARTICLES, payload }
+  return { type: actionTypes.SET_ARTICLES, payload };
+}
+
+export function setSavedArticles(payload) {
+  return { type: actionTypes.SET_SAVED_ARTICLES, payload };
 }
 
 export function getData() {
   return (dispatch) => {
-      return axios
-        .get(
-          `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEWS_API_KEY || NEWS_API_KEY}`
-        )
-        .then((res) => removeSources(res.data.articles))
-        .then((res) => dispatch(setArticles(res)));
+    return axios
+      .get(
+        `https://newsapi.org/v2/top-headlines?country=us&apiKey=${
+          process.env.NEWS_API_KEY || NEWS_API_KEY
+        }`
+      )
+      .then((res) => removeSources(res.data.articles))
+      .then((res) => dispatch(setArticles(res)));
+  };
+}
+
+export function saveArticle(article) {
+  return (dispatch) => {
+    return axios.post("/saved-articles", { article }).then((res) => {
+      console.log(res);
+    });
   };
 }

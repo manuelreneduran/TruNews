@@ -1,9 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { Card, ListGroup } from "react-bootstrap";
 
-const SavedArticles = () => {
+export const UnconnectedSavedArticles = () => {
   return (
-    <Card className="sticky-top" id="saved-articles">
+    <Card data-test="component-saved-articles" className="sticky-top" id="saved-articles">
       <Card.Header style={{borderBottom: '5px solid blue'}}>Your Saved Articles</Card.Header>
       <Card.Body>
         <ListGroup variant="flush">
@@ -25,4 +27,4 @@ const SavedArticles = () => {
   );
 };
 
-export default SavedArticles;
+export default connect()(UnconnectedSavedArticles);

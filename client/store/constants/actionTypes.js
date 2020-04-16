@@ -10,3 +10,4 @@ export const PASSWORD = 'PASSWORD'
 export const PASSWORD_CONF = 'PASSWORD_CONF';
 export const PASSWORD_MATCH = 'PASSWORD_MATCH';
 export const LOGGED_IN = 'LOGGED_IN';
+export const SET_SAVED_ARTICLES = 'SET_SAVED_ARTICLES';
