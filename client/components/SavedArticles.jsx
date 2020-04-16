@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Card, ListGroup, Row, Col } from "react-bootstrap";
-import deleteIcon from "../../open-iconic/svg/delete.svg";
+import deleteIcon from "../../public/images/delete.svg";
 
 export const UnconnectedSavedArticles = () => {
   return (
