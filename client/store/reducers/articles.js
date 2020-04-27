@@ -15,7 +15,7 @@ export default function articlesReducer(state = initialState, action) {
     case actionTypes.SET_SAVED_ARTICLES:
       return {
         ...state,
-        savedArticles: state.savedArticles.concat(action.payload),
+        savedArticles: action.payload,
       };
     case actionTypes.SET_SAVED_AFTER_DELETE:
       return {

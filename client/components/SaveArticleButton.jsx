@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
 import { saveArticle } from "../store/actions";
 
 export const UnconnectedSaveArticleButton = ({
@@ -16,9 +15,7 @@ export const UnconnectedSaveArticleButton = ({
   saveArticle
 }) => {
   return (
-    <Button
-      variant="outline-info"
-      size="sm"
+    <p
       onClick={() =>
         saveArticle(
           {
@@ -33,10 +30,10 @@ export const UnconnectedSaveArticleButton = ({
           user
         )
       }
-      className="d-inline"
+      className="d-inline save-article-link"
     >
       Save Article
-    </Button>
+    </p>
   );
 };
 

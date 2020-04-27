@@ -27,8 +27,14 @@ body {
   top: 80px;
 }
 
-.saved-article-link {
-  font-size: 0.7em;
+.save-article-link {
+  font-size: 0.9em;
+}
+
+.save-article-link:hover {
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .delete-icon:hover {

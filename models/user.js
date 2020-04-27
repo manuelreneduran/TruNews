@@ -142,7 +142,6 @@ const getSavedArticles = (req, res) => {
       req.body.username,
     ])
     .then((data) => {
-      console.log(data.rows[0]);
       res.status(200).json(data.rows[0]);
     })
     .catch((err) => console.log(err));
@@ -168,12 +167,13 @@ const deleteSavedArticle = (req, res) => {
       const newArticles = data.rows[0].saved_articles.filter((ele) => {
         return ele.url !== url;
       });
+
       return newArticles;
     })
     .then((data) => {
       if (data.length !== 0) {
         return database.raw(
-          "UPDATE users SET saved_articles = ARRAY [?::jsonb] WHERE username = ? RETURNING username, saved_articles",
+          "UPDATE users SET saved_articles = ?::jsonb[] WHERE username = ? RETURNING username, saved_articles",
           [data, username]
         );
       } else {

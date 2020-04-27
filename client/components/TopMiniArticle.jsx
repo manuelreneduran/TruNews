@@ -1,4 +1,5 @@
 import React from "react";
+import SaveArticleButton from "./SaveArticleButton";
 import PropTypes from "prop-types";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import Moment from "moment";
@@ -29,17 +30,29 @@ const TopMiniArticle = ({
         </Col>
         <Col lg={8}>
           {source ? (
-            <p data-test="article-source" className="mb-1" style={{ fontSize: ".75em" }}>
+            <p
+              data-test="article-source"
+              className="mb-1"
+              style={{ fontSize: ".75em" }}
+            >
               <strong>{source}</strong>
             </p>
           ) : null}
           {author ? (
-            <p data-test="article-author" className="mb-1" style={{ fontSize: ".75em" }}>
+            <p
+              data-test="article-author"
+              className="mb-1"
+              style={{ fontSize: ".75em" }}
+            >
               By {author}
             </p>
           ) : null}
           {publishedAt ? (
-            <p data-test="article-published-at" className="text-muted mb-1" style={{ fontSize: ".75em" }}>
+            <p
+              data-test="article-published-at"
+              className="text-muted mb-1"
+              style={{ fontSize: ".75em" }}
+            >
               {Moment(publishedAt).fromNow()}
             </p>
           ) : null}
@@ -48,6 +61,15 @@ const TopMiniArticle = ({
               {content.split(" ").slice(0, 20).join(" ") + "..."}
             </p>
           ) : null}
+          <SaveArticleButton
+            title={title}
+            urlToImage={urlToImage}
+            url={url}
+            content={content}
+            source={source}
+            author={author}
+            publishedAt={publishedAt}
+          />
         </Col>
       </Row>
     </Container>
@@ -63,8 +85,8 @@ TopMiniArticle.propTypes = {
   author: PropTypes.string,
   publishedAt: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.instanceOf(Date)
-  ])
+    PropTypes.instanceOf(Date),
+  ]),
 };
 
 export default TopMiniArticle;
