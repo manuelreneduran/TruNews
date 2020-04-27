@@ -189,7 +189,7 @@ const deleteSavedArticle = (req, res) => {
       }
     })
     .then((data) => {
-      console.log("success delete? " + data.rows[0])
+      console.log("success delete? " + JSON.stringify(data.rows[0]))
       res.status(200).json(data.rows[0])
     })
     .catch((err) => console.log(err))

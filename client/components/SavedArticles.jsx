@@ -5,6 +5,7 @@ import { Card, ListGroup } from "react-bootstrap";
 import SavedArticle from "./SavedArticle";
 
 export const UnconnectedSavedArticles = ({ savedArticles }) => {
+  console.log(JSON.stringify(savedArticles))
   const listItems = savedArticles.map((ele, id) => {
     return <SavedArticle article={ele} key={id} />;
   });

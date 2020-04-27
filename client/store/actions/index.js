@@ -55,6 +55,10 @@ export function setSavedArticles(payload) {
   return { type: actionTypes.SET_SAVED_ARTICLES, payload };
 }
 
+export function setSavedAfterDelete(payload) {
+  return { type: actionTypes.SET_SAVED_AFTER_DELETE, payload };
+}
+
 export function getData() {
   return (dispatch) => {
     return axios
@@ -70,24 +74,28 @@ export function getData() {
 
 export function saveArticle(article, user) {
   return (dispatch) => {
-    return axios.post("/saved-articles", { article, username: user }).then((res) => {
-      dispatch(setSavedArticles(res.data.saved_articles))
-    });
+    return axios
+      .post("/saved-articles", { article, username: user })
+      .then((res) => {
+        dispatch(setSavedArticles(res.data.saved_articles));
+      });
   };
 }
 
 export function getSavedArticles(username) {
   return (dispatch) => {
     return axios.post("/saved-articles/get-all", { username }).then((res) => {
-      dispatch(setSavedArticles(res.data.saved_articles))
+      dispatch(setSavedArticles(res.data.saved_articles));
     });
   };
 }
 
 export function deleteSavedArticle(article, username) {
   return (dispatch) => {
-    return axios.post("/saved-articles/delete", { article, username }).then((res) => {
-      dispatch(setSavedArticles(res.data.saved_articles))
-    });
+    return axios
+      .post("/saved-articles/delete", { article, username })
+      .then((res) => {
+        dispatch(setSavedAfterDelete(res.data.saved_articles));
+      });
   };
 }
