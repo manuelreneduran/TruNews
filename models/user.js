@@ -82,7 +82,6 @@ const updateUserToken = (token, user) => {
     .then((data) => data.rows[0]);
 };
 
-// check out bcrypt's docs for more info on their hashing function
 const hashPassword = (password) => {
   return new Promise((resolve, reject) =>
     bcrypt.hash(password, 10, (err, hash) => {
@@ -160,10 +159,8 @@ const updateSavedArticles = (article, username) => {
 };
 
 const deleteSavedArticle = (req, res) => {
-  const article = req.body.article;
   const username = req.body.username;
   const url = req.body.article.url;
-  // `select position-1 from users, jsonb_array_elements(value->'title') with ordinality arr(elem, position) WHERE elem = 'https://www.nytimes.com/2020/04/16/nyregion/michael-che-nycha-rent-coronavirus.html';`
 
   return database
     .raw(`select saved_articles from users u where username = ?`, [username])
@@ -171,8 +168,6 @@ const deleteSavedArticle = (req, res) => {
       const newArticles = data.rows[0].saved_articles.filter((ele) => {
         return ele.url !== url;
       });
-      // newJSON = JSON.stringify;
-      console.log("here are new articles " + JSON.stringify(newArticles));
       return newArticles;
     })
     .then((data) => {
@@ -189,22 +184,9 @@ const deleteSavedArticle = (req, res) => {
       }
     })
     .then((data) => {
-      console.log("success delete? " + JSON.stringify(data.rows[0]))
-      res.status(200).json(data.rows[0])
+      res.status(200).json(data.rows[0]);
     })
-    .catch((err) => console.log(err))
-
-  return database
-    .raw
-    // [
-    //   article.url, article.url, username
-    // ]
-    ()
-    .then((data) => {
-      console.log("data" + JSON.stringify(data));
-      // res.status(200).json(data.rows[0]);
-    })
-    .catch((err) => console.log("error deleting article: " + err));
+    .catch((err) => console.log(err));
 };
 
 module.exports = {

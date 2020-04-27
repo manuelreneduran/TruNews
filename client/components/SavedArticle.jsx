@@ -1,15 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import DeleteButton from "./DeleteButton";
 import { ListGroup, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
-import { deleteSavedArticle } from "../../client/store/actions/index";
-import deleteIcon from "../../public/images/delete.svg";
+import { deleteSavedArticle } from "../store/actions/index";
 
-export const UnconnectedSavedArticle = ({
-  article,
-  user,
-  deleteSavedArticle,
-}) => {
+export const UnconnectedSavedArticle = ({ article }) => {
   return (
     <>
       <ListGroup.Item>
@@ -20,19 +16,7 @@ export const UnconnectedSavedArticle = ({
             </a>
           </Col>
           <Col xs={1}>
-            <img
-              onClick={(e) =>
-                deleteSavedArticle(article, user)
-              }
-              src={deleteIcon}
-              className="delete-icon"
-              style={{
-                height: "15px",
-                width: "15px",
-                transition: "transform .1s",
-              }}
-              alt="delete icon"
-            />
+            <DeleteButton article={article} />
           </Col>
         </Row>
       </ListGroup.Item>
