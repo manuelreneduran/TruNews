@@ -1,9 +1,10 @@
 import React from "react";
+import SaveArticleButton from "./SaveArticleButton";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Col, Image } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
 import Moment from "moment";
-import { saveArticle } from "../store/actions";
 
 export const UnconnectedTopArticleJumbo = ({
   title,
@@ -13,8 +14,6 @@ export const UnconnectedTopArticleJumbo = ({
   source,
   author,
   publishedAt,
-  user,
-  saveArticle
 }) => {
   return (
     <>
@@ -58,25 +57,17 @@ export const UnconnectedTopArticleJumbo = ({
         ) : null}
 
         {content ? (
-        <p>{`${content.split(" ").slice(0, 30).join(" ")}...`}</p>
-
+          <p>{`${content.split(" ").slice(0, 30).join(" ")}...`}</p>
         ) : null}
-        <p
-          onClick={() =>
-            saveArticle({
-              title,
-              urlToImage,
-              url,
-              content,
-              source,
-              author,
-              publishedAt,
-            }, user)
-          }
-          className="d-inline saved-article-link"
-        >
-          Save Article
-        </p>
+        <SaveArticleButton
+          title={title}
+          urlToImage={urlToImage}
+          url={url}
+          content={content}
+          source={source}
+          author={author}
+          publishedAt={publishedAt}
+        />
       </Col>
     </>
   );
@@ -95,16 +86,10 @@ UnconnectedTopArticleJumbo.propTypes = {
   ]),
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    user: state.user.user
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    saveArticle: (article, user) => dispatch(saveArticle(article, user)),
+    user: state.user.user,
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UnconnectedTopArticleJumbo);
+export default connect(mapStateToProps)(UnconnectedTopArticleJumbo);

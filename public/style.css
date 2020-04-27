@@ -31,12 +31,6 @@ body {
   font-size: 0.7em;
 }
 
-.saved-article-link:hover {
-  color: blue;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .delete-icon:hover {
   transform: scale(1.2);
   cursor: pointer;
