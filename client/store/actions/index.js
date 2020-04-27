@@ -76,17 +76,17 @@ export function saveArticle(article, user) {
   };
 }
 
-export function getSavedArticles(user) {
+export function getSavedArticles(username) {
   return (dispatch) => {
-    return axios.post("/saved-articles/get-all", { username: user }).then((res) => {
+    return axios.post("/saved-articles/get-all", { username }).then((res) => {
       dispatch(setSavedArticles(res.data.saved_articles))
     });
   };
 }
 
-export function deleteArticle(article, user) {
+export function deleteSavedArticle(article, username) {
   return (dispatch) => {
-    return axios.post("/saved-articles/delete", { article, username: user }).then((res) => {
+    return axios.post("/saved-articles/delete", { article, username }).then((res) => {
       dispatch(setSavedArticles(res.data.saved_articles))
     });
   };

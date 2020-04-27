@@ -57,7 +57,10 @@ export const UnconnectedTopArticleJumbo = ({
           </p>
         ) : null}
 
+        {content ? (
         <p>{`${content.split(" ").slice(0, 30).join(" ")}...`}</p>
+
+        ) : null}
         <p
           onClick={() =>
             saveArticle({

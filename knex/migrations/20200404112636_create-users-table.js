@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     username TEXT UNIQUE,
     token TEXT,
     password_digest TEXT,
-    saved_articles JSON[],
+    saved_articles JSONB[],
     created_at TIMESTAMP
   )`;
   return knex.raw(createQuery);

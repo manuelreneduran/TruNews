@@ -18,7 +18,7 @@ app.post('/signin', User.signin)
 app.post('/signin/token', User.signinByToken)
 app.post('/saved-articles', User.saveArticle);
 app.post('/saved-articles/get-all', User.getSavedArticles)
-
+app.post('/saved-articles/delete', User.deleteSavedArticle);
 
 app.use(express.static(path.join(__dirname, '../public')))
 

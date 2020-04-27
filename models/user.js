@@ -94,7 +94,7 @@ const hashPassword = (password) => {
 const createUser = (user, res) => {
   return database
     .raw(
-      "INSERT INTO users (username, password_digest, token, created_at, saved_articles) VALUES (?, ?, ?, ?, array[]::json[]) RETURNING id, username, created_at, token, saved_articles",
+      "INSERT INTO users (username, password_digest, token, created_at, saved_articles) VALUES (?, ?, ?, ?, array[]::jsonb[]) RETURNING id, username, created_at, token, saved_articles",
       [user.username, user.password_digest, user.token, new Date()]
     )
     .then((data) => data.rows[0])
@@ -130,10 +130,8 @@ const findByToken = (token) => {
 
 const saveArticle = (req, res) => {
   const userReq = req.body;
-
   updateSavedArticles(userReq.article, userReq.username)
     .then((data) => {
-      console.log("updated data " + data);
       return res.status(200).json(data);
     })
     .catch((err) => console.log(err));
@@ -141,8 +139,13 @@ const saveArticle = (req, res) => {
 
 const getSavedArticles = (req, res) => {
   return database
-    .raw("SELECT saved_articles FROM users WHERE username = ?", [req.body.username])
-    .then((data) => res.status(200).json(data.rows[0]))
+    .raw("SELECT saved_articles FROM users WHERE username = ?", [
+      req.body.username,
+    ])
+    .then((data) => {
+      console.log(data.rows[0]);
+      res.status(200).json(data.rows[0]);
+    })
     .catch((err) => console.log(err));
 };
 
@@ -156,11 +159,60 @@ const updateSavedArticles = (article, username) => {
     .catch((err) => console.log(err));
 };
 
+const deleteSavedArticle = (req, res) => {
+  const article = req.body.article;
+  const username = req.body.username;
+  const url = req.body.article.url;
+  // `select position-1 from users, jsonb_array_elements(value->'title') with ordinality arr(elem, position) WHERE elem = 'https://www.nytimes.com/2020/04/16/nyregion/michael-che-nycha-rent-coronavirus.html';`
+
+  return database
+    .raw(`select saved_articles from users u where username = ?`, [username])
+    .then((data) => {
+      const newArticles = data.rows[0].saved_articles.filter((ele) => {
+        return ele.url !== url;
+      });
+      // newJSON = JSON.stringify;
+      console.log("here are new articles " + JSON.stringify(newArticles));
+      return newArticles;
+    })
+    .then((data) => {
+      if (data.length !== 0) {
+        return database.raw(
+          "UPDATE users SET saved_articles = ARRAY [?::jsonb] WHERE username = ? RETURNING username, saved_articles",
+          [data, username]
+        );
+      } else {
+        return database.raw(
+          "UPDATE users SET saved_articles = ARRAY []::jsonb[] WHERE username = ? RETURNING username, saved_articles",
+          [username]
+        );
+      }
+    })
+    .then((data) => {
+      console.log("success delete? " + data.rows[0])
+      res.status(200).json(data.rows[0])
+    })
+    .catch((err) => console.log(err))
+
+  return database
+    .raw
+    // [
+    //   article.url, article.url, username
+    // ]
+    ()
+    .then((data) => {
+      console.log("data" + JSON.stringify(data));
+      // res.status(200).json(data.rows[0]);
+    })
+    .catch((err) => console.log("error deleting article: " + err));
+};
+
 module.exports = {
   signup,
   signin,
   authenticate,
   signinByToken,
   saveArticle,
-  getSavedArticles
+  getSavedArticles,
+  deleteSavedArticle,
 };
