@@ -12,28 +12,32 @@ export const UnconnectedSaveArticleButton = ({
   author,
   publishedAt,
   user,
-  saveArticle
+  saveArticle,
 }) => {
   return (
-    <p
-      onClick={() =>
-        saveArticle(
-          {
-            title,
-            urlToImage,
-            url,
-            content,
-            source,
-            author,
-            publishedAt,
-          },
-          user
-        )
-      }
-      className="d-inline save-article-link"
-    >
-      Save Article
-    </p>
+    <>
+      {user ? (
+        <p
+          onClick={() =>
+            saveArticle(
+              {
+                title,
+                urlToImage,
+                url,
+                content,
+                source,
+                author,
+                publishedAt,
+              },
+              user
+            )
+          }
+          className="d-inline save-article-link text-muted"
+        >
+          Save Article
+        </p>
+      ) : null}
+    </>
   );
 };
 

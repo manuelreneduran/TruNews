@@ -5,4 +5,6 @@ import rootReducer from './reducers/index'
 export const middlewares = [ReduxThunk];
 const createStoreWithMiddleware = createStore(rootReducer, applyMiddleware(...middlewares))
 
+window.store = createStoreWithMiddleware;
+
 export default createStoreWithMiddleware;
