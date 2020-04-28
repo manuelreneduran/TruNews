@@ -32,7 +32,7 @@ export const UnconnectedSaveArticleButton = ({
               user
             )
           }
-          className="d-inline save-article-link text-muted"
+          className="d-inline save-article-link"
         >
           Save Article
         </p>
