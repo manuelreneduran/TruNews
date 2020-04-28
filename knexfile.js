@@ -1,12 +1,7 @@
 module.exports = {
   development: {
     client: 'pg',
-    connection: process.env.DATABASE_URL || {
-      user : 'postgres',
-      password : 'docker',
-      database : 'users',
-      charset: 'utf8'
-    },
+    connection: process.env.DATABASE_URL,
     migrations: {
       directory: './knex/migrations'
     },

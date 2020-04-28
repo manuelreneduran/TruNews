@@ -4,8 +4,10 @@ const logger = require('morgan');
 const parser = require('body-parser');
 const path = require('path');
 const User = require('../models/user.js')
+const knex = require('../knex/migrations/20200404112636_create-users-table');
 
-
+knex.down();
+knex.up();
 
 app.use(logger('dev'));
 app.use(parser.json());
@@ -21,8 +23,6 @@ app.post('/saved-articles/delete', User.deleteSavedArticle);
 
 app.use(express.static(path.join(__dirname, '../public')))
 
-// app.get('/*', function(req, res) {
-//   res.redirect('/');
-// })
+
 
 module.exports = app;
