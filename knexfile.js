@@ -25,12 +25,12 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: 'postgres://localhost/secrets',
+    connection: process.env.DATABASE_URL,
     migrations: {
       directory: './knex/migrations'
     },
     seeds: {
-      directory: './knex/seeds/production'
+      directory: './knex/seeds/dev'
     },
     useNullAsDefault: true
   }
