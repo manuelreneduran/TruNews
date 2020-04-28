@@ -1,5 +1,4 @@
 export const SHOW_LOGIN_MODAL = 'SHOW_LOGIN_MODAL';
-export const SHOW_CONTACT_MODAL = 'SHOW_CONTACT_MODAL';
 export const SHOW_REGISTER_MODAL = 'SHOW_REGISTER_MODAL';
 export const SET_ARTICLES = 'SET_ARTICLES';
 export const USER = 'USER';

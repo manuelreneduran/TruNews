@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import RegisterModal from "./RegisterModal";
-import ContactModal from "./ContactModal";
 import LoginModal from "./LoginModal";
 import TopNews from "./TopNews";
 import MoreTopNews from "./MoreTopNews";
@@ -24,9 +23,6 @@ export class UnconnectedApp extends React.Component {
       <div data-test="container-app" id="app">
         <NavBar data-test="navbar" />
         {props.showLoginModal ? <LoginModal data-test="login-modal" /> : null}
-        {props.showContactModal ? (
-          <ContactModal data-test="contact-modal" />
-        ) : null}
         {props.showRegisterModal ? (
           <RegisterModal data-test="register-modal" />
         ) : null}
@@ -59,7 +55,6 @@ export class UnconnectedApp extends React.Component {
 const mapStateToProps = (state) => {
   return {
     showLoginModal: state.loginModal.showLoginModal,
-    showContactModal: state.contactModal.showContactModal,
     showRegisterModal: state.registerModal.showRegisterModal,
     articles: state.articles.articles,
   };

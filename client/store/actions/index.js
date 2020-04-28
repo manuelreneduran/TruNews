@@ -7,9 +7,6 @@ export function setShowLoginModal(payload) {
   return { type: actionTypes.SHOW_LOGIN_MODAL, payload: !payload };
 }
 
-export function setShowContactModal(payload) {
-  return { type: actionTypes.SHOW_CONTACT_MODAL, payload: !payload };
-}
 
 export function setShowRegisterModal(payload) {
   return { type: actionTypes.SHOW_REGISTER_MODAL, payload: !payload };
