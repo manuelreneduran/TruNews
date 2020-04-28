@@ -3,7 +3,6 @@ const app = express();
 const logger = require('morgan');
 const parser = require('body-parser');
 const path = require('path');
-const knex = require('../knex/knex.js');
 const User = require('../models/user.js')
 
 
