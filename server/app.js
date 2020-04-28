@@ -22,8 +22,8 @@ app.post('/saved-articles/delete', User.deleteSavedArticle);
 
 app.use(express.static(path.join(__dirname, '../public')))
 
-app.get('/*', function(req, res) {
-  res.redirect('/');
-})
+// app.get('/*', function(req, res) {
+//   res.redirect('/');
+// })
 
 module.exports = app;
