@@ -12,7 +12,7 @@
     "server-dev": "nodemon server/index.js",
     "collect-coverage": "jest --collectCoverage",
     "start": "node server/app.js",
-    "migrate": "knex migrate:latest",
+    "migrate": "knex migrate:latest"
   },
   "repository": {
     "type": "git",
