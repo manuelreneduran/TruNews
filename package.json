@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "reddit clone",
   "main": "server/index.js",
+  "engines": {
+    "node": "11.10.1"
+  },
   "scripts": {
     "test": "jest --watch",
     "react-dev": "webpack -d --watch",
