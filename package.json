@@ -13,7 +13,6 @@
     "collect-coverage": "jest --collectCoverage",
     "start": "node server/app.js",
     "migrate": "knex migrate:latest",
-    "heroku-postbuild": "knex migrate:latest"
   },
   "repository": {
     "type": "git",
