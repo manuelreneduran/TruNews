@@ -17,6 +17,7 @@ const Footer = () => {
             </h3>
             <p>Copyright &copy; 2020</p>
             <p>By Manuel Duran</p>
+            <p>Powered By NewsAPI.org</p>
             <a href="mailto: mduran85@gmail.com" target="_blank">
               <Button data-test="button" variant="primary">
                 Contact Me
