@@ -1,12 +1,12 @@
 import axios from "axios";
 import { removeSources } from "../../utls/index";
+import productionData from "../../../data/productionData.json";
 
 import * as actionTypes from "../constants/actionTypes";
 
 export function setShowLoginModal(payload) {
   return { type: actionTypes.SHOW_LOGIN_MODAL, payload: !payload };
 }
-
 
 export function setShowRegisterModal(payload) {
   return { type: actionTypes.SHOW_REGISTER_MODAL, payload: !payload };
@@ -56,16 +56,26 @@ export function setSavedAfterDelete(payload) {
   return { type: actionTypes.SET_SAVED_AFTER_DELETE, payload };
 }
 
+/* This API Call does not work in production without a service fee - Using
+example data for now */
+
+// export function getData() {
+//   return (dispatch) => {
+//     return axios
+//       .get(
+//         `https://newsapi.org/v2/top-headlines?country=us&apiKey=${
+//           process.env.NEWS_API_KEY || NEWS_API_KEY
+//         }`
+//       )
+//       .then((res) => console.log(productionData))
+//       .then((res) => removeSources(res.data.articles))
+//       .then((res) => dispatch(setArticles(res)));
+//   };
+// }
+
 export function getData() {
   return (dispatch) => {
-    return axios
-      .get(
-        `https://newsapi.org/v2/top-headlines?country=us&apiKey=${
-          process.env.NEWS_API_KEY || NEWS_API_KEY
-        }`
-      )
-      .then((res) => removeSources(res.data.articles))
-      .then((res) => dispatch(setArticles(res)));
+    return dispatch(setArticles(removeSources(productionData.data.articles)));
   };
 }
 

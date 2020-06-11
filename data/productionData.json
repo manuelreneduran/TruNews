@@ -1,0 +1,234 @@
+{
+  "data": {
+    "status": "ok",
+    "totalResults": 38,
+    "articles": [
+      {
+        "source": { "id": null, "name": "New York Times" },
+        "author": null,
+        "title": "Live Protests Today Updates: George Floyd, Police and BLM - The New York Times",
+        "description": "The country’s top military official apologized for taking part in President Trump’s walk across Lafayette Square for a photo op after authorities cleared the area of peaceful protesters.",
+        "url": "https://www.nytimes.com/2020/06/11/us/george-floyd-protests.html",
+        "urlToImage": "https://static01.nyt.com/images/2020/06/01/world/01unrest-briefing-wh/01unrest-briefing-wh-facebookJumbo.jpg",
+        "publishedAt": "2020-06-11T14:33:18Z",
+        "content": "The National Guard is now engaged in an investigation of the havoc a week ago Monday in downtown Washington, similar to after-the-fact examinations more common to battlefields in Iraq and Afghanistan… [+2471 chars]"
+      },
+      {
+        "source": { "id": null, "name": "New York Times" },
+        "author": null,
+        "title": "Live Stock Market Tracker and Economy Updates - The New York Times",
+        "description": "The latest on stock market and business news during the coronavirus outbreak.",
+        "url": "https://www.nytimes.com/2020/06/11/business/stock-market-tracker-coronavirus.html",
+        "urlToImage": "https://www.nytimes.com/newsgraphics/2020/04/09/corona-virus-social-images-by-section/assets/Business_promo.jpg?u=1591887261634",
+        "publishedAt": "2020-06-11T14:27:10Z",
+        "content": "Xie Yiyi, who is American-educated, lost her job last Friday, making the 22-year-old Beijing resident one of millions of young people in China left unmoored and shaken by the coronavirus.\r\nSo that sa… [+1327 chars]"
+      },
+      {
+        "source": { "id": null, "name": "New York Times" },
+        "author": "Christopher Clarey",
+        "title": "Top International Players Uneasy on U.S. Open Plan as Decision Nears - The New York Times",
+        "description": "The president of the United States Tennis Association said a decision on staging the Open must be made next week, but some top international players have reservations on the proposal.",
+        "url": "https://www.nytimes.com/2020/06/11/sports/us-open-2020-plans.html",
+        "urlToImage": "https://static01.nyt.com/images/2020/06/11/sports/11tennis-usopen-1/11tennis-usopen-1-facebookJumbo.jpg",
+        "publishedAt": "2020-06-11T14:18:56Z",
+        "content": "The U.S.T.A. also has proposed moving the Western &amp; Southern Open, a mens and womens event usually held outside Cincinnati, to New York for this year only and staging it without spectators at the… [+9290 chars]"
+      },
+      {
+        "source": { "id": null, "name": "CBS Sports" },
+        "author": "Kyle Porter",
+        "title": "2020 Charles Schwab Challenge leaderboard: Live coverage, golf scores, updates, highlights in Round 1 - CBSSports.com",
+        "description": "Live scores, updates and highlights from Round 1 of the 2020 Charles Schwab Challenge",
+        "url": "https://www.cbssports.com/golf/news/2020-charles-schwab-challenge-leaderboard-live-coverage-golf-scores-updates-highlights-in-round-1/live/",
+        "urlToImage": "https://sportshub.cbsistatic.com/i/r/2020/06/10/9ae15a65-9999-49e9-b01a-469ab3452577/thumbnail/1200x675/5d3499d4c76a9cedee338110d1691d77/schwab-challenge-leaderboard.jpg",
+        "publishedAt": "2020-06-11T13:42:00Z",
+        "content": "After the longest unplanned break for the PGA Tour since World War II, professional golf is back in a big way today at the 2020 Charles Schwab Challenge. A monstrous field that includes 80% of the to… [+876 chars]"
+      },
+      {
+        "source": { "id": null, "name": "New York Post" },
+        "author": "Steven Nelson",
+        "title": "Trump orders sanctions to halt international probe of US troops - New York Post ",
+        "description": "President Trump on Thursday issued an executive order authorizing sanctions against anyone who takes part in an International Criminal Court investigation of Americans or US allies — as aides say R…",
+        "url": "https://nypost.com/2020/06/11/trump-orders-sanctions-to-halt-international-probe-of-us-troops/",
+        "urlToImage": "https://thenypost.files.wordpress.com/2020/06/200611-trump-sanctions.jpg?quality=90&strip=all&w=1200",
+        "publishedAt": "2020-06-11T13:40:24Z",
+        "content": "President Trump on Thursday issued an executive order authorizing sanctions against anyone who takes part in an International Criminal Court investigation of Americans or US allies as aides say Russi… [+2636 chars]"
+      },
+      {
+        "source": { "id": null, "name": "CNBC" },
+        "author": "Melodie Warner",
+        "title": "Coronavirus live updates: WHO warns of 'hotspots' in Africa; Regeneron tests its potential therapy on humans - CNBC",
+        "description": "The coronavirus has infected more than 7.4 million people around the world as of Thursday, killing at least 417,174 people.",
+        "url": "https://www.cnbc.com/2020/06/11/coronavirus-live-updates.html",
+        "urlToImage": "https://image.cnbcfm.com/api/v1/image/106476193-1586164907744kibera2.jpg?v=1586165673",
+        "publishedAt": "2020-06-11T13:38:58Z",
+        "content": "Confirmed coronavirus cases in the U.S. topped two million as the virus begins to spread more rapidly in some states that aggressively reopened, such as Texas, Arizona, North Carolina and others. Whi… [+5043 chars]"
+      },
+      {
+        "source": { "id": null, "name": "New York Times" },
+        "author": "Paul Mozur",
+        "title": "Zoom Blocks Activist After Tiananmen Vigil - The New York Times",
+        "description": "Though the account was restored, the digital commemoration of the 1989 crackdown in Beijing spotlights thorny questions for a company with operations in both the United States and China.",
+        "url": "https://www.nytimes.com/2020/06/11/technology/zoom-china-tiananmen-square.html",
+        "urlToImage": "https://static01.nyt.com/images/2020/06/11/world/11china-zoom-1/11china-zoom-1-facebookJumbo.jpg",
+        "publishedAt": "2020-06-11T13:24:41Z",
+        "content": "The policy left the door open for a paying user in the United States like Mr. Zhou to host a meeting that could be joined by a number of users within China. Activists often take advantage of censorsh… [+1750 chars]"
+      },
+      {
+        "source": { "id": "associated-press", "name": "Associated Press" },
+        "author": "Andrea Rosa",
+        "title": "Stolen Banksy honoring Bataclan victims found in Italy - The Associated Press",
+        "description": "L'AQUILA, Italy (AP) — Italian authorities on Thursday unveiled a stolen artwork by British artist Banksy that was painted as a tribute to the victims of the 2015 terror attacks at the Bataclan...",
+        "url": "https://apnews.com/cceedba1cc048ec3ce5336877abe61de",
+        "urlToImage": "https://storage.googleapis.com/afs-prod/media/0d4d15db94be4c4c8ca8e7c1dcdc8e91/3000.jpeg",
+        "publishedAt": "2020-06-11T13:18:58Z",
+        "content": "LAQUILA, Italy (AP) Italian authorities on Thursday unveiled a stolen artwork by British artist Banksy that was painted as a tribute to the victims of the 2015 terror attacks at the Bataclan music ha… [+1476 chars]"
+      },
+      {
+        "source": { "id": "fox-news", "name": "Fox News" },
+        "author": "Ronn Blitzer",
+        "title": "House Judiciary Dems file brief in Flynn case, accuse DOJ of 'corruption' in dropping charges - Fox News",
+        "description": "Democrats on the House Judiciary Committee jumped into the Michael Flynn case Wednesday, filing an amicus curiae (“friend of the court”) brief arguing for why Judge Emmet Sullivan should not sign off on the Justice Department’s motion to dismiss the case.",
+        "url": "https://www.foxnews.com/politics/house-judiciary-dems-file-brief-in-flynn-case-accuse-doj-of-corruption-in-dropping-charges",
+        "urlToImage": "https://media2.foxnews.com/BrightCove/694940094001/2019/12/12/694940094001_6115293003001_6115294018001-vs.jpg",
+        "publishedAt": "2020-06-11T13:18:16Z",
+        "content": "Democrats on the House Judiciary Committee jumped into the Michael Flynn case Wednesday, filing an amicus curiae (“friend of the court”) brief arguing for why Judge Emmet Sullivan should not sign off… [+5412 chars]"
+      },
+      {
+        "source": { "id": null, "name": "Nintendo Life" },
+        "author": "Nintendo Life",
+        "title": "UK Retailers Guilty Of Inflating Nintendo Switch Prices As Stock Remains Elusive - Nintendo Life",
+        "description": "Customers forced to pay above RRP",
+        "url": "https://www.nintendolife.com/news/2020/06/uk_retailers_guilty_of_inflating_nintendo_switch_prices_as_stock_remains_elusive",
+        "urlToImage": "https://images.nintendolife.com/d61c809f8cf61/1280x720.jpg",
+        "publishedAt": "2020-06-11T13:15:00Z",
+        "content": "Getting hold of an original model Nintendo Switch isn't the easiest of tasks right now in the UK, with supply failing to meet demand up and down the country. The Nintendo Official UK Store is complet… [+1554 chars]"
+      },
+      {
+        "source": { "id": "cnn", "name": "CNN" },
+        "author": "Jason Hanna, CNN",
+        "title": "Ex-Minneapolis officer charged in George Floyd's death is released on bond - CNN",
+        "description": "One of the four former Minneapolis police officers awaiting trial in the death of George Floyd has been released on $750,000 bond.",
+        "url": "https://www.cnn.com/2020/06/11/us/minneapolis-former-officer-thomas-lane-bail/index.html",
+        "urlToImage": "https://cdn.cnn.com/cnnnext/dam/assets/200603215537-thomas-lane-kiernan-mugshot-super-tease.jpg",
+        "publishedAt": "2020-06-11T13:03:51Z",
+        "content": "(CNN)One of the four former Minneapolis police officers awaiting trial in the death of George Floyd has been released on $750,000 bond.\r\nThomas Lane, 37, was released Wednesday afternoon from the Hen… [+2044 chars]"
+      },
+      {
+        "source": { "id": null, "name": "mlive.com" },
+        "author": "Evan Woodbery | ewoodber@mlive.com",
+        "title": "MLB Draft 2020: Best prospects still on the board for Tigers in Day 2 - MLive.com",
+        "description": "The Tigers hold the first pick of the second round today at 5 p.m.",
+        "url": "https://www.mlive.com/tigers/2020/06/mlb-draft-2020-best-prospects-still-on-the-board-for-tigers-in-day-2.html",
+        "urlToImage": "https://www.mlive.com/resizer/a4U95KrCz-ZQIxyqCIb5BUfMwS0=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/FLIERXGGO5BSXISFJ7LPP354MM.jpg",
+        "publishedAt": "2020-06-11T13:00:07Z",
+        "content": "DETROIT -- The Detroit Tigers had about nine months to think about their first-round pick before taking Spencer Torkelson on Wednesday night.\r\nOn Day 2, it will be more like nine hours. \r\nThe Tigers … [+4004 chars]"
+      },
+      {
+        "source": { "id": null, "name": "New York Times" },
+        "author": "Denise Grady",
+        "title": "Covid-19 Patient Gets Double Lung Transplant, Offering Hope for Others - The New York Times",
+        "description": "The operation is believed to be the first of its kind in the U.S. The patient, a woman in her 20s, had been healthy, but the coronavirus devastated her lungs.",
+        "url": "https://www.nytimes.com/2020/06/11/health/coronavirus-lung-transplant.html",
+        "urlToImage": "https://static01.nyt.com/images/2020/06/11/science/11VIRUS-TRANSPLANT1/11LUNG-TRANSPLANT1-facebookJumbo.jpg",
+        "publishedAt": "2020-06-11T12:39:14Z",
+        "content": "The patients name is being withheld to protect her privacy, and her family has declined to be interviewed, said a Northwestern spokeswoman, Jenny Nowatzke. She said the woman was Hispanic, a professi… [+1345 chars]"
+      },
+      {
+        "source": { "id": null, "name": "Barron's" },
+        "author": "Carleton English",
+        "title": "Stocks Moving Premarket: Grubhub, Delta Air Lines, JPMorgan Chase - Barron's",
+        "description": "",
+        "url": "https://www.barrons.com/articles/stocks-moving-premarket-grubhub-delta-air-lines-jpmorgan-chase-51591878520",
+        "urlToImage": "https://images.barrons.com/im-150385/social",
+        "publishedAt": "2020-06-11T12:28:00Z",
+        "content": "Get ready for a bumpy ride. Stock futures plunged Thursday morning as Wall Street digested comments from Federal Reserve Chair Jerome Powell who said Wednesday that the economic impact of the coronav… [+148 chars]"
+      },
+      {
+        "source": { "id": null, "name": "9to5google.com" },
+        "author": null,
+        "title": "Adobe Photoshop Camera leaves preview, now available on the Google Play Store - 9to5Google",
+        "description": "After officially being announced in late-2019, Adobe Photoshop Camera is now available to download on the Google Play Store.",
+        "url": "https://9to5google.com/2020/06/11/photoshop-camera-play-store/",
+        "urlToImage": "https://9to5google.com/wp-content/uploads/sites/4/2020/06/Adobe-Photoshop-Camera.jpg?quality=82&strip=all",
+        "publishedAt": "2020-06-11T12:26:30Z",
+        "content": "After officially being announced in late 2019, Adobe Photoshop Camera is now available to download on the Google Play Store.\r\nThe application aims to leverage Adobe’s rich history and Photoshop prowe… [+1465 chars]"
+      },
+      {
+        "source": {
+          "id": "the-washington-post",
+          "name": "The Washington Post"
+        },
+        "author": "Ariana Eunjung Cha, Lenny Bernstein",
+        "title": "Chronic coronavirus: These patients have been sick for weeks, but doctors don't know why - The Washington Post",
+        "description": "They may be experiencing a continuing infection, slow recovery or post-viral condition.",
+        "url": "https://www.washingtonpost.com/health/2020/06/11/coronavirus-chronic/",
+        "urlToImage": "https://www.washingtonpost.com/resizer/B1sWMJIngvx6xtQa7vNeTgidyxQ=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/WNS6KHVGB4I6VCMOWINZVA7XSI.jpg",
+        "publishedAt": "2020-06-11T12:15:10Z",
+        "content": "It started for Melanie Montano with a tightness in her chest, almost like someone was sitting on top of her. It was March 15, and she was sweating but freezing cold. And she had a strange pins-and-ne… [+12359 chars]"
+      },
+      {
+        "source": { "id": null, "name": "New York Post" },
+        "author": "Deadline",
+        "title": "Emma Watson on J.K. Rowling controversy: 'Trans people are who they say they are' - New York Post ",
+        "description": "“[They] deserve to live their lives without being constantly questioned,” she says.",
+        "url": "https://nypost.com/2020/06/11/emma-watson-on-j-k-rowling-backlash-trans-people-are-who-they-say-they-are/",
+        "urlToImage": "https://thenypost.files.wordpress.com/2020/06/emma-watson.jpg?quality=90&strip=all&w=1200",
+        "publishedAt": "2020-06-11T12:06:25Z",
+        "content": "“Harry Potter” star Emma Watson has become the latest figure to weigh in on the controversy provoked by the book series author J.K. Rowlings series of tweets about trans people.\r\nTrans people are who… [+1643 chars]"
+      },
+      {
+        "source": { "id": null, "name": "HuffPost" },
+        "author": "Matthew Jacobs",
+        "title": "In ‘Da 5 Bloods,’ Spike Lee Provides A Fresh Return To The Heart Of Darkness - HuffPost",
+        "description": "The famed director's new Netflix movie is a buddy drama that exists in conversation with \"Apocalypse Now\" and other Vietnam War depictions.",
+        "url": "https://www.huffpost.com/entry/da-5-bloods-spike-lee-apocalypse-now-netflix_n_5ee12c99c5b6afd52760e7dc",
+        "urlToImage": "https://img.huffingtonpost.com/asset/5ee138392500001b2aeb3180.jpeg?ops=1200_630",
+        "publishedAt": "2020-06-11T11:57:40Z",
+        "content": "Here’s a statistic you’ll hear in “Da 5 Bloods,” Spike Lee’s impassioned new movie: During the late 1960s and early ’70s, the Black population comprised 11% of America but 32% of the troops serving i… [+5714 chars]"
+      },
+      {
+        "source": { "id": "engadget", "name": "Engadget" },
+        "author": "",
+        "title": "The Morning After: Google released the Android 11 beta - Engadget",
+        "description": "This morning's recap includes some first impressions of Android 11 and a look back at the world's first smartwatch. Seiko's Ruputer had some problems that still plague wearables today.",
+        "url": "https://www.engadget.com/android-11-beta-ps5-showcase-morning-after-111552601.html",
+        "urlToImage": "https://o.aolcdn.com/images/dims?resize=1200%2C630&crop=1200%2C630%2C0%2C0&quality=95&image_uri=https%3A%2F%2Fs.yimg.com%2Fos%2Fcreatr-uploaded-images%2F2020-06%2Fd4806400-abd1-11ea-bfa6-b455d97ffef4&client=amp-blogside-v2&signature=f96e1c262644e96892a8a569c8fed4b820b111ec",
+        "publishedAt": "2020-06-11T11:43:19Z",
+        "content": "Even as pandemic-related lockdown policies ease, movie theaters everywhere remain closed and some may never reopen. It doesn’t feel quite right to have a summer without trips to the movies, but you m… [+3143 chars]"
+      },
+      {
+        "source": {
+          "id": "the-washington-post",
+          "name": "The Washington Post"
+        },
+        "author": "Tim Elfrink",
+        "title": "‘This is not a game’: Trump threatens to ‘take back’ Seattle as protesters set up ‘autonomous zone’ - The Washington Post",
+        "description": "“Make us all safe. Go back to your bunker,” Seattle Mayor Jenny Durkan retorted on Twitter.",
+        "url": "https://www.washingtonpost.com/nation/2020/06/11/trump-seattle-autonomous-zone-inslee/",
+        "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://d1i4t8bqe7zgj6.cloudfront.net/06-10-2020/t_1cf88d0706704e58a63407a89ffd08e0_name_20200610_Floyd_Seattle_mash_up_still_2.jpg&w=1440",
+        "publishedAt": "2020-06-11T10:10:01Z",
+        "content": "To some protesters, its a first step toward their demands to defund the police and end racial injustice.\r\nBut President Trump suggested another term for the demonstrators late Wednesday: Domestic Ter… [+3677 chars]"
+      }
+    ]
+  },
+  "status": 200,
+  "statusText": "",
+  "headers": {
+    "cache-control": "no-cache",
+    "content-type": "application/json; charset=utf-8",
+    "expires": "-1",
+    "pragma": "no-cache"
+  },
+  "config": {
+    "url": "https://newsapi.org/v2/top-headlines?country=us&apiKey=2c4c96101e3b480389159d30f15a289a",
+    "method": "get",
+    "headers": { "Accept": "application/json, text/plain, */*" },
+    "transformRequest": [null],
+    "transformResponse": [null],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1
+  },
+  "request": {}
+}

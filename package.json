@@ -11,7 +11,7 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "collect-coverage": "jest --collectCoverage",
-    "start": "node server/app.js",
+    "start": "node server/index.js",
     "migrate": "knex migrate:latest"
   },
   "repository": {
@@ -21,13 +21,14 @@
   "author": "Manuel Duran",
   "license": "ISC",
   "devDependencies": {
-    "react-test-renderer": "^16.10.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jest": "^24.9.0",
     "jest-extended": "^0.11.5",
+    "json-loader": "^0.5.7",
     "moxios": "^0.4.0",
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.3",
+    "react-test-renderer": "^16.10.1"
   },
   "dependencies": {
     "@babel/core": "^7.6.2",
